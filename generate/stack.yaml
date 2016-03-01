@@ -1,0 +1,6 @@
+flags: {}
+packages:
+    - .
+system-ghc: true
+extra-deps:
+resolver: lts-5.5
