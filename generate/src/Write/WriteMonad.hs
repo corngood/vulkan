@@ -12,7 +12,6 @@ module Write.WriteMonad
   , runWrite
   , askTypeEnv
   , isBoot
-  , askTags
   , tellRequiredName
   , tellRequiredNames
   , tellExtension
@@ -50,23 +49,19 @@ type WriteOutput = (HashSet RequiredName, HashSet ExtensionName)
 
 data ReadInput = ReadInput { readTypeEnv  :: TypeEnv
                            , readFileType :: FileType
-                           , readTags     :: [String]
                            }
 
 type Write = ReaderT ReadInput (Writer WriteOutput)
 
-runWrite :: TypeEnv -> FileType -> [String] -> Write a
+runWrite :: TypeEnv -> FileType -> Write a
          -> (a, (HashSet RequiredName, HashSet ExtensionName))
-runWrite env boot tags m = runWriter (runReaderT m (ReadInput env boot tags))
+runWrite env boot m = runWriter (runReaderT m (ReadInput env boot))
 
 askTypeEnv :: Write TypeEnv
 askTypeEnv = asks readTypeEnv
 
 isBoot :: Write Bool
 isBoot = asks ((== Boot) . readFileType)
-
-askTags :: Write [String]
-askTags = asks readTags
 
 doesDeriveStorable :: Write ()
 doesDeriveStorable =
