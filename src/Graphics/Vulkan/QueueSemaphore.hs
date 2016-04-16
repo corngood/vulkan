@@ -3,15 +3,23 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.QueueSemaphore where
 
-import Data.Word( Word64
+import Graphics.Vulkan.Device( Device(..)
+                             )
+import Data.Word( Word64(..)
                 )
-import Foreign.Ptr( Ptr
+import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
 import Foreign.Storable( Storable(..)
                        )
-import Data.Void( Void
+import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Memory( VkAllocationCallbacks(..)
+                             )
+import Graphics.Vulkan.Core( VkStructureType(..)
+                           , VkFlags(..)
+                           , VkResult(..)
+                           )
 
 -- ** VkSemaphoreCreateFlags
 -- | Opaque flag

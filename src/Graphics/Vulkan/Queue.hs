@@ -2,15 +2,29 @@
 {-# LANGUAGE Strict #-}
 module Graphics.Vulkan.Queue where
 
-import Data.Word( Word32
+import Graphics.Vulkan.Device( Device(..)
+                             )
+import Graphics.Vulkan.Pipeline( VkPipelineStageFlags(..)
+                               )
+import Data.Word( Word32(..)
                 )
-import Foreign.Ptr( Ptr
+import Foreign.Ptr( Ptr(..)
+                  , Ptr
                   , plusPtr
                   )
+import Graphics.Vulkan.CommandBuffer( CommandBuffer(..)
+                                    )
 import Foreign.Storable( Storable(..)
                        )
-import Data.Void( Void
+import Graphics.Vulkan.Fence( Fence(..)
+                            )
+import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.QueueSemaphore( Semaphore(..)
+                                     )
+import Graphics.Vulkan.Core( VkStructureType(..)
+                           , VkResult(..)
+                           )
 
 data VkQueue_T
 type Queue = Ptr VkQueue_T

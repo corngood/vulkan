@@ -4,22 +4,26 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.ImageView where
 
+import Graphics.Vulkan.Device( Device(..)
+                             )
 import Text.Read.Lex( Lexeme(Ident)
                     )
 import GHC.Read( expectP
                , choose
                )
-import Data.Word( Word64
+import Data.Word( Word64(..)
                 )
-import Foreign.Ptr( Ptr
+import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
 import Data.Int( Int32
                )
 import Foreign.Storable( Storable(..)
                        )
-import Data.Void( Void
+import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Memory( VkAllocationCallbacks(..)
+                             )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -27,6 +31,14 @@ import Text.ParserCombinators.ReadPrec( prec
                                       , (+++)
                                       , step
                                       )
+import Graphics.Vulkan.Image( Image(..)
+                            , VkImageSubresourceRange(..)
+                            )
+import Graphics.Vulkan.Core( VkStructureType(..)
+                           , VkFormat(..)
+                           , VkFlags(..)
+                           , VkResult(..)
+                           )
 
 
 data VkImageViewCreateInfo =

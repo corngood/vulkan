@@ -3,16 +3,43 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.KHR.Swapchain where
 
-import Data.Word( Word64
-                , Word32
+import Graphics.Vulkan.Device( Device(..)
+                             )
+import Data.Word( Word64(..)
+                , Word32(..)
                 )
-import Foreign.Ptr( Ptr
+import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
+import Graphics.Vulkan.KHR.Surface( SurfaceKHR(..)
+                                  , VkCompositeAlphaFlagsKHR(..)
+                                  , VkColorSpaceKHR(..)
+                                  , VkSurfaceTransformFlagsKHR(..)
+                                  , VkPresentModeKHR(..)
+                                  )
+import Graphics.Vulkan.Queue( Queue(..)
+                            )
 import Foreign.Storable( Storable(..)
                        )
-import Data.Void( Void
+import Graphics.Vulkan.Fence( Fence(..)
+                            )
+import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Memory( VkAllocationCallbacks(..)
+                             )
+import Graphics.Vulkan.Image( Image(..)
+                            , VkImageUsageFlags(..)
+                            )
+import Graphics.Vulkan.QueueSemaphore( Semaphore(..)
+                                     )
+import Graphics.Vulkan.Core( VkStructureType(..)
+                           , VkFormat(..)
+                           , VkFlags(..)
+                           , VkBool32(..)
+                           , VkResult(..)
+                           , VkExtent2D(..)
+                           , VkSharingMode(..)
+                           )
 
 
 data VkSwapchainCreateInfoKHR =
@@ -29,8 +56,8 @@ data VkSwapchainCreateInfoKHR =
                           , imageSharingMode :: VkSharingMode 
                           , queueFamilyIndexCount :: Word32 
                           , pQueueFamilyIndices :: Ptr Word32 
-                          , preTransform :: VkSurfaceTransformFlagBitsKHR 
-                          , compositeAlpha :: VkCompositeAlphaFlagBitsKHR 
+                          , preTransform :: VkSurfaceTransformFlagsKHR 
+                          , compositeAlpha :: VkCompositeAlphaFlagsKHR 
                           , presentMode :: VkPresentModeKHR 
                           , clipped :: VkBool32 
                           , oldSwapchain :: SwapchainKHR 

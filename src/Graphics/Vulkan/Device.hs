@@ -3,17 +3,25 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Device where
 
-import Data.Word( Word32
+import Data.Word( Word32(..)
                 )
-import Foreign.Ptr( Ptr
+import Foreign.Ptr( Ptr(..)
+                  , Ptr
                   , plusPtr
                   )
 import Foreign.Storable( Storable(..)
                        )
-import Data.Void( Void
+import Data.Void( Void(..)
                 )
-import Foreign.C.Types( CFloat
-                      , CChar
+import Graphics.Vulkan.Memory( VkAllocationCallbacks(..)
+                             )
+import Graphics.Vulkan.Core( VkStructureType(..)
+                           , VkFlags(..)
+                           , VkBool32(..)
+                           , VkResult(..)
+                           )
+import Foreign.C.Types( CFloat(..)
+                      , CChar(..)
                       )
 
 -- ** vkCreateDevice

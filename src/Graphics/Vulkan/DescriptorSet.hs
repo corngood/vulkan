@@ -4,15 +4,19 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.DescriptorSet where
 
+import Graphics.Vulkan.Device( Device(..)
+                             )
+import Graphics.Vulkan.Buffer( Buffer(..)
+                             )
 import Text.Read.Lex( Lexeme(Ident)
                     )
 import GHC.Read( expectP
                , choose
                )
-import Data.Word( Word64
-                , Word32
+import Data.Word( Word64(..)
+                , Word32(..)
                 )
-import Foreign.Ptr( Ptr
+import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
 import Data.Int( Int32
@@ -22,8 +26,10 @@ import Data.Bits( Bits
                 )
 import Foreign.Storable( Storable(..)
                        )
-import Data.Void( Void
+import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Memory( VkAllocationCallbacks(..)
+                             )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -31,6 +37,21 @@ import Text.ParserCombinators.ReadPrec( prec
                                       , (+++)
                                       , step
                                       )
+import Graphics.Vulkan.Shader( VkShaderStageFlags(..)
+                             )
+import Graphics.Vulkan.Sampler( Sampler(..)
+                              )
+import Graphics.Vulkan.Image( VkImageLayout(..)
+                            )
+import Graphics.Vulkan.ImageView( ImageView(..)
+                                )
+import Graphics.Vulkan.BufferView( BufferView(..)
+                                 )
+import Graphics.Vulkan.Core( VkStructureType(..)
+                           , VkFlags(..)
+                           , VkResult(..)
+                           , VkDeviceSize(..)
+                           )
 
 -- ** vkUpdateDescriptorSets
 foreign import ccall "vkUpdateDescriptorSets" vkUpdateDescriptorSets ::
@@ -210,29 +231,26 @@ instance Storable VkDescriptorSetLayoutCreateInfo where
 
 -- ** VkDescriptorPoolCreateFlags
 
-newtype VkDescriptorPoolCreateFlagBits = VkDescriptorPoolCreateFlagBits VkFlags
+newtype VkDescriptorPoolCreateFlags = VkDescriptorPoolCreateFlags VkFlags
   deriving (Eq, Storable, Bits, FiniteBits)
 
--- | Alias for VkDescriptorPoolCreateFlagBits
-type VkDescriptorPoolCreateFlags = VkDescriptorPoolCreateFlagBits
-
-instance Show VkDescriptorPoolCreateFlagBits where
+instance Show VkDescriptorPoolCreateFlags where
   showsPrec _ VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT = showString "VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT"
   
-  showsPrec p (VkDescriptorPoolCreateFlagBits x) = showParen (p >= 11) (showString "VkDescriptorPoolCreateFlagBits " . showsPrec 11 x)
+  showsPrec p (VkDescriptorPoolCreateFlags x) = showParen (p >= 11) (showString "VkDescriptorPoolCreateFlags " . showsPrec 11 x)
 
-instance Read VkDescriptorPoolCreateFlagBits where
+instance Read VkDescriptorPoolCreateFlags where
   readPrec = parens ( choose [ ("VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT", pure VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT)
                              ] +++
                       prec 10 (do
-                        expectP (Ident "VkDescriptorPoolCreateFlagBits")
+                        expectP (Ident "VkDescriptorPoolCreateFlags")
                         v <- step readPrec
-                        pure (VkDescriptorPoolCreateFlagBits v)
+                        pure (VkDescriptorPoolCreateFlags v)
                         )
                     )
 
 -- | Descriptor sets may be freed individually
-pattern VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT = VkDescriptorPoolCreateFlagBits 0x1
+pattern VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT = VkDescriptorPoolCreateFlags 0x1
 
 
 
