@@ -58,7 +58,7 @@ foreign import ccall "vkCreateBuffer" vkCreateBuffer ::
 -- ** VkBufferCreateFlags
 
 newtype VkBufferCreateFlagBits = VkBufferCreateFlagBits VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkBufferCreateFlagBits
 type VkBufferCreateFlags = VkBufferCreateFlagBits
@@ -93,7 +93,7 @@ pattern VK_BUFFER_CREATE_SPARSE_ALIASED_BIT = VkBufferCreateFlagBits 0x4
 -- ** VkBufferUsageFlags
 
 newtype VkBufferUsageFlagBits = VkBufferUsageFlagBits VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkBufferUsageFlagBits
 type VkBufferUsageFlags = VkBufferUsageFlagBits
@@ -154,7 +154,7 @@ foreign import ccall "vkDestroyBuffer" vkDestroyBuffer ::
   VkDevice -> VkBuffer -> Ptr VkAllocationCallbacks -> IO ()
 
 newtype VkBuffer = VkBuffer Word64
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 
 data VkBufferCreateInfo =
@@ -167,7 +167,7 @@ data VkBufferCreateInfo =
                     , vkQueueFamilyIndexCount :: Word32 
                     , vkPQueueFamilyIndices :: Ptr Word32 
                     }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkBufferCreateInfo where
   sizeOf ~_ = 56

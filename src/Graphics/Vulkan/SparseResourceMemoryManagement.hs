@@ -72,7 +72,7 @@ data VkSparseImageMemoryRequirements =
                                  , vkImageMipTailOffset :: VkDeviceSize 
                                  , vkImageMipTailStride :: VkDeviceSize 
                                  }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkSparseImageMemoryRequirements where
   sizeOf ~_ = 48
@@ -97,7 +97,7 @@ data VkSparseMemoryBind =
                     , vkMemoryOffset :: VkDeviceSize 
                     , vkFlags :: VkSparseMemoryBindFlags 
                     }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkSparseMemoryBind where
   sizeOf ~_ = 40
@@ -123,7 +123,7 @@ data VkSparseImageMemoryBind =
                          , vkMemoryOffset :: VkDeviceSize 
                          , vkFlags :: VkSparseMemoryBindFlags 
                          }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkSparseImageMemoryBind where
   sizeOf ~_ = 64
@@ -148,7 +148,7 @@ data VkSparseImageMemoryBindInfo =
                              , vkBindCount :: Word32 
                              , vkPBinds :: Ptr VkSparseImageMemoryBind 
                              }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkSparseImageMemoryBindInfo where
   sizeOf ~_ = 24
@@ -186,7 +186,7 @@ data VkBindSparseInfo =
                   , vkSignalSemaphoreCount :: Word32 
                   , vkPSignalSemaphores :: Ptr VkSemaphore 
                   }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkBindSparseInfo where
   sizeOf ~_ = 96
@@ -223,7 +223,7 @@ data VkSparseBufferMemoryBindInfo =
                               , vkBindCount :: Word32 
                               , vkPBinds :: Ptr VkSparseMemoryBind 
                               }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkSparseBufferMemoryBindInfo where
   sizeOf ~_ = 24
@@ -239,7 +239,7 @@ instance Storable VkSparseBufferMemoryBindInfo where
 -- ** VkSparseImageFormatFlags
 
 newtype VkSparseImageFormatFlagBits = VkSparseImageFormatFlagBits VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkSparseImageFormatFlagBits
 type VkSparseImageFormatFlags = VkSparseImageFormatFlagBits
@@ -284,7 +284,7 @@ foreign import ccall "vkGetPhysicalDeviceSparseImageFormatProperties" vkGetPhysi
 -- ** VkSparseMemoryBindFlags
 
 newtype VkSparseMemoryBindFlagBits = VkSparseMemoryBindFlagBits VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkSparseMemoryBindFlagBits
 type VkSparseMemoryBindFlags = VkSparseMemoryBindFlagBits
@@ -314,7 +314,7 @@ data VkSparseImageOpaqueMemoryBindInfo =
                                    , vkBindCount :: Word32 
                                    , vkPBinds :: Ptr VkSparseMemoryBind 
                                    }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkSparseImageOpaqueMemoryBindInfo where
   sizeOf ~_ = 24
@@ -333,7 +333,7 @@ data VkSparseImageFormatProperties =
                                , vkImageGranularity :: VkExtent3D 
                                , vkFlags :: VkSparseImageFormatFlags 
                                }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkSparseImageFormatProperties where
   sizeOf ~_ = 20

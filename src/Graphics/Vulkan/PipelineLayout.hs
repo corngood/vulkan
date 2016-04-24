@@ -39,10 +39,10 @@ import Foreign.C.Types( CSize(..)
 -- ** VkPipelineLayoutCreateFlags
 -- | Opaque flag
 newtype VkPipelineLayoutCreateFlags = VkPipelineLayoutCreateFlags VkFlags
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 newtype VkPipelineLayout = VkPipelineLayout Word64
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 -- ** vkDestroyPipelineLayout
 foreign import ccall "vkDestroyPipelineLayout" vkDestroyPipelineLayout ::
@@ -54,7 +54,7 @@ data VkPushConstantRange =
                      , vkOffset :: Word32 
                      , vkSize :: Word32 
                      }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkPushConstantRange where
   sizeOf ~_ = 12
@@ -77,7 +77,7 @@ data VkPipelineLayoutCreateInfo =
                             , vkPushConstantRangeCount :: Word32 
                             , vkPPushConstantRanges :: Ptr VkPushConstantRange 
                             }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkPipelineLayoutCreateInfo where
   sizeOf ~_ = 48

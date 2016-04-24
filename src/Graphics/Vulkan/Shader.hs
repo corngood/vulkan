@@ -56,7 +56,7 @@ data VkShaderModuleCreateInfo =
                           , vkCodeSize :: CSize 
                           , vkPCode :: Ptr Word32 
                           }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkShaderModuleCreateInfo where
   sizeOf ~_ = 40
@@ -80,12 +80,12 @@ foreign import ccall "vkDestroyShaderModule" vkDestroyShaderModule ::
 -- ** VkShaderModuleCreateFlags
 -- | Opaque flag
 newtype VkShaderModuleCreateFlags = VkShaderModuleCreateFlags VkFlags
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 -- ** VkShaderStageFlags
 
 newtype VkShaderStageFlagBits = VkShaderStageFlagBits VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkShaderStageFlagBits
 type VkShaderStageFlags = VkShaderStageFlagBits
@@ -136,7 +136,7 @@ pattern VK_SHADER_STAGE_ALL_GRAPHICS = VkShaderStageFlagBits 0x1f
 pattern VK_SHADER_STAGE_ALL = VkShaderStageFlagBits 0x7fffffff
 
 newtype VkShaderModule = VkShaderModule Word64
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 -- ** vkCreateShaderModule
 foreign import ccall "vkCreateShaderModule" vkCreateShaderModule ::

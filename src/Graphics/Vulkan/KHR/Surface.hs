@@ -69,7 +69,7 @@ foreign import ccall "vkGetPhysicalDeviceSurfaceCapabilitiesKHR" vkGetPhysicalDe
 -- ** VkCompositeAlphaFlagsKHR
 
 newtype VkCompositeAlphaFlagBitsKHR = VkCompositeAlphaFlagBitsKHR VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkCompositeAlphaFlagBitsKHR
 type VkCompositeAlphaFlagsKHR = VkCompositeAlphaFlagBitsKHR
@@ -108,7 +108,7 @@ pattern VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR = VkCompositeAlphaFlagBitsKHR 0x8
 -- ** VkPresentModeKHR
 
 newtype VkPresentModeKHR = VkPresentModeKHR Int32
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 instance Show VkPresentModeKHR where
   showsPrec _ VK_PRESENT_MODE_IMMEDIATE_KHR = showString "VK_PRESENT_MODE_IMMEDIATE_KHR"
@@ -140,7 +140,7 @@ pattern VK_PRESENT_MODE_FIFO_KHR = VkPresentModeKHR 2
 pattern VK_PRESENT_MODE_FIFO_RELAXED_KHR = VkPresentModeKHR 3
 
 newtype VkSurfaceKHR = VkSurfaceKHR Word64
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 -- ** vkGetPhysicalDeviceSurfaceSupportKHR
 foreign import ccall "vkGetPhysicalDeviceSurfaceSupportKHR" vkGetPhysicalDeviceSurfaceSupportKHR ::
@@ -152,7 +152,7 @@ data VkSurfaceFormatKHR =
   VkSurfaceFormatKHR{ vkFormat :: VkFormat 
                     , vkColorSpace :: VkColorSpaceKHR 
                     }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkSurfaceFormatKHR where
   sizeOf ~_ = 8
@@ -170,7 +170,7 @@ foreign import ccall "vkDestroySurfaceKHR" vkDestroySurfaceKHR ::
 -- ** VkColorSpaceKHR
 
 newtype VkColorSpaceKHR = VkColorSpaceKHR Int32
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 instance Show VkColorSpaceKHR where
   showsPrec _ VK_COLORSPACE_SRGB_NONLINEAR_KHR = showString "VK_COLORSPACE_SRGB_NONLINEAR_KHR"
@@ -197,7 +197,7 @@ foreign import ccall "vkGetPhysicalDeviceSurfacePresentModesKHR" vkGetPhysicalDe
 -- ** VkSurfaceTransformFlagsKHR
 
 newtype VkSurfaceTransformFlagBitsKHR = VkSurfaceTransformFlagBitsKHR VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkSurfaceTransformFlagBitsKHR
 type VkSurfaceTransformFlagsKHR = VkSurfaceTransformFlagBitsKHR
@@ -266,7 +266,7 @@ data VkSurfaceCapabilitiesKHR =
                           , vkSupportedCompositeAlpha :: VkCompositeAlphaFlagsKHR 
                           , vkSupportedUsageFlags :: VkImageUsageFlags 
                           }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkSurfaceCapabilitiesKHR where
   sizeOf ~_ = 52

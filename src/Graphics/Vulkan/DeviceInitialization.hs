@@ -82,7 +82,7 @@ import Foreign.C.Types( CSize
 -- ** VkPhysicalDeviceType
 
 newtype VkPhysicalDeviceType = VkPhysicalDeviceType Int32
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 instance Show VkPhysicalDeviceType where
   showsPrec _ VK_PHYSICAL_DEVICE_TYPE_OTHER = showString "VK_PHYSICAL_DEVICE_TYPE_OTHER"
@@ -128,7 +128,7 @@ data VkInstanceCreateInfo =
                       , vkEnabledExtensionCount :: Word32 
                       , vkPpEnabledExtensionNames :: Ptr (Ptr CChar) 
                       }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkInstanceCreateInfo where
   sizeOf ~_ = 64
@@ -172,7 +172,7 @@ data VkApplicationInfo =
                    , vkEngineVersion :: Word32 
                    , vkApiVersion :: Word32 
                    }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkApplicationInfo where
   sizeOf ~_ = 48
@@ -302,7 +302,7 @@ data VkPhysicalDeviceLimits =
                         , vkOptimalBufferCopyRowPitchAlignment :: VkDeviceSize 
                         , vkNonCoherentAtomSize :: VkDeviceSize 
                         }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkPhysicalDeviceLimits where
   sizeOf ~_ = 504
@@ -526,7 +526,7 @@ data VkMemoryHeap =
   VkMemoryHeap{ vkSize :: VkDeviceSize 
               , vkFlags :: VkMemoryHeapFlags 
               }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkMemoryHeap where
   sizeOf ~_ = 16
@@ -553,7 +553,7 @@ foreign import ccall "vkCreateInstance" vkCreateInstance ::
 -- ** VkFormatFeatureFlags
 
 newtype VkFormatFeatureFlagBits = VkFormatFeatureFlagBits VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkFormatFeatureFlagBits
 type VkFormatFeatureFlags = VkFormatFeatureFlagBits
@@ -632,7 +632,7 @@ data VkPhysicalDeviceMemoryProperties =
                                   , vkMemoryHeapCount :: Word32 
                                   , vkMemoryHeaps :: Vector VK_MAX_MEMORY_HEAPS VkMemoryHeap 
                                   }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkPhysicalDeviceMemoryProperties where
   sizeOf ~_ = 520
@@ -653,7 +653,7 @@ type VkInstance = Ptr VkInstance_T
 -- ** VkMemoryHeapFlags
 
 newtype VkMemoryHeapFlagBits = VkMemoryHeapFlagBits VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkMemoryHeapFlagBits
 type VkMemoryHeapFlags = VkMemoryHeapFlagBits
@@ -684,7 +684,7 @@ data VkQueueFamilyProperties =
                          , vkTimestampValidBits :: Word32 
                          , vkMinImageTransferGranularity :: VkExtent3D 
                          }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkQueueFamilyProperties where
   sizeOf ~_ = 24
@@ -707,7 +707,7 @@ data VkImageFormatProperties =
                          , vkSampleCounts :: VkSampleCountFlags 
                          , vkMaxResourceSize :: VkDeviceSize 
                          }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkImageFormatProperties where
   sizeOf ~_ = 32
@@ -732,7 +732,7 @@ data VkPhysicalDeviceSparseProperties =
                                   , vkResidencyAlignedMipSize :: VkBool32 
                                   , vkResidencyNonResidentStrict :: VkBool32 
                                   }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkPhysicalDeviceSparseProperties where
   sizeOf ~_ = 20
@@ -769,7 +769,7 @@ data VkPhysicalDeviceProperties =
                             , vkLimits :: VkPhysicalDeviceLimits 
                             , vkSparseProperties :: VkPhysicalDeviceSparseProperties 
                             }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkPhysicalDeviceProperties where
   sizeOf ~_ = 824
@@ -804,7 +804,7 @@ data VkMemoryType =
   VkMemoryType{ vkPropertyFlags :: VkMemoryPropertyFlags 
               , vkHeapIndex :: Word32 
               }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkMemoryType where
   sizeOf ~_ = 8
@@ -822,7 +822,7 @@ foreign import ccall "vkGetInstanceProcAddr" vkGetInstanceProcAddr ::
 -- ** VkMemoryPropertyFlags
 
 newtype VkMemoryPropertyFlagBits = VkMemoryPropertyFlagBits VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkMemoryPropertyFlagBits
 type VkMemoryPropertyFlags = VkMemoryPropertyFlagBits
@@ -869,7 +869,7 @@ foreign import ccall "vkDestroyInstance" vkDestroyInstance ::
 -- ** VkQueueFlags
 
 newtype VkQueueFlagBits = VkQueueFlagBits VkFlags
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for VkQueueFlagBits
 type VkQueueFlags = VkQueueFlagBits
@@ -912,7 +912,7 @@ foreign import ccall "vkGetPhysicalDeviceProperties" vkGetPhysicalDeviceProperti
 -- ** VkInstanceCreateFlags
 -- | Opaque flag
 newtype VkInstanceCreateFlags = VkInstanceCreateFlags VkFlags
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 -- ** vkGetPhysicalDeviceFormatProperties
 foreign import ccall "vkGetPhysicalDeviceFormatProperties" vkGetPhysicalDeviceFormatProperties ::
@@ -924,7 +924,7 @@ data VkFormatProperties =
                     , vkOptimalTilingFeatures :: VkFormatFeatureFlags 
                     , vkBufferFeatures :: VkFormatFeatureFlags 
                     }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkFormatProperties where
   sizeOf ~_ = 12

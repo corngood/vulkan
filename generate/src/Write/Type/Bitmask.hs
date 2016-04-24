@@ -29,7 +29,7 @@ writeOpaqueBitmaskType bmt = do
   pure $ [qc|-- ** {bmtName bmt}
 {predocComment "Opaque flag"}
 newtype {bmtName bmt} = {bmtName bmt} {bmtHsType}
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 |]
 
 writeBitmaskTypeWithBits :: BitmaskType -> Bitmask -> Write Doc
@@ -58,7 +58,7 @@ writeBitmaskTypeWithBits bmt bm = do
   pure [qc|-- ** {bmtName bmt}
 {predocComment $ fromMaybe "" (bmComment bm)}
 newtype {bmName bm} = {bmName bm} {bmtHsType}
-  deriving (Eq, Storable, Bits, FiniteBits)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- | Alias for {bmName bm}
 type {bmtName bmt} = {bmName bm}

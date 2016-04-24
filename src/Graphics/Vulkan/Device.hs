@@ -96,7 +96,7 @@ data VkPhysicalDeviceFeatures =
                           , vkVariableMultisampleRate :: VkBool32 
                           , vkInheritedQueries :: VkBool32 
                           }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkPhysicalDeviceFeatures where
   sizeOf ~_ = 220
@@ -216,7 +216,7 @@ instance Storable VkPhysicalDeviceFeatures where
 -- ** VkDeviceCreateFlags
 -- | Opaque flag
 newtype VkDeviceCreateFlags = VkDeviceCreateFlags VkFlags
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 
 data VkDeviceQueueCreateInfo =
@@ -227,7 +227,7 @@ data VkDeviceQueueCreateInfo =
                          , vkQueueCount :: Word32 
                          , vkPQueuePriorities :: Ptr CFloat 
                          }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkDeviceQueueCreateInfo where
   sizeOf ~_ = 40
@@ -249,7 +249,7 @@ instance Storable VkDeviceQueueCreateInfo where
 -- ** VkDeviceQueueCreateFlags
 -- | Opaque flag
 newtype VkDeviceQueueCreateFlags = VkDeviceQueueCreateFlags VkFlags
-  deriving (Eq, Storable)
+  deriving (Eq, Ord, Storable)
 
 -- ** vkDestroyDevice
 foreign import ccall "vkDestroyDevice" vkDestroyDevice ::
@@ -274,7 +274,7 @@ data VkDeviceCreateInfo =
                     , vkPpEnabledExtensionNames :: Ptr (Ptr CChar) 
                     , vkPEnabledFeatures :: Ptr VkPhysicalDeviceFeatures 
                     }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Storable VkDeviceCreateInfo where
   sizeOf ~_ = 72
