@@ -10,12 +10,15 @@ import Text.Read.Lex( Lexeme(Ident)
 import GHC.Read( expectP
                , choose
                )
+import System.IO.Unsafe( unsafePerformIO
+                       )
 import Data.Word( Word64
                 , Word32
                 )
 import Foreign.Ptr( Ptr
                   , FunPtr
                   , plusPtr
+                  , castFunPtr
                   )
 import Data.Int( Int32
                )
@@ -26,7 +29,8 @@ import Foreign.Storable( Storable(..)
                        )
 import Data.Void( Void
                 )
-import Graphics.Vulkan.Raw.DeviceInitialization( VkInstance(..)
+import Graphics.Vulkan.Raw.DeviceInitialization( vkGetInstanceProcAddr
+                                               , VkInstance(..)
                                                )
 import Text.Read( Read(..)
                 , parens
@@ -49,17 +53,27 @@ import Graphics.Vulkan.Raw.Memory( VkInternalAllocationType(..)
                                  , PFN_vkFreeFunction
                                  , PFN_vkInternalFreeNotification
                                  )
+import Foreign.C.String( withCString
+                       )
 import Foreign.C.Types( CSize
                       , CChar
                       , CSize(..)
                       )
 
 -- ** vkDebugReportMessageEXT
-foreign import ccall "vkDebugReportMessageEXT" vkDebugReportMessageEXT ::
-  VkInstance ->
+foreign import ccall "dynamic" mkvkDebugReportMessageEXT :: FunPtr (VkInstance ->
+  VkDebugReportFlagsEXT ->
+    VkDebugReportObjectTypeEXT ->
+      Word64 -> CSize -> Int32 -> Ptr CChar -> Ptr CChar -> IO ()) -> (VkInstance ->
+  VkDebugReportFlagsEXT ->
+    VkDebugReportObjectTypeEXT ->
+      Word64 -> CSize -> Int32 -> Ptr CChar -> Ptr CChar -> IO ())
+vkDebugReportMessageEXT :: VkInstance ->
   VkDebugReportFlagsEXT ->
     VkDebugReportObjectTypeEXT ->
       Word64 -> CSize -> Int32 -> Ptr CChar -> Ptr CChar -> IO ()
+vkDebugReportMessageEXT i = (mkvkDebugReportMessageEXT $ castFunPtr $ procAddr) i
+  where procAddr = unsafePerformIO $ withCString "vkDebugReportMessageEXT" $ vkGetInstanceProcAddr i
 
 newtype VkDebugReportCallbackEXT = VkDebugReportCallbackEXT Word64
   deriving (Eq, Ord, Storable, Show)
@@ -250,9 +264,13 @@ instance Storable VkDebugReportCallbackCreateInfoEXT where
 
 
 -- ** vkDestroyDebugReportCallbackEXT
-foreign import ccall "vkDestroyDebugReportCallbackEXT" vkDestroyDebugReportCallbackEXT ::
-  VkInstance ->
+foreign import ccall "dynamic" mkvkDestroyDebugReportCallbackEXT :: FunPtr (VkInstance ->
+  VkDebugReportCallbackEXT -> Ptr VkAllocationCallbacks -> IO ()) -> (VkInstance ->
+  VkDebugReportCallbackEXT -> Ptr VkAllocationCallbacks -> IO ())
+vkDestroyDebugReportCallbackEXT :: VkInstance ->
   VkDebugReportCallbackEXT -> Ptr VkAllocationCallbacks -> IO ()
+vkDestroyDebugReportCallbackEXT i = (mkvkDestroyDebugReportCallbackEXT $ castFunPtr $ procAddr) i
+  where procAddr = unsafePerformIO $ withCString "vkDestroyDebugReportCallbackEXT" $ vkGetInstanceProcAddr i
 
 -- ** VkDebugReportFlagsEXT
 
@@ -305,9 +323,17 @@ type PFN_vkDebugReportCallbackEXT = FunPtr
            Int32 -> Ptr CChar -> Ptr CChar -> Ptr Void -> IO VkBool32)
 
 -- ** vkCreateDebugReportCallbackEXT
-foreign import ccall "vkCreateDebugReportCallbackEXT" vkCreateDebugReportCallbackEXT ::
-  VkInstance ->
+foreign import ccall "dynamic" mkvkCreateDebugReportCallbackEXT :: FunPtr (VkInstance ->
+  Ptr VkDebugReportCallbackCreateInfoEXT ->
+    Ptr VkAllocationCallbacks ->
+      Ptr VkDebugReportCallbackEXT -> IO VkResult) -> (VkInstance ->
+  Ptr VkDebugReportCallbackCreateInfoEXT ->
+    Ptr VkAllocationCallbacks ->
+      Ptr VkDebugReportCallbackEXT -> IO VkResult)
+vkCreateDebugReportCallbackEXT :: VkInstance ->
   Ptr VkDebugReportCallbackCreateInfoEXT ->
     Ptr VkAllocationCallbacks ->
       Ptr VkDebugReportCallbackEXT -> IO VkResult
+vkCreateDebugReportCallbackEXT i = (mkvkCreateDebugReportCallbackEXT $ castFunPtr $ procAddr) i
+  where procAddr = unsafePerformIO $ withCString "vkCreateDebugReportCallbackEXT" $ vkGetInstanceProcAddr i
 
