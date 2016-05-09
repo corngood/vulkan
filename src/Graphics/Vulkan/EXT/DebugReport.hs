@@ -9,12 +9,15 @@ import Text.Read.Lex( Lexeme(Ident)
 import GHC.Read( expectP
                , choose
                )
+import System.IO.Unsafe( unsafePerformIO
+                       )
 import Data.Word( Word64
                 , Word32
                 )
 import Foreign.Ptr( Ptr
                   , FunPtr
                   , plusPtr
+                  , castFunPtr
                   )
 import Data.Int( Int32
                )
@@ -42,7 +45,10 @@ import Text.ParserCombinators.ReadPrec( prec
                                       , step
                                       )
 import Graphics.Vulkan.DeviceInitialization( VkInstance(..)
+                                           , vkGetInstanceProcAddr
                                            )
+import Foreign.C.String( withCString
+                       )
 import Graphics.Vulkan.Core( VkResult(..)
                            , VkBool32(..)
                            , VkFlags(..)
@@ -54,11 +60,19 @@ import Foreign.C.Types( CSize
                       )
 
 -- ** vkDebugReportMessageEXT
-foreign import ccall "vkDebugReportMessageEXT" vkDebugReportMessageEXT ::
-  VkInstance ->
+foreign import ccall "dynamic" mkvkDebugReportMessageEXT :: FunPtr (VkInstance ->
+  VkDebugReportFlagsEXT ->
+    VkDebugReportObjectTypeEXT ->
+      Word64 -> CSize -> Int32 -> Ptr CChar -> Ptr CChar -> IO ()) -> (VkInstance ->
+  VkDebugReportFlagsEXT ->
+    VkDebugReportObjectTypeEXT ->
+      Word64 -> CSize -> Int32 -> Ptr CChar -> Ptr CChar -> IO ())
+vkDebugReportMessageEXT :: VkInstance ->
   VkDebugReportFlagsEXT ->
     VkDebugReportObjectTypeEXT ->
       Word64 -> CSize -> Int32 -> Ptr CChar -> Ptr CChar -> IO ()
+vkDebugReportMessageEXT i = (mkvkDebugReportMessageEXT $ castFunPtr $ procAddr) i
+  where procAddr = unsafePerformIO $ withCString "vkDebugReportMessageEXT" $ vkGetInstanceProcAddr i
 
 newtype VkDebugReportCallbackEXT = VkDebugReportCallbackEXT Word64
   deriving (Eq, Ord, Storable)
@@ -249,9 +263,13 @@ instance Storable VkDebugReportCallbackCreateInfoEXT where
 
 
 -- ** vkDestroyDebugReportCallbackEXT
-foreign import ccall "vkDestroyDebugReportCallbackEXT" vkDestroyDebugReportCallbackEXT ::
-  VkInstance ->
+foreign import ccall "dynamic" mkvkDestroyDebugReportCallbackEXT :: FunPtr (VkInstance ->
+  VkDebugReportCallbackEXT -> Ptr VkAllocationCallbacks -> IO ()) -> (VkInstance ->
+  VkDebugReportCallbackEXT -> Ptr VkAllocationCallbacks -> IO ())
+vkDestroyDebugReportCallbackEXT :: VkInstance ->
   VkDebugReportCallbackEXT -> Ptr VkAllocationCallbacks -> IO ()
+vkDestroyDebugReportCallbackEXT i = (mkvkDestroyDebugReportCallbackEXT $ castFunPtr $ procAddr) i
+  where procAddr = unsafePerformIO $ withCString "vkDestroyDebugReportCallbackEXT" $ vkGetInstanceProcAddr i
 
 -- ** VkDebugReportFlagsEXT
 
@@ -304,9 +322,17 @@ type PFN_vkDebugReportCallbackEXT = FunPtr
            Int32 -> Ptr CChar -> Ptr CChar -> Ptr Void -> IO VkBool32)
 
 -- ** vkCreateDebugReportCallbackEXT
-foreign import ccall "vkCreateDebugReportCallbackEXT" vkCreateDebugReportCallbackEXT ::
-  VkInstance ->
+foreign import ccall "dynamic" mkvkCreateDebugReportCallbackEXT :: FunPtr (VkInstance ->
+  Ptr VkDebugReportCallbackCreateInfoEXT ->
+    Ptr VkAllocationCallbacks ->
+      Ptr VkDebugReportCallbackEXT -> IO VkResult) -> (VkInstance ->
+  Ptr VkDebugReportCallbackCreateInfoEXT ->
+    Ptr VkAllocationCallbacks ->
+      Ptr VkDebugReportCallbackEXT -> IO VkResult)
+vkCreateDebugReportCallbackEXT :: VkInstance ->
   Ptr VkDebugReportCallbackCreateInfoEXT ->
     Ptr VkAllocationCallbacks ->
       Ptr VkDebugReportCallbackEXT -> IO VkResult
+vkCreateDebugReportCallbackEXT i = (mkvkCreateDebugReportCallbackEXT $ castFunPtr $ procAddr) i
+  where procAddr = unsafePerformIO $ withCString "vkCreateDebugReportCallbackEXT" $ vkGetInstanceProcAddr i
 
