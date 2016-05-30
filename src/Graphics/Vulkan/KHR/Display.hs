@@ -249,7 +249,7 @@ pattern DisplayPlaneAlphaPerPixelPremultipliedBit = DisplayPlaneAlphaFlags 0x8
 -- ** DisplayModeCreateFlags
 -- | Opaque flag
 newtype DisplayModeCreateFlags = DisplayModeCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data DisplayModeCreateInfo =
@@ -300,7 +300,7 @@ instance Storable DisplayModeParameters where
 -- ** DisplaySurfaceCreateFlags
 -- | Opaque flag
 newtype DisplaySurfaceCreateFlags = DisplaySurfaceCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 newtype Display = Display Word64
   deriving (Eq, Ord, Storable)

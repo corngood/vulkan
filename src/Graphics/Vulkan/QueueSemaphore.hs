@@ -10,6 +10,9 @@ import Data.Word( Word64(..)
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Foreign.Storable( Storable(..)
                        )
 import Data.Void( Void(..)
@@ -24,7 +27,7 @@ import Graphics.Vulkan.Core( StructureType(..)
 -- ** SemaphoreCreateFlags
 -- | Opaque flag
 newtype SemaphoreCreateFlags = SemaphoreCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** destroySemaphore
 foreign import ccall "vkDestroySemaphore" destroySemaphore ::

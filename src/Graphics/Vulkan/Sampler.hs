@@ -268,7 +268,7 @@ instance Storable SamplerCreateInfo where
 -- ** SamplerCreateFlags
 -- | Opaque flag
 newtype SamplerCreateFlags = SamplerCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** SamplerMipmapMode
 

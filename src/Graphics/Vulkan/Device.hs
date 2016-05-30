@@ -9,6 +9,9 @@ import Foreign.Ptr( Ptr(..)
                   , Ptr
                   , plusPtr
                   )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Foreign.Storable( Storable(..)
                        )
 import Data.Void( Void(..)
@@ -208,7 +211,7 @@ instance Storable PhysicalDeviceFeatures where
 -- ** DeviceCreateFlags
 -- | Opaque flag
 newtype DeviceCreateFlags = DeviceCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data DeviceQueueCreateInfo =
@@ -241,7 +244,7 @@ instance Storable DeviceQueueCreateInfo where
 -- ** DeviceQueueCreateFlags
 -- | Opaque flag
 newtype DeviceQueueCreateFlags = DeviceQueueCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** destroyDevice
 foreign import ccall "vkDestroyDevice" destroyDevice ::

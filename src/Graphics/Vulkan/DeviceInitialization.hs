@@ -888,7 +888,7 @@ foreign import ccall "vkGetPhysicalDeviceProperties" getPhysicalDeviceProperties
 -- ** InstanceCreateFlags
 -- | Opaque flag
 newtype InstanceCreateFlags = InstanceCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** getPhysicalDeviceFormatProperties
 foreign import ccall "vkGetPhysicalDeviceFormatProperties" getPhysicalDeviceFormatProperties ::

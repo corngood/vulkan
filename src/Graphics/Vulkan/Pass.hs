@@ -85,7 +85,7 @@ instance Storable SubpassDependency where
 -- ** SubpassDescriptionFlags
 -- | Opaque flag
 newtype SubpassDescriptionFlags = SubpassDescriptionFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 newtype Framebuffer = Framebuffer Word64
   deriving (Eq, Ord, Storable)
@@ -359,7 +359,7 @@ instance Storable AttachmentReference where
 -- ** RenderPassCreateFlags
 -- | Opaque flag
 newtype RenderPassCreateFlags = RenderPassCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data AttachmentDescription =
@@ -484,5 +484,5 @@ instance Storable RenderPassCreateInfo where
 -- ** FramebufferCreateFlags
 -- | Opaque flag
 newtype FramebufferCreateFlags = FramebufferCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 

@@ -12,6 +12,9 @@ import Data.Word( Word64(..)
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Foreign.Storable( Storable(..)
                        )
 import Data.Void( Void(..)
@@ -68,7 +71,7 @@ instance Storable BufferViewCreateInfo where
 -- ** BufferViewCreateFlags
 -- | Opaque flag
 newtype BufferViewCreateFlags = BufferViewCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** destroyBufferView
 foreign import ccall "vkDestroyBufferView" destroyBufferView ::

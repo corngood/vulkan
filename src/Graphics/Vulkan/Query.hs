@@ -185,7 +185,7 @@ pattern QueryControlPreciseBit = QueryControlFlags 0x1
 -- ** QueryPoolCreateFlags
 -- | Opaque flag
 newtype QueryPoolCreateFlags = QueryPoolCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** QueryPipelineStatisticFlags
 

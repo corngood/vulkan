@@ -13,6 +13,9 @@ import Foreign.Ptr( Ptr(..)
                   )
 import Graphics.Vulkan.DescriptorSet( DescriptorSetLayout(..)
                                     )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Foreign.Storable( Storable(..)
                        )
 import Data.Void( Void(..)
@@ -29,7 +32,7 @@ import Graphics.Vulkan.Core( StructureType(..)
 -- ** PipelineLayoutCreateFlags
 -- | Opaque flag
 newtype PipelineLayoutCreateFlags = PipelineLayoutCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 newtype PipelineLayout = PipelineLayout Word64
   deriving (Eq, Ord, Storable)

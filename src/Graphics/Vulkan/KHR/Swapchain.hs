@@ -19,6 +19,9 @@ import Graphics.Vulkan.KHR.Surface( PresentMode(..)
                                   )
 import Graphics.Vulkan.Queue( Queue(..)
                             )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Foreign.Storable( Storable(..)
                        )
 import Graphics.Vulkan.Fence( Fence(..)
@@ -120,7 +123,7 @@ foreign import ccall "vkQueuePresentKHR" queuePresent ::
 -- ** SwapchainCreateFlags
 -- | Opaque flag
 newtype SwapchainCreateFlags = SwapchainCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** createSwapchain
 foreign import ccall "vkCreateSwapchainKHR" createSwapchain ::

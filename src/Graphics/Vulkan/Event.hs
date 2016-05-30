@@ -10,6 +10,9 @@ import Data.Word( Word64(..)
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Foreign.Storable( Storable(..)
                        )
 import Data.Void( Void(..)
@@ -68,5 +71,5 @@ newtype Event = Event Word64
 -- ** EventCreateFlags
 -- | Opaque flag
 newtype EventCreateFlags = EventCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 

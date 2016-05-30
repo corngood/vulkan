@@ -18,6 +18,9 @@ import Foreign.Ptr( Ptr(..)
                   )
 import Data.Int( Int32
                )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Foreign.Storable( Storable(..)
                        )
 import Data.Void( Void(..)
@@ -132,7 +135,7 @@ pattern ImageViewTypeCubeArray = ImageViewType 6
 -- ** ImageViewCreateFlags
 -- | Opaque flag
 newtype ImageViewCreateFlags = ImageViewCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data ComponentMapping =

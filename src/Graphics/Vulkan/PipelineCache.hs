@@ -11,6 +11,9 @@ import Data.Word( Word64(..)
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Foreign.Storable( Storable(..)
                        )
 import Data.Void( Void(..)
@@ -69,7 +72,7 @@ foreign import ccall "vkMergePipelineCaches" mergePipelineCaches ::
 -- ** PipelineCacheCreateFlags
 -- | Opaque flag
 newtype PipelineCacheCreateFlags = PipelineCacheCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** destroyPipelineCache
 foreign import ccall "vkDestroyPipelineCache" destroyPipelineCache ::

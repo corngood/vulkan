@@ -212,7 +212,7 @@ pattern CullModeFrontAndBack = CullModeFlags 0x3
 -- ** PipelineDepthStencilStateCreateFlags
 -- | Opaque flag
 newtype PipelineDepthStencilStateCreateFlags = PipelineDepthStencilStateCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data PipelineShaderStageCreateInfo =
@@ -387,7 +387,7 @@ instance Storable SpecializationInfo where
 -- ** PipelineColorBlendStateCreateFlags
 -- | Opaque flag
 newtype PipelineColorBlendStateCreateFlags = PipelineColorBlendStateCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 newtype Pipeline = Pipeline Word64
   deriving (Eq, Ord, Storable)
@@ -395,7 +395,7 @@ newtype Pipeline = Pipeline Word64
 -- ** PipelineInputAssemblyStateCreateFlags
 -- | Opaque flag
 newtype PipelineInputAssemblyStateCreateFlags = PipelineInputAssemblyStateCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** createGraphicsPipelines
 foreign import ccall "vkCreateGraphicsPipelines" createGraphicsPipelines ::
@@ -464,7 +464,7 @@ pattern PolygonModePoint = PolygonMode 2
 -- ** PipelineViewportStateCreateFlags
 -- | Opaque flag
 newtype PipelineViewportStateCreateFlags = PipelineViewportStateCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** LogicOp
 
@@ -583,7 +583,7 @@ pattern PipelineCreateDerivativeBit = PipelineCreateFlags 0x4
 -- ** PipelineRasterizationStateCreateFlags
 -- | Opaque flag
 newtype PipelineRasterizationStateCreateFlags = PipelineRasterizationStateCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** DynamicState
 
@@ -668,7 +668,7 @@ pattern PipelineBindPointCompute = PipelineBindPoint 1
 -- ** PipelineDynamicStateCreateFlags
 -- | Opaque flag
 newtype PipelineDynamicStateCreateFlags = PipelineDynamicStateCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data PipelineRasterizationStateCreateInfo =
@@ -764,7 +764,7 @@ foreign import ccall "vkDestroyPipeline" destroyPipeline ::
 -- ** PipelineShaderStageCreateFlags
 -- | Opaque flag
 newtype PipelineShaderStageCreateFlags = PipelineShaderStageCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data PipelineViewportStateCreateInfo =
@@ -800,7 +800,7 @@ instance Storable PipelineViewportStateCreateInfo where
 -- ** PipelineTessellationStateCreateFlags
 -- | Opaque flag
 newtype PipelineTessellationStateCreateFlags = PipelineTessellationStateCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data PipelineVertexInputStateCreateInfo =
@@ -1001,7 +1001,7 @@ instance Storable SpecializationMapEntry where
 -- ** PipelineVertexInputStateCreateFlags
 -- | Opaque flag
 newtype PipelineVertexInputStateCreateFlags = PipelineVertexInputStateCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** VertexInputRate
 
@@ -1251,7 +1251,7 @@ newtype SampleMask = SampleMask Word32
 -- ** PipelineMultisampleStateCreateFlags
 -- | Opaque flag
 newtype PipelineMultisampleStateCreateFlags = PipelineMultisampleStateCreateFlags Flags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data PipelineMultisampleStateCreateInfo =
