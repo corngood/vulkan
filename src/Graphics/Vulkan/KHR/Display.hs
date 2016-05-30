@@ -267,7 +267,7 @@ pattern VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR = VkDisplayPlaneA
 -- ** VkDisplayModeCreateFlagsKHR
 -- | Opaque flag
 newtype VkDisplayModeCreateFlagsKHR = VkDisplayModeCreateFlagsKHR VkFlags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data VkDisplayModeCreateInfoKHR =
@@ -318,7 +318,7 @@ instance Storable VkDisplayModeParametersKHR where
 -- ** VkDisplaySurfaceCreateFlagsKHR
 -- | Opaque flag
 newtype VkDisplaySurfaceCreateFlagsKHR = VkDisplaySurfaceCreateFlagsKHR VkFlags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 newtype VkDisplayKHR = VkDisplayKHR Word64
   deriving (Eq, Ord, Storable)

@@ -200,7 +200,7 @@ pattern VK_QUERY_CONTROL_PRECISE_BIT = VkQueryControlFlagBits 0x1
 -- ** VkQueryPoolCreateFlags
 -- | Opaque flag
 newtype VkQueryPoolCreateFlags = VkQueryPoolCreateFlags VkFlags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** VkQueryPipelineStatisticFlags
 

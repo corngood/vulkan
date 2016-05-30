@@ -278,7 +278,7 @@ instance Storable VkSamplerCreateInfo where
 -- ** VkSamplerCreateFlags
 -- | Opaque flag
 newtype VkSamplerCreateFlags = VkSamplerCreateFlags VkFlags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** VkSamplerMipmapMode
 

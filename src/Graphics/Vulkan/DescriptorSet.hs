@@ -73,7 +73,7 @@ foreign import ccall "vkUpdateDescriptorSets" vkUpdateDescriptorSets ::
 -- ** VkDescriptorPoolResetFlags
 -- | Opaque flag
 newtype VkDescriptorPoolResetFlags = VkDescriptorPoolResetFlags VkFlags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** vkAllocateDescriptorSets
 foreign import ccall "vkAllocateDescriptorSets" vkAllocateDescriptorSets ::
@@ -214,7 +214,7 @@ instance Storable VkDescriptorPoolCreateInfo where
 -- ** VkDescriptorSetLayoutCreateFlags
 -- | Opaque flag
 newtype VkDescriptorSetLayoutCreateFlags = VkDescriptorSetLayoutCreateFlags VkFlags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 
 data VkDescriptorSetLayoutCreateInfo =

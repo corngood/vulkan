@@ -80,7 +80,7 @@ foreign import ccall "vkDestroyShaderModule" vkDestroyShaderModule ::
 -- ** VkShaderModuleCreateFlags
 -- | Opaque flag
 newtype VkShaderModuleCreateFlags = VkShaderModuleCreateFlags VkFlags
-  deriving (Eq, Ord, Storable)
+  deriving (Eq, Ord, Storable, Bits, FiniteBits)
 
 -- ** VkShaderStageFlags
 
