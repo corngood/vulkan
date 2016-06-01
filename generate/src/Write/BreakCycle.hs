@@ -10,8 +10,8 @@ import           Write.Module
 import           Write.Utils
 
 cycleBreakers :: HashMap ModuleName [String]
-cycleBreakers = M.fromList [ (ModuleName "Graphics.Vulkan.Device", ["VkDevice"])
-                           , (ModuleName "Graphics.Vulkan.Pass", ["VkRenderPass"])
+cycleBreakers = M.fromList [ (ModuleName (rawModuleBase ++ ".Device"), ["VkDevice"])
+                           , (ModuleName (rawModuleBase ++ ".Pass"), ["VkRenderPass"])
                            ]
 
 writeHsBootFiles :: FilePath -> SpecGraph -> IO ()

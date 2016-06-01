@@ -27,7 +27,7 @@ writeCommand c = do
              tellRequiredName (ExternalName (ModuleName "Foreign.Ptr") "castFunPtr")
              tellRequiredName (ExternalName (ModuleName "Foreign.C.String") "withCString")
              tellRequiredName (ExternalName (ModuleName "System.IO.Unsafe") "unsafePerformIO")
-             tellRequiredName (ExternalName (ModuleName "Graphics.Vulkan.DeviceInitialization") "getInstanceProcAddr")
+             tellRequiredName (ExternalName (ModuleName (rawModuleBase ++ ".DeviceInitialization")) "getInstanceProcAddr")
              -- TODO: look for instance/device/other commands and fetch appropriately
              pure [qc|-- ** {name}
 foreign import ccall "dynamic" mk{symbol} :: FunPtr ({commandType}) -> ({commandType})
