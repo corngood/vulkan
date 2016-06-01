@@ -7,16 +7,16 @@ import           Write.Utils
 --
 -- Only handles are allowed in here, this isn't checked
 cycleBreakers :: HashMap ModuleName [String]
-cycleBreakers = M.fromList [ (ModuleName "Graphics.Vulkan.Device", ["VkDevice"])
-                           , (ModuleName "Graphics.Vulkan.Pass", ["VkRenderPass"])
+cycleBreakers = M.fromList [ (ModuleName (rawModuleBase ++ ".Device"), ["VkDevice"])
+                           , (ModuleName (rawModuleBase ++ ".Pass"), ["VkRenderPass"])
                            ]
 
 sourceImports :: HashMap ModuleName [ModuleName]
-sourceImports = M.fromList [ ( ModuleName "Graphics.Vulkan.Memory"
-                             , [ModuleName "Graphics.Vulkan.Device"]
+sourceImports = M.fromList [ ( ModuleName (rawModuleBase ++ ".Memory")
+                             , [ModuleName (rawModuleBase ++ ".Device")]
                              )
-                           , ( ModuleName "Graphics.Vulkan.Pipeline"
-                             , [ModuleName "Graphics.Vulkan.Pass"]
+                           , ( ModuleName (rawModuleBase ++ ".Pipeline")
+                             , [ModuleName (rawModuleBase ++ ".Pass")]
                              )
                            ]
 

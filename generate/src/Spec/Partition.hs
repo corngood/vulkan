@@ -133,7 +133,7 @@ possibleModuleAssociations moduleName
 
 bespokeModuleExports :: M.HashMap ModuleName (S.HashSet String)
 bespokeModuleExports = M.fromList
-  [ ( ModuleName "Graphics.Vulkan.Constants"
+  [ ( ModuleName (rawModuleBase ++ ".Constants")
     , S.fromList [ "VK_MAX_PHYSICAL_DEVICE_NAME_SIZE"
                  , "VK_MAX_MEMORY_TYPES"
                  , "VK_MAX_MEMORY_HEAPS"
@@ -142,7 +142,7 @@ bespokeModuleExports = M.fromList
                  , "VK_UUID_SIZE"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Memory"
+  , ( ModuleName (rawModuleBase ++ ".Memory")
     , S.fromList [ "VkDeviceMemory"
                  , "VkSystemAllocationScope"
                  , "VkInternalAllocationType"
@@ -154,7 +154,7 @@ bespokeModuleExports = M.fromList
                  , "PFN_vkInternalFreeNotification"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Pass"
+  , ( ModuleName (rawModuleBase ++ ".Pass")
     , S.fromList [ "VkDependencyFlags"
                  , "VkDependencyFlagBits"
                  , "VkRenderPass"
@@ -162,7 +162,7 @@ bespokeModuleExports = M.fromList
                  , "VkAccessFlags"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Core"
+  , ( ModuleName (rawModuleBase ++ ".Core")
     , S.fromList [ "VkDeviceSize"
                  , "VkFormat"
                  , "VkFlags"
@@ -179,13 +179,13 @@ bespokeModuleExports = M.fromList
                  , "VkViewport"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Sampler"
+  , ( ModuleName (rawModuleBase ++ ".Sampler")
     , S.fromList [ "VkFilter"
                  , "VkCompareOp"
                  , "VkSampleCountFlagBits"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Image"
+  , ( ModuleName (rawModuleBase ++ ".Image")
     , S.fromList [ "VkImageAspectFlags"
                  , "VkImageTiling"
                  , "VkImageLayout"
@@ -193,33 +193,33 @@ bespokeModuleExports = M.fromList
                  , "VkImageSubresourceRange"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.DescriptorSet"
+  , ( ModuleName (rawModuleBase ++ ".DescriptorSet")
     , S.fromList [ "VkDescriptorSetLayout"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Query"
+  , ( ModuleName (rawModuleBase ++ ".Query")
     , S.fromList [ "VkQueryControlFlags"
                  , "VkQueryPipelineStatisticFlags"
                  , "VkQueryResultFlags"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Device"
+  , ( ModuleName (rawModuleBase ++ ".Device")
     , S.fromList [ "VkPhysicalDeviceFeatures"
                  , "VkPhysicalDevice"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Shader"
+  , ( ModuleName (rawModuleBase ++ ".Shader")
     , S.fromList [ "VkShaderStageFlagBits"
                  , "VkShaderStageFlags"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Pipeline"
+  , ( ModuleName (rawModuleBase ++ ".Pipeline")
     , S.fromList [ "VkPipelineBindPoint"
                  , "VkPipelineStageFlagBits"
                  , "VkPipelineStageFlags"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.KHR.Surface"
+  , ( ModuleName (rawModuleBase ++ ".KHR.Surface")
     , S.fromList [ "VkSurfaceTransformFlagBitsKHR"
                  , "VkSurfaceTransformFlagsKHR"
                  , "VkColorSpaceKHR"
@@ -228,7 +228,7 @@ bespokeModuleExports = M.fromList
                  , "VkSurfaceKHR"
                  ]
     )
-  , ( ModuleName "Graphics.Vulkan.Version"
+  , ( ModuleName (rawModuleBase ++ ".Version")
     , S.fromList [ "VK_MAKE_VERSION"
                  ]
     )

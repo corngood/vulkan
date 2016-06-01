@@ -4,6 +4,7 @@
 
 module Write.Module
   ( writeModule
+  , writeModule'
   )where
 
 import           Data.HashMap.Strict           as M
@@ -43,6 +44,29 @@ writeModule graph nameLocations boot (ModuleName n) names = moduleString
         imports = vcat (getImportDeclarations (ModuleName n) nameLocations requiredNames)
         moduleWriter = do
           definitions <- writeVertices (requiredLookup graph <$> names)
+          pure [qc|{vcat extensionDocs}
+module {n} where
+
+{imports}
+
+{definitions}
+|]
+
+writeModule' :: SpecGraph
+            -> NameLocations
+            -> FileType
+            -> ModuleName
+            -> Write Doc
+            -> String
+writeModule' graph nameLocations boot (ModuleName n) write = moduleString
+  where typeEnv = buildTypeEnvFromSpecGraph graph
+        (moduleString, (extraRequiredNames, extensions)) =
+          runWrite typeEnv boot moduleWriter
+        extensionDocs = getExtensionDoc <$> S.toList extensions
+        requiredNames = extraRequiredNames
+        imports = vcat (getImportDeclarations (ModuleName n) nameLocations requiredNames)
+        moduleWriter = do
+          definitions <- write
           pure [qc|{vcat extensionDocs}
 module {n} where
 

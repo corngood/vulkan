@@ -20,6 +20,7 @@ import           Spec.Partition
 import           Write.CycleBreak
 import           Write.Module
 import           Write.Utils
+import           Write.Wrapper
 import           Write.WriteMonad
 
 writeSpecModules :: FilePath -> Spec -> IO ()
@@ -34,8 +35,10 @@ writeSpecModules root spec = do
   traverse_ (createModuleDirectory root) (fst <$> modules)
   mapM_ (uncurry (writeModuleFile root)) modules
   writeHsBootFiles root graph locations
+  writeModuleFile root (ModuleName "Graphics.Vulkan.Raw")
+                       (writeParentModule $ fst <$> modules)
   writeModuleFile root (ModuleName "Graphics.Vulkan")
-                       (writeParentModule moduleNames)
+    (writeModule' graph locations Normal (ModuleName "Graphics.Vulkan") $ writeWrapperModule graph)
 
 writeModuleFile :: FilePath -> ModuleName -> String -> IO ()
 writeModuleFile root moduleName =
@@ -48,9 +51,8 @@ writeParentModule :: [ModuleName] -> String
 writeParentModule names = show moduleDoc
   where nameStrings = fmap fromString . sort . fmap unModuleName $ names
         moduleDoc :: Doc
-        moduleDoc = [qc|module Graphics.Vulkan
+        moduleDoc = [qc|module Graphics.Vulkan.Raw
   ( {indent (-2) . vcat $ intercalatePrepend (fromString ",") ((fromString "module" <+>) <$> nameStrings)}
   ) where
 
 {vcat $ (fromString "import" <+>) <$> nameStrings}|]
-
