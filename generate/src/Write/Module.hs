@@ -11,24 +11,21 @@ import           Data.HashSet                  as S
 import           Data.Maybe                    (catMaybes)
 import           Data.String
 import           Spec.Graph
-import           Spec.Partition
 import           Text.InterpolatedString.Perl6
 import           Text.PrettyPrint.Leijen.Text  hiding ((<$>))
 import           Write.Quirks
-import           Write.TypeConverter           (buildTypeEnvFromSpecGraph)
+import           Write.TypeConverter           (TypeEnv)
 import           Write.Utils
 import           Write.Vertex
 import           Write.WriteMonad
 
-writeModule :: SpecGraph
-            -> PartitionedSpec
+writeModule :: TypeEnv
             -> FileType
             -> ModuleName
             -> [SourceEntity]
             -> String
-writeModule graph part boot (ModuleName n) entities = moduleString
-  where typeEnv = buildTypeEnvFromSpecGraph graph part
-        (moduleString, (extraRequiredNames, extensions)) =
+writeModule typeEnv boot (ModuleName n) entities = moduleString
+  where (moduleString, (extraRequiredNames, extensions)) =
           runWrite typeEnv boot moduleWriter
         extensionDocs = getExtensionDoc <$> S.toList extensions
         requiredNames = extraRequiredNames

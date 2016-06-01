@@ -18,6 +18,7 @@ import           Spec.Partition
 
 import           Write.CycleBreak
 import           Write.Module
+import           Write.TypeConverter           (buildTypeEnvFromSpecGraph)
 import           Write.Utils
 import           Write.WriteMonad
 
@@ -25,14 +26,15 @@ writeSpecModules :: FilePath -> Spec -> IO ()
 writeSpecModules root spec = do
   let graph = getSpecGraph spec
       part = partitionSpec spec
+      typeEnv = buildTypeEnvFromSpecGraph graph part
       partitions = M.toList $ moduleExports part
       moduleNames = fst <$> partitions
-      moduleStrings = uncurry (writeModule graph part Normal) <$>
+      moduleStrings = uncurry (writeModule typeEnv Normal) <$>
                       partitions
       modules = zip moduleNames moduleStrings
   traverse_ (createModuleDirectory root) (fst <$> modules)
   mapM_ (uncurry (writeModuleFile root)) modules
-  writeHsBootFiles root graph part
+  writeHsBootFiles root graph typeEnv
   writeModuleFile root (ModuleName "Graphics.Vulkan.Raw")
                        (writeParentModule moduleNames)
   writeModuleFile root (ModuleName "Graphics.Vulkan")
