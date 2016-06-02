@@ -10,28 +10,26 @@ import           Data.HashMap.Strict           as M
 import           Data.HashSet                  as S
 import           Data.Maybe                    (catMaybes)
 import           Data.String
-import           Spec.Graph
 import           Text.InterpolatedString.Perl6
 import           Text.PrettyPrint.Leijen.Text  hiding ((<$>))
 import           Write.Quirks
 import           Write.TypeConverter           (TypeEnv)
 import           Write.Utils
-import           Write.Vertex
 import           Write.WriteMonad
 
 writeModule :: TypeEnv
             -> FileType
             -> ModuleName
-            -> [SourceEntity]
+            -> Write Doc
             -> String
-writeModule typeEnv boot (ModuleName n) entities = moduleString
+writeModule typeEnv boot (ModuleName n) writeDefinitions = moduleString
   where (moduleString, (extraRequiredNames, extensions)) =
           runWrite typeEnv boot moduleWriter
         extensionDocs = getExtensionDoc <$> S.toList extensions
         requiredNames = extraRequiredNames
         imports = vcat (getImportDeclarations (ModuleName n) requiredNames)
         moduleWriter = do
-          definitions <- writeVertices entities
+          definitions <- writeDefinitions
           pure [qc|{vcat extensionDocs}
 module {n} where
 

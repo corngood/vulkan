@@ -20,6 +20,8 @@ import           Write.CycleBreak
 import           Write.Module
 import           Write.TypeConverter           (buildTypeEnvFromSpecGraph)
 import           Write.Utils
+import           Write.Vertex
+import           Write.Wrapper
 import           Write.WriteMonad
 
 writeSpecModules :: FilePath -> Spec -> IO ()
@@ -28,17 +30,15 @@ writeSpecModules root spec = do
       part = partitionSpec spec
       typeEnv = buildTypeEnvFromSpecGraph graph part
       partitions = M.toList $ moduleExports part
-      moduleNames = fst <$> partitions
-      moduleStrings = uncurry (writeModule typeEnv Normal) <$>
-                      partitions
-      modules = zip moduleNames moduleStrings
+      modules = writePartitionModule <$> partitions
+      writePartitionModule (name, entities) = writeModule' name $ writeVertices entities
+      writeModule' name writer = (name, writeModule typeEnv Normal name writer)
   traverse_ (createModuleDirectory root) (fst <$> modules)
   mapM_ (uncurry (writeModuleFile root)) modules
   writeHsBootFiles root graph typeEnv
   writeModuleFile root (ModuleName "Graphics.Vulkan.Raw")
-                       (writeParentModule moduleNames)
-  writeModuleFile root (ModuleName "Graphics.Vulkan")
-                       (writeWrapperModule graph)
+                       (writeParentModule $ fst <$> modules)
+  uncurry (writeModuleFile root) (writeModule' (ModuleName "Graphics.Vulkan") $ writeWrapperModule graph)
 
 writeModuleFile :: FilePath -> ModuleName -> String -> IO ()
 writeModuleFile root moduleName =
@@ -53,14 +53,3 @@ writeParentModule names = show moduleDoc
   ) where
 
 {vcat $ (fromString "import" <+>) <$> nameStrings}|]
-
-writeWrapperModule :: SpecGraph -> String
-writeWrapperModule _ = show moduleDoc
-  where moduleDoc :: Doc
-        moduleDoc = [qc|module Graphics.Vulkan
-  ( module Graphics.Vulkan.Raw
-  ) where
-
-import Graphics.Vulkan.Raw
-|]
-

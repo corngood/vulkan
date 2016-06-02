@@ -7,6 +7,7 @@ import           Write.Module
 import           Write.Quirks
 import           Write.TypeConverter (TypeEnv)
 import           Write.Utils
+import           Write.Vertex
 import           Write.WriteMonad
 
 writeHsBootFiles :: FilePath -> SpecGraph -> TypeEnv -> IO ()
@@ -21,6 +22,6 @@ writeHsBootFile :: FilePath      -- ^ The source root
                 -> IO ()
 writeHsBootFile root typeEnv moduleName exports = do
   createModuleDirectory root moduleName
-  let moduleString = writeModule typeEnv Boot moduleName exports
+  let moduleString = writeModule typeEnv Boot moduleName (writeVertices exports)
   writeFile (moduleNameToFile root moduleName ++ "-boot") moduleString
 
