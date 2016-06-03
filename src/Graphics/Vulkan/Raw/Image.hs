@@ -4,28 +4,20 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.Image where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Data.Word( Word64(..)
-                , Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import Data.Int( Int32
-               )
-import Data.Bits( Bits
-                , FiniteBits
+import Data.Word( Word64(..)
+                , Word32(..)
                 )
-import Foreign.Storable( Storable(..)
-                       )
 import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
+import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
+                                  )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -41,10 +33,18 @@ import Graphics.Vulkan.Raw.Core( Format(..)
                                , SharingMode(..)
                                , StructureType(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32
+               )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
-import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
-                                  )
 
 -- ** createImage
 foreign import ccall "vkCreateImage" createImage ::

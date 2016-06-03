@@ -2,19 +2,19 @@
 {-# LANGUAGE Strict #-}
 module Graphics.Vulkan.Raw.MemoryManagement where
 
-import Data.Word( Word32(..)
-                )
-import Foreign.Ptr( Ptr(..)
-                  , plusPtr
-                  )
-import Graphics.Vulkan.Raw.Buffer( Buffer(..)
-                                 )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
 import Foreign.Storable( Storable(..)
                        )
 import Graphics.Vulkan.Raw.Image( Image(..)
                                 )
+import Foreign.Ptr( Ptr(..)
+                  , plusPtr
+                  )
+import Data.Word( Word32(..)
+                )
+import Graphics.Vulkan.Raw.Buffer( Buffer(..)
+                                 )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
 import Graphics.Vulkan.Raw.Core( Result(..)
                                , DeviceSize(..)
                                )

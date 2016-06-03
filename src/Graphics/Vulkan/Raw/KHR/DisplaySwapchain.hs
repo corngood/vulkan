@@ -2,20 +2,20 @@
 {-# LANGUAGE Strict #-}
 module Graphics.Vulkan.Raw.KHR.DisplaySwapchain where
 
-import Data.Word( Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
+import Data.Word( Word32(..)
+                )
+import Data.Void( Void(..)
+                )
 import Graphics.Vulkan.Raw.KHR.Swapchain( Swapchain(..)
                                         , SwapchainCreateInfo(..)
                                         )
 import Graphics.Vulkan.Raw.Device( Device(..)
                                  )
-import Foreign.Storable( Storable(..)
-                       )
-import Data.Void( Void(..)
-                )
 import Graphics.Vulkan.Raw.Core( Result(..)
                                , Bool32(..)
                                , Rect2D(..)

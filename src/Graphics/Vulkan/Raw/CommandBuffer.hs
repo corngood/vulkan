@@ -4,36 +4,23 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.CommandBuffer where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Data.Word( Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , Ptr
                   , plusPtr
                   )
-import Graphics.Vulkan.Raw.CommandPool( CommandPool(..)
-                                      )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import Graphics.Vulkan.Raw.Pass( Framebuffer(..)
-                               , RenderPass(..)
-                               )
-import Data.Int( Int32
-               )
-import Data.Bits( Bits
-                , FiniteBits
+import Data.Word( Word32(..)
                 )
-import Foreign.Storable( Storable(..)
-                       )
 import Data.Void( Void(..)
                 )
 import Graphics.Vulkan.Raw.Query( QueryControlFlags(..)
                                 , QueryPipelineStatisticFlags(..)
                                 )
+import Graphics.Vulkan.Raw.CommandPool( CommandPool(..)
+                                      )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -41,11 +28,24 @@ import Text.ParserCombinators.ReadPrec( prec
                                       , (+++)
                                       , step
                                       )
+import Graphics.Vulkan.Raw.Pass( Framebuffer(..)
+                               , RenderPass(..)
+                               )
 import Graphics.Vulkan.Raw.Core( Result(..)
                                , Bool32(..)
                                , Flags(..)
                                , StructureType(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32
+               )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 
 -- ** CommandBufferLevel
 

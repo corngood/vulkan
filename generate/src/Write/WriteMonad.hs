@@ -28,6 +28,7 @@ import           Spec.TypeEnv
 import           Write.Utils
 
 data RequiredName = ExternalName ModuleName String
+                  | QualifiedName ModuleName String String
                   | InternalName WildCard String
   deriving(Eq, Generic)
 

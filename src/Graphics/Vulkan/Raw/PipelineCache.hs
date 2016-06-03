@@ -3,29 +3,29 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.PipelineCache where
 
-import Data.Word( Word64(..)
-                , Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import Data.Bits( Bits
-                , FiniteBits
+import Data.Word( Word64(..)
+                , Word32(..)
                 )
-import Foreign.Storable( Storable(..)
-                       )
 import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
+import Foreign.C.Types( CSize(..)
+                      )
 import Graphics.Vulkan.Raw.Core( Result(..)
                                , Flags(..)
                                , StructureType(..)
                                )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
-import Foreign.C.Types( CSize(..)
-                      )
 
 -- ** createPipelineCache
 foreign import ccall "vkCreatePipelineCache" createPipelineCache ::

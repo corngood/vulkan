@@ -5,21 +5,23 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.DeviceInitialization where
 
-import Data.Vector.Storable.Sized( Vector(..)
-                                 )
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Data.Word( Word8(..)
-                , Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
+import Graphics.Vulkan.Raw.Image( ImageCreateFlags(..)
+                                , ImageType(..)
+                                , ImageTiling(..)
+                                , ImageUsageFlags(..)
+                                )
 import Foreign.Ptr( Ptr(..)
                   , FunPtr(..)
                   , Ptr
                   , plusPtr
                   )
+import Data.Word( Word8(..)
+                , Word32(..)
+                )
+import Data.Void( Void(..)
+                )
 import Graphics.Vulkan.Raw.Constants( UuidSize
                                     , MaxMemoryTypes
                                     , MaxPhysicalDeviceNameSize
@@ -29,21 +31,12 @@ import Graphics.Vulkan.Raw.Device( PhysicalDevice(..)
                                  , Device(..)
                                  , PhysicalDeviceFeatures(..)
                                  )
-import Data.Int( Int32(..)
-               , Int32
-               )
-import Data.Bits( Bits
-                , FiniteBits
-                )
-import Foreign.Storable( Storable(..)
-                       )
-import Graphics.Vulkan.Raw.Image( ImageCreateFlags(..)
-                                , ImageType(..)
-                                , ImageTiling(..)
-                                , ImageUsageFlags(..)
-                                )
-import Data.Void( Void(..)
-                )
+import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
+                                  )
+import Foreign.C.Types( CFloat(..)
+                      , CChar(..)
+                      , CSize(..)
+                      )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -51,6 +44,8 @@ import Text.ParserCombinators.ReadPrec( prec
                                       , (+++)
                                       , step
                                       )
+import Data.Vector.Storable.Sized( Vector(..)
+                                 )
 import Graphics.Vulkan.Raw.Core( Format(..)
                                , Result(..)
                                , DeviceSize(..)
@@ -59,14 +54,19 @@ import Graphics.Vulkan.Raw.Core( Format(..)
                                , Extent3D(..)
                                , StructureType(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32(..)
+               , Int32
+               )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
-import Foreign.C.Types( CFloat(..)
-                      , CChar(..)
-                      , CSize(..)
-                      )
-import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
-                                  )
 
 -- ** PhysicalDeviceType
 

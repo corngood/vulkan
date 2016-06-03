@@ -3,23 +3,23 @@
 {-# LANGUAGE Strict #-}
 module Graphics.Vulkan.Raw.ExtensionDiscovery where
 
-import Data.Vector.Storable.Sized( Vector(..)
-                                 )
-import Data.Word( Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
+import Data.Word( Word32(..)
+                )
 import Graphics.Vulkan.Raw.Constants( MaxExtensionNameSize
                                     )
 import Graphics.Vulkan.Raw.Device( PhysicalDevice(..)
                                  )
-import Foreign.Storable( Storable(..)
-                       )
-import Graphics.Vulkan.Raw.Core( Result(..)
-                               )
 import Foreign.C.Types( CChar(..)
                       )
+import Data.Vector.Storable.Sized( Vector(..)
+                                 )
+import Graphics.Vulkan.Raw.Core( Result(..)
+                               )
 
 
 data ExtensionProperties =

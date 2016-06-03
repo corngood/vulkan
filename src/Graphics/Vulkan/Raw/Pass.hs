@@ -4,32 +4,25 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.Pass where
 
-import Graphics.Vulkan.Raw.ImageView( ImageView(..)
-                                    )
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Data.Word( Word64(..)
-                , Word32(..)
-                )
-import Foreign.Ptr( Ptr(..)
-                  , plusPtr
-                  )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import Data.Int( Int32
-               )
-import Data.Bits( Bits
-                , FiniteBits
-                )
 import Foreign.Storable( Storable(..)
                        )
 import Graphics.Vulkan.Raw.Image( ImageLayout(..)
                                 )
+import Foreign.Ptr( Ptr(..)
+                  , plusPtr
+                  )
+import Data.Word( Word64(..)
+                , Word32(..)
+                )
+import Graphics.Vulkan.Raw.Pipeline( PipelineStageFlags(..)
+                                   , PipelineBindPoint(..)
+                                   )
 import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
+import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
+                                  )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -43,13 +36,20 @@ import Graphics.Vulkan.Raw.Core( Format(..)
                                , Flags(..)
                                , StructureType(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Graphics.Vulkan.Raw.ImageView( ImageView(..)
+                                    )
+import Data.Int( Int32
+               )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
-import Graphics.Vulkan.Raw.Pipeline( PipelineStageFlags(..)
-                                   , PipelineBindPoint(..)
-                                   )
-import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
-                                  )
 
 
 data SubpassDependency =

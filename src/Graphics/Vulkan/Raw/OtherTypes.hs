@@ -2,28 +2,28 @@
 {-# LANGUAGE Strict #-}
 module Graphics.Vulkan.Raw.OtherTypes where
 
-import Data.Word( Word32(..)
-                )
-import Foreign.Ptr( Ptr(..)
-                  , plusPtr
-                  )
-import Graphics.Vulkan.Raw.Buffer( Buffer(..)
-                                 )
-import Graphics.Vulkan.Raw.Pass( AccessFlags(..)
-                               )
-import Data.Int( Int32(..)
-               )
 import Foreign.Storable( Storable(..)
                        )
 import Graphics.Vulkan.Raw.Image( ImageSubresourceRange(..)
                                 , Image(..)
                                 , ImageLayout(..)
                                 )
+import Foreign.Ptr( Ptr(..)
+                  , plusPtr
+                  )
+import Data.Word( Word32(..)
+                )
 import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Raw.Buffer( Buffer(..)
+                                 )
+import Graphics.Vulkan.Raw.Pass( AccessFlags(..)
+                               )
 import Graphics.Vulkan.Raw.Core( DeviceSize(..)
                                , StructureType(..)
                                )
+import Data.Int( Int32(..)
+               )
 
 
 data BufferMemoryBarrier =

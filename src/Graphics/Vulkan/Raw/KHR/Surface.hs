@@ -4,28 +4,18 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.KHR.Surface where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Data.Word( Word64(..)
-                , Word32(..)
-                )
-import Foreign.Ptr( Ptr(..)
-                  , plusPtr
-                  )
-import Graphics.Vulkan.Raw.Device( PhysicalDevice(..)
-                                 )
-import Data.Int( Int32
-               )
-import Data.Bits( Bits
-                , FiniteBits
-                )
 import Foreign.Storable( Storable(..)
                        )
 import Graphics.Vulkan.Raw.Image( ImageUsageFlags(..)
                                 )
+import Foreign.Ptr( Ptr(..)
+                  , plusPtr
+                  )
+import Data.Word( Word64(..)
+                , Word32(..)
+                )
+import Graphics.Vulkan.Raw.Device( PhysicalDevice(..)
+                                 )
 import Graphics.Vulkan.Raw.DeviceInitialization( Instance(..)
                                                )
 import Text.Read( Read(..)
@@ -41,6 +31,16 @@ import Graphics.Vulkan.Raw.Core( Format(..)
                                , Bool32(..)
                                , Flags(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32
+               )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
 

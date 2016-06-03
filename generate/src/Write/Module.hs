@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveGeneric     #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE PatternGuards     #-}
 {-# LANGUAGE QuasiQuotes       #-}
@@ -6,10 +7,12 @@ module Write.Module
   ( writeModule
   )where
 
+import           Data.Hashable
 import           Data.HashMap.Strict           as M
 import           Data.HashSet                  as S
 import           Data.Maybe                    (catMaybes)
 import           Data.String
+import           GHC.Generics                  (Generic)
 import           Text.InterpolatedString.Perl6
 import           Text.PrettyPrint.Leijen.Text  hiding ((<$>))
 import           Write.Quirks
@@ -64,21 +67,31 @@ getImportDeclarations importingModule names =
         getImportDeclaration rn =
           case rn of
             ExternalName moduleName name | moduleName /= importingModule ->
-              Just (Import NotSource moduleName [name])
+              Just (Import NotSource (ImportModule False moduleName Nothing) [name])
+            QualifiedName moduleName asName name | moduleName /= importingModule ->
+              Just (Import NotSource (ImportModule True moduleName (Just asName)) [name])
             _ -> Nothing
 
-data Import = Import Source ModuleName [String]
+data ImportModule = ImportModule Bool ModuleName (Maybe String)
+                    deriving(Eq, Generic)
+
+instance Hashable ImportModule
+
+data Import = Import Source ImportModule [String]
 
 data Source = NotSource
             | Source
 
 writeImport :: Import -> Doc
-writeImport (Import source (ModuleName moduleName) imports) =
+writeImport (Import source (ImportModule qualified (ModuleName moduleName) asName) imports) =
   let sourceDoc :: Doc
+      qual :: String
+      qual = if qualified then "qualified " else ""
+      as = maybe "" (\x -> " as " ++ x ++ " ") asName
       sourceDoc = fromString $ case source of
                                  NotSource -> ""
                                  Source -> "{-# SOURCE #-} "
-  in [qc|import {sourceDoc}{moduleName}( {indent (-2) (vcat ((intercalatePrepend "," (fromString <$> imports) ++ [")"])))}|]
+  in [qc|import {qual}{sourceDoc}{moduleName}{as}( {indent (-2) (vcat ((intercalatePrepend "," (fromString <$> imports) ++ [")"])))}|]
 
 mergeImports :: [Import] -> [Import]
 mergeImports is = fmap (uncurry (Import NotSource)) .
@@ -86,9 +99,9 @@ mergeImports is = fmap (uncurry (Import NotSource)) .
                   [(name, imports) | Import _ name imports <- is]
 
 makeImportSourcy :: ModuleName -> Import -> Import
-makeImportSourcy importingModule (Import source moduleName names)
+makeImportSourcy importingModule (Import source (ImportModule qualified moduleName as) names)
   | Just sourceImported <- M.lookup importingModule sourceImports
   , moduleName `elem` sourceImported
-  = Import Source moduleName names
+  = Import Source (ImportModule qualified moduleName as) names
   | otherwise
-  = Import source moduleName names
+  = Import source (ImportModule qualified moduleName as) names

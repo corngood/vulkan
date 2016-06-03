@@ -4,31 +4,25 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.EXT.DebugReport where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import System.IO.Unsafe( unsafePerformIO
+import Foreign.Storable( Storable(..)
                        )
-import Data.Word( Word64(..)
-                )
 import Foreign.Ptr( Ptr(..)
                   , FunPtr(..)
                   , FunPtr
                   , plusPtr
                   , castFunPtr
                   )
-import Data.Int( Int32(..)
-               , Int32
-               )
-import Data.Bits( Bits
-                , FiniteBits
+import System.IO.Unsafe( unsafePerformIO
+                       )
+import Data.Word( Word64(..)
                 )
-import Foreign.Storable( Storable(..)
+import Foreign.C.String( withCString
                        )
 import Data.Void( Void(..)
                 )
+import Foreign.C.Types( CChar(..)
+                      , CSize(..)
+                      )
 import Graphics.Vulkan.Raw.DeviceInitialization( Instance(..)
                                                , getInstanceProcAddr
                                                )
@@ -44,13 +38,19 @@ import Graphics.Vulkan.Raw.Core( Result(..)
                                , Flags(..)
                                , StructureType(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32(..)
+               , Int32
+               )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
-import Foreign.C.String( withCString
-                       )
-import Foreign.C.Types( CChar(..)
-                      , CSize(..)
-                      )
 
 -- ** debugReportMessage
 foreign import ccall "dynamic" mkvkDebugReportMessageEXT :: FunPtr (Instance ->

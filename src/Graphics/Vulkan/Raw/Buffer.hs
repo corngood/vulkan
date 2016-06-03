@@ -4,26 +4,18 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.Buffer where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Data.Word( Word64(..)
-                , Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import Data.Bits( Bits
-                , FiniteBits
+import Data.Word( Word64(..)
+                , Word32(..)
                 )
-import Foreign.Storable( Storable(..)
-                       )
 import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -37,6 +29,14 @@ import Graphics.Vulkan.Raw.Core( Result(..)
                                , SharingMode(..)
                                , StructureType(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
 

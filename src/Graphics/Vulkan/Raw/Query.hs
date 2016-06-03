@@ -4,28 +4,20 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.Query where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Data.Word( Word64(..)
-                , Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import Data.Int( Int32
-               )
-import Data.Bits( Bits
-                , FiniteBits
+import Data.Word( Word64(..)
+                , Word32(..)
                 )
-import Foreign.Storable( Storable(..)
-                       )
 import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
+import Foreign.C.Types( CSize(..)
+                      )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -38,10 +30,18 @@ import Graphics.Vulkan.Raw.Core( Result(..)
                                , Flags(..)
                                , StructureType(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32
+               )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
-import Foreign.C.Types( CSize(..)
-                      )
 
 -- ** getQueryPoolResults
 foreign import ccall "vkGetQueryPoolResults" getQueryPoolResults ::

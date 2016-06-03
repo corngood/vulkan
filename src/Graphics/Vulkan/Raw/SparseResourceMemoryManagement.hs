@@ -4,26 +4,6 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.SparseResourceMemoryManagement where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Graphics.Vulkan.Raw.Queue( Queue(..)
-                                )
-import Data.Word( Word32(..)
-                )
-import Foreign.Ptr( Ptr(..)
-                  , plusPtr
-                  )
-import Graphics.Vulkan.Raw.Buffer( Buffer(..)
-                                 )
-import Graphics.Vulkan.Raw.Device( PhysicalDevice(..)
-                                 , Device(..)
-                                 )
-import Data.Bits( Bits
-                , FiniteBits
-                )
 import Foreign.Storable( Storable(..)
                        )
 import Graphics.Vulkan.Raw.Image( ImageType(..)
@@ -33,10 +13,22 @@ import Graphics.Vulkan.Raw.Image( ImageType(..)
                                 , ImageUsageFlags(..)
                                 , Image(..)
                                 )
+import Foreign.Ptr( Ptr(..)
+                  , plusPtr
+                  )
+import Data.Word( Word32(..)
+                )
 import Data.Void( Void(..)
                 )
 import Graphics.Vulkan.Raw.QueueSemaphore( Semaphore(..)
                                          )
+import Graphics.Vulkan.Raw.Buffer( Buffer(..)
+                                 )
+import Graphics.Vulkan.Raw.Device( PhysicalDevice(..)
+                                 , Device(..)
+                                 )
+import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
+                                  )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -52,12 +44,20 @@ import Graphics.Vulkan.Raw.Core( Format(..)
                                , Extent3D(..)
                                , StructureType(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
 import Graphics.Vulkan.Raw.Fence( Fence(..)
                                 )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import Graphics.Vulkan.Raw.Queue( Queue(..)
+                                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( DeviceMemory(..)
                                  )
-import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
-                                  )
 
 
 data SparseImageMemoryRequirements =

@@ -3,29 +3,29 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.Device where
 
-import Data.Word( Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , Ptr
                   , plusPtr
                   )
-import Data.Bits( Bits
-                , FiniteBits
+import Data.Word( Word32(..)
                 )
-import Foreign.Storable( Storable(..)
-                       )
 import Data.Void( Void(..)
                 )
+import Foreign.C.Types( CFloat(..)
+                      , CChar(..)
+                      )
 import Graphics.Vulkan.Raw.Core( Result(..)
                                , Bool32(..)
                                , Flags(..)
                                , StructureType(..)
                                )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
-import Foreign.C.Types( CFloat(..)
-                      , CChar(..)
-                      )
 
 -- ** createDevice
 foreign import ccall "vkCreateDevice" createDevice ::

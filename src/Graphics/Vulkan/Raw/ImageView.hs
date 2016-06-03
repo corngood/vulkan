@@ -4,30 +4,20 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.ImageView where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Data.Word( Word64(..)
-                )
-import Foreign.Ptr( Ptr(..)
-                  , plusPtr
-                  )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import Data.Int( Int32
-               )
-import Data.Bits( Bits
-                , FiniteBits
-                )
 import Foreign.Storable( Storable(..)
                        )
 import Graphics.Vulkan.Raw.Image( ImageSubresourceRange(..)
                                 , Image(..)
                                 )
+import Foreign.Ptr( Ptr(..)
+                  , plusPtr
+                  )
+import Data.Word( Word64(..)
+                )
 import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -40,6 +30,16 @@ import Graphics.Vulkan.Raw.Core( Format(..)
                                , Flags(..)
                                , StructureType(..)
                                )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32
+               )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
 

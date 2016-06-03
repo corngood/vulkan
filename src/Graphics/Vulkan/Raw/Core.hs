@@ -4,21 +4,15 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.Core where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
+import Foreign.Storable( Storable(..)
+                       )
+import Foreign.Ptr( plusPtr
+                  )
 import Data.Word( Word64(..)
                 , Word32(..)
                 )
-import Foreign.Ptr( plusPtr
-                  )
-import Data.Int( Int32(..)
-               , Int32
-               )
-import Foreign.Storable( Storable(..)
-                       )
+import Foreign.C.Types( CFloat(..)
+                      )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -26,8 +20,14 @@ import Text.ParserCombinators.ReadPrec( prec
                                       , (+++)
                                       , step
                                       )
-import Foreign.C.Types( CFloat(..)
-                      )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32(..)
+               , Int32
+               )
+import GHC.Read( expectP
+               , choose
+               )
 
 newtype DeviceSize = DeviceSize Word64
   deriving (Eq, Ord, Storable)

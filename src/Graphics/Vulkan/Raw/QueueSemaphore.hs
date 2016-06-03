@@ -3,24 +3,24 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.QueueSemaphore where
 
-import Data.Word( Word64(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import Data.Bits( Bits
-                , FiniteBits
+import Data.Word( Word64(..)
                 )
-import Foreign.Storable( Storable(..)
-                       )
 import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
 import Graphics.Vulkan.Raw.Core( Result(..)
                                , Flags(..)
                                , StructureType(..)
                                )
+import Data.Bits( Bits
+                , FiniteBits
+                )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
 

@@ -3,24 +3,17 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.KHR.Swapchain where
 
-import Graphics.Vulkan.Raw.Queue( Queue(..)
-                                )
-import Data.Word( Word64(..)
-                , Word32(..)
-                )
-import Foreign.Ptr( Ptr(..)
-                  , plusPtr
-                  )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import Data.Bits( Bits
-                , FiniteBits
-                )
 import Foreign.Storable( Storable(..)
                        )
 import Graphics.Vulkan.Raw.Image( ImageUsageFlags(..)
                                 , Image(..)
                                 )
+import Foreign.Ptr( Ptr(..)
+                  , plusPtr
+                  )
+import Data.Word( Word64(..)
+                , Word32(..)
+                )
 import Data.Void( Void(..)
                 )
 import Graphics.Vulkan.Raw.KHR.Surface( SurfaceTransformFlags(..)
@@ -31,6 +24,8 @@ import Graphics.Vulkan.Raw.KHR.Surface( SurfaceTransformFlags(..)
                                       )
 import Graphics.Vulkan.Raw.QueueSemaphore( Semaphore(..)
                                          )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
 import Graphics.Vulkan.Raw.Core( Format(..)
                                , Result(..)
                                , Extent2D(..)
@@ -40,6 +35,11 @@ import Graphics.Vulkan.Raw.Core( Format(..)
                                , StructureType(..)
                                )
 import Graphics.Vulkan.Raw.Fence( Fence(..)
+                                )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import Graphics.Vulkan.Raw.Queue( Queue(..)
                                 )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )

@@ -5,35 +5,30 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.Pipeline where
 
-import Data.Vector.Storable.Sized( Vector(..)
-                                 )
-import Graphics.Vulkan.Raw.PipelineCache( PipelineCache(..)
-                                        )
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
-import Data.Word( Word64(..)
-                , Word32(..)
-                )
+import Foreign.Storable( Storable(..)
+                       )
 import Foreign.Ptr( Ptr(..)
                   , plusPtr
                   )
-import Graphics.Vulkan.Raw.Device( Device(..)
-                                 )
-import {-# SOURCE #-} Graphics.Vulkan.Raw.Pass( RenderPass(..)
-                                              )
-import Data.Int( Int32(..)
-               , Int32
-               )
-import Data.Bits( Bits
-                , FiniteBits
+import Data.Word( Word64(..)
+                , Word32(..)
                 )
-import Foreign.Storable( Storable(..)
-                       )
+import Graphics.Vulkan.Raw.PipelineLayout( PipelineLayout(..)
+                                         )
 import Data.Void( Void(..)
                 )
+import Graphics.Vulkan.Raw.Device( Device(..)
+                                 )
+import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
+                                  , CompareOp(..)
+                                  )
+import Graphics.Vulkan.Raw.Shader( ShaderModule(..)
+                                 , ShaderStageFlags(..)
+                                 )
+import Foreign.C.Types( CFloat(..)
+                      , CChar(..)
+                      , CSize(..)
+                      )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -41,6 +36,10 @@ import Text.ParserCombinators.ReadPrec( prec
                                       , (+++)
                                       , step
                                       )
+import {-# SOURCE #-} Graphics.Vulkan.Raw.Pass( RenderPass(..)
+                                              )
+import Data.Vector.Storable.Sized( Vector(..)
+                                 )
 import Graphics.Vulkan.Raw.Core( Format(..)
                                , Result(..)
                                , Bool32(..)
@@ -49,20 +48,21 @@ import Graphics.Vulkan.Raw.Core( Format(..)
                                , Viewport(..)
                                , StructureType(..)
                                )
+import Graphics.Vulkan.Raw.PipelineCache( PipelineCache(..)
+                                        )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32(..)
+               , Int32
+               )
+import Data.Bits( Bits
+                , FiniteBits
+                )
+import GHC.Read( expectP
+               , choose
+               )
 import Graphics.Vulkan.Raw.Memory( AllocationCallbacks(..)
                                  )
-import Graphics.Vulkan.Raw.PipelineLayout( PipelineLayout(..)
-                                         )
-import Graphics.Vulkan.Raw.Shader( ShaderModule(..)
-                                 , ShaderStageFlags(..)
-                                 )
-import Foreign.C.Types( CFloat(..)
-                      , CChar(..)
-                      , CSize(..)
-                      )
-import Graphics.Vulkan.Raw.Sampler( SampleCountFlags(..)
-                                  , CompareOp(..)
-                                  )
 
 
 data PipelineTessellationStateCreateInfo =

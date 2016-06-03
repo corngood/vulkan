@@ -3,18 +3,11 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Graphics.Vulkan.Raw.Constants where
 
-import Text.Read.Lex( Lexeme(Ident)
-                    )
-import GHC.Read( expectP
-               , choose
-               )
+import Foreign.Storable( Storable(..)
+                       )
 import Data.Word( Word64
                 , Word32
                 )
-import Data.Int( Int32
-               )
-import Foreign.Storable( Storable(..)
-                       )
 import Text.Read( Read(..)
                 , parens
                 )
@@ -22,6 +15,13 @@ import Text.ParserCombinators.ReadPrec( prec
                                       , (+++)
                                       , step
                                       )
+import Text.Read.Lex( Lexeme(Ident)
+                    )
+import Data.Int( Int32
+               )
+import GHC.Read( expectP
+               , choose
+               )
 
 
 pattern SubpassExternal = 0xffffffff :: Word32
