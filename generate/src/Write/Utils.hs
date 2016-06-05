@@ -126,10 +126,13 @@ getModuleBaseName :: ModuleName -> String
 getModuleBaseName (ModuleName moduleName) =
   last . splitOn "." $ moduleName
 
+rawModuleBase :: String
+rawModuleBase = "Graphics.Vulkan.Raw"
+
 -- | Create a module name from a section name
 sectionNameToModuleName :: String -> ModuleName
 sectionNameToModuleName sectionName =
-    ModuleName ("Graphics.Vulkan." ++ baseName)
+    ModuleName (rawModuleBase ++ "." ++ baseName)
   where baseName = sectionNameToModuleBaseName sectionName
 
 sectionNameToModuleBaseName :: String -> String
@@ -143,7 +146,7 @@ sectionNameToModuleBaseName sectionName = pascalCase moduleNameSpaces
 extensionNameToModuleName :: String -> ModuleName
 extensionNameToModuleName extensionName
   | "VK":category:n:ns <- splitOn "_" extensionName
-  = ModuleName $ "Graphics.Vulkan." ++
+  = ModuleName $ rawModuleBase ++ "." ++
                  pascalCase category ++ "." ++
                  pascalCase (unwords (n:ns))
   | otherwise

@@ -34,8 +34,8 @@ writeSpecModules root spec = do
   traverse_ (createModuleDirectory root) (fst <$> modules)
   mapM_ (uncurry (writeModuleFile root)) modules
   writeHsBootFiles root graph locations
-  writeModuleFile root (ModuleName "Graphics.Vulkan")
-                       (writeParentModule moduleNames)
+  writeModuleFile root (ModuleName "Graphics.Vulkan.Raw")
+                       (writeParentModule $ fst <$> modules)
 
 writeModuleFile :: FilePath -> ModuleName -> String -> IO ()
 writeModuleFile root moduleName =
@@ -48,9 +48,8 @@ writeParentModule :: [ModuleName] -> String
 writeParentModule names = show moduleDoc
   where nameStrings = fmap fromString . sort . fmap unModuleName $ names
         moduleDoc :: Doc
-        moduleDoc = [qc|module Graphics.Vulkan
+        moduleDoc = [qc|module Graphics.Vulkan.Raw
   ( {indent (-2) . vcat $ intercalatePrepend (fromString ",") ((fromString "module" <+>) <$> nameStrings)}
   ) where
 
 {vcat $ (fromString "import" <+>) <$> nameStrings}|]
-
