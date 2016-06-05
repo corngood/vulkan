@@ -53,11 +53,11 @@ import Foreign.C.Types( CSize(..)
 
 
 data VkDisplayPresentInfoKHR =
-  VkDisplayPresentInfoKHR{ vkSType :: VkStructureType 
-                         , vkPNext :: Ptr Void 
-                         , vkSrcRect :: VkRect2D 
-                         , vkDstRect :: VkRect2D 
-                         , vkPersistent :: VkBool32 
+  VkDisplayPresentInfoKHR{ vkSType :: VkStructureType
+                         , vkPNext :: Ptr Void
+                         , vkSrcRect :: VkRect2D
+                         , vkDstRect :: VkRect2D
+                         , vkPersistent :: VkBool32
                          }
   deriving (Eq, Ord, Show)
 

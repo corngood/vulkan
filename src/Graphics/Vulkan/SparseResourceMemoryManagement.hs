@@ -67,11 +67,11 @@ import Graphics.Vulkan.Core( VkExtent3D(..)
 
 
 data VkSparseImageMemoryRequirements =
-  VkSparseImageMemoryRequirements{ vkFormatProperties :: VkSparseImageFormatProperties 
-                                 , vkImageMipTailFirstLod :: Word32 
-                                 , vkImageMipTailSize :: VkDeviceSize 
-                                 , vkImageMipTailOffset :: VkDeviceSize 
-                                 , vkImageMipTailStride :: VkDeviceSize 
+  VkSparseImageMemoryRequirements{ vkFormatProperties :: VkSparseImageFormatProperties
+                                 , vkImageMipTailFirstLod :: Word32
+                                 , vkImageMipTailSize :: VkDeviceSize
+                                 , vkImageMipTailOffset :: VkDeviceSize
+                                 , vkImageMipTailStride :: VkDeviceSize
                                  }
   deriving (Eq, Ord, Show)
 
@@ -92,11 +92,11 @@ instance Storable VkSparseImageMemoryRequirements where
 
 
 data VkSparseMemoryBind =
-  VkSparseMemoryBind{ vkResourceOffset :: VkDeviceSize 
-                    , vkSize :: VkDeviceSize 
-                    , vkMemory :: VkDeviceMemory 
-                    , vkMemoryOffset :: VkDeviceSize 
-                    , vkFlags :: VkSparseMemoryBindFlags 
+  VkSparseMemoryBind{ vkResourceOffset :: VkDeviceSize
+                    , vkSize :: VkDeviceSize
+                    , vkMemory :: VkDeviceMemory
+                    , vkMemoryOffset :: VkDeviceSize
+                    , vkFlags :: VkSparseMemoryBindFlags
                     }
   deriving (Eq, Ord, Show)
 
@@ -117,12 +117,12 @@ instance Storable VkSparseMemoryBind where
 
 
 data VkSparseImageMemoryBind =
-  VkSparseImageMemoryBind{ vkSubresource :: VkImageSubresource 
-                         , vkOffset :: VkOffset3D 
-                         , vkExtent :: VkExtent3D 
-                         , vkMemory :: VkDeviceMemory 
-                         , vkMemoryOffset :: VkDeviceSize 
-                         , vkFlags :: VkSparseMemoryBindFlags 
+  VkSparseImageMemoryBind{ vkSubresource :: VkImageSubresource
+                         , vkOffset :: VkOffset3D
+                         , vkExtent :: VkExtent3D
+                         , vkMemory :: VkDeviceMemory
+                         , vkMemoryOffset :: VkDeviceSize
+                         , vkFlags :: VkSparseMemoryBindFlags
                          }
   deriving (Eq, Ord, Show)
 
@@ -145,9 +145,9 @@ instance Storable VkSparseImageMemoryBind where
 
 
 data VkSparseImageMemoryBindInfo =
-  VkSparseImageMemoryBindInfo{ vkImage :: VkImage 
-                             , vkBindCount :: Word32 
-                             , vkPBinds :: Ptr VkSparseImageMemoryBind 
+  VkSparseImageMemoryBindInfo{ vkImage :: VkImage
+                             , vkBindCount :: Word32
+                             , vkPBinds :: Ptr VkSparseImageMemoryBind
                              }
   deriving (Eq, Ord, Show)
 
@@ -174,18 +174,18 @@ foreign import ccall "vkQueueBindSparse" vkQueueBindSparse ::
 
 
 data VkBindSparseInfo =
-  VkBindSparseInfo{ vkSType :: VkStructureType 
-                  , vkPNext :: Ptr Void 
-                  , vkWaitSemaphoreCount :: Word32 
-                  , vkPWaitSemaphores :: Ptr VkSemaphore 
-                  , vkBufferBindCount :: Word32 
-                  , vkPBufferBinds :: Ptr VkSparseBufferMemoryBindInfo 
-                  , vkImageOpaqueBindCount :: Word32 
-                  , vkPImageOpaqueBinds :: Ptr VkSparseImageOpaqueMemoryBindInfo 
-                  , vkImageBindCount :: Word32 
-                  , vkPImageBinds :: Ptr VkSparseImageMemoryBindInfo 
-                  , vkSignalSemaphoreCount :: Word32 
-                  , vkPSignalSemaphores :: Ptr VkSemaphore 
+  VkBindSparseInfo{ vkSType :: VkStructureType
+                  , vkPNext :: Ptr Void
+                  , vkWaitSemaphoreCount :: Word32
+                  , vkPWaitSemaphores :: Ptr VkSemaphore
+                  , vkBufferBindCount :: Word32
+                  , vkPBufferBinds :: Ptr VkSparseBufferMemoryBindInfo
+                  , vkImageOpaqueBindCount :: Word32
+                  , vkPImageOpaqueBinds :: Ptr VkSparseImageOpaqueMemoryBindInfo
+                  , vkImageBindCount :: Word32
+                  , vkPImageBinds :: Ptr VkSparseImageMemoryBindInfo
+                  , vkSignalSemaphoreCount :: Word32
+                  , vkPSignalSemaphores :: Ptr VkSemaphore
                   }
   deriving (Eq, Ord, Show)
 
@@ -220,9 +220,9 @@ instance Storable VkBindSparseInfo where
 
 
 data VkSparseBufferMemoryBindInfo =
-  VkSparseBufferMemoryBindInfo{ vkBuffer :: VkBuffer 
-                              , vkBindCount :: Word32 
-                              , vkPBinds :: Ptr VkSparseMemoryBind 
+  VkSparseBufferMemoryBindInfo{ vkBuffer :: VkBuffer
+                              , vkBindCount :: Word32
+                              , vkPBinds :: Ptr VkSparseMemoryBind
                               }
   deriving (Eq, Ord, Show)
 
@@ -311,9 +311,9 @@ pattern VK_SPARSE_MEMORY_BIND_METADATA_BIT = VkSparseMemoryBindFlagBits 0x1
 
 
 data VkSparseImageOpaqueMemoryBindInfo =
-  VkSparseImageOpaqueMemoryBindInfo{ vkImage :: VkImage 
-                                   , vkBindCount :: Word32 
-                                   , vkPBinds :: Ptr VkSparseMemoryBind 
+  VkSparseImageOpaqueMemoryBindInfo{ vkImage :: VkImage
+                                   , vkBindCount :: Word32
+                                   , vkPBinds :: Ptr VkSparseMemoryBind
                                    }
   deriving (Eq, Ord, Show)
 
@@ -330,9 +330,9 @@ instance Storable VkSparseImageOpaqueMemoryBindInfo where
 
 
 data VkSparseImageFormatProperties =
-  VkSparseImageFormatProperties{ vkAspectMask :: VkImageAspectFlags 
-                               , vkImageGranularity :: VkExtent3D 
-                               , vkFlags :: VkSparseImageFormatFlags 
+  VkSparseImageFormatProperties{ vkAspectMask :: VkImageAspectFlags
+                               , vkImageGranularity :: VkExtent3D
+                               , vkFlags :: VkSparseImageFormatFlags
                                }
   deriving (Eq, Ord, Show)
 

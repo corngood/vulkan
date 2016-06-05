@@ -40,9 +40,9 @@ foreign import ccall "vkDestroyEvent" vkDestroyEvent ::
 
 
 data VkEventCreateInfo =
-  VkEventCreateInfo{ vkSType :: VkStructureType 
-                   , vkPNext :: Ptr Void 
-                   , vkFlags :: VkEventCreateFlags 
+  VkEventCreateInfo{ vkSType :: VkStructureType
+                   , vkPNext :: Ptr Void
+                   , vkFlags :: VkEventCreateFlags
                    }
   deriving (Eq, Ord, Show)
 

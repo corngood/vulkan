@@ -56,24 +56,24 @@ import Foreign.C.Types( CSize(..)
 
 
 data VkSwapchainCreateInfoKHR =
-  VkSwapchainCreateInfoKHR{ vkSType :: VkStructureType 
-                          , vkPNext :: Ptr Void 
-                          , vkFlags :: VkSwapchainCreateFlagsKHR 
-                          , vkSurface :: VkSurfaceKHR 
-                          , vkMinImageCount :: Word32 
-                          , vkImageFormat :: VkFormat 
-                          , vkImageColorSpace :: VkColorSpaceKHR 
-                          , vkImageExtent :: VkExtent2D 
-                          , vkImageArrayLayers :: Word32 
-                          , vkImageUsage :: VkImageUsageFlags 
-                          , vkImageSharingMode :: VkSharingMode 
-                          , vkQueueFamilyIndexCount :: Word32 
-                          , vkPQueueFamilyIndices :: Ptr Word32 
-                          , vkPreTransform :: VkSurfaceTransformFlagBitsKHR 
-                          , vkCompositeAlpha :: VkCompositeAlphaFlagBitsKHR 
-                          , vkPresentMode :: VkPresentModeKHR 
-                          , vkClipped :: VkBool32 
-                          , vkOldSwapchain :: VkSwapchainKHR 
+  VkSwapchainCreateInfoKHR{ vkSType :: VkStructureType
+                          , vkPNext :: Ptr Void
+                          , vkFlags :: VkSwapchainCreateFlagsKHR
+                          , vkSurface :: VkSurfaceKHR
+                          , vkMinImageCount :: Word32
+                          , vkImageFormat :: VkFormat
+                          , vkImageColorSpace :: VkColorSpaceKHR
+                          , vkImageExtent :: VkExtent2D
+                          , vkImageArrayLayers :: Word32
+                          , vkImageUsage :: VkImageUsageFlags
+                          , vkImageSharingMode :: VkSharingMode
+                          , vkQueueFamilyIndexCount :: Word32
+                          , vkPQueueFamilyIndices :: Ptr Word32
+                          , vkPreTransform :: VkSurfaceTransformFlagBitsKHR
+                          , vkCompositeAlpha :: VkCompositeAlphaFlagBitsKHR
+                          , vkPresentMode :: VkPresentModeKHR
+                          , vkClipped :: VkBool32
+                          , vkOldSwapchain :: VkSwapchainKHR
                           }
   deriving (Eq, Ord, Show)
 
@@ -150,14 +150,14 @@ foreign import ccall "vkAcquireNextImageKHR" vkAcquireNextImageKHR ::
 
 
 data VkPresentInfoKHR =
-  VkPresentInfoKHR{ vkSType :: VkStructureType 
-                  , vkPNext :: Ptr Void 
-                  , vkWaitSemaphoreCount :: Word32 
-                  , vkPWaitSemaphores :: Ptr VkSemaphore 
-                  , vkSwapchainCount :: Word32 
-                  , vkPSwapchains :: Ptr VkSwapchainKHR 
-                  , vkPImageIndices :: Ptr Word32 
-                  , vkPResults :: Ptr VkResult 
+  VkPresentInfoKHR{ vkSType :: VkStructureType
+                  , vkPNext :: Ptr Void
+                  , vkWaitSemaphoreCount :: Word32
+                  , vkPWaitSemaphores :: Ptr VkSemaphore
+                  , vkSwapchainCount :: Word32
+                  , vkPSwapchains :: Ptr VkSwapchainKHR
+                  , vkPImageIndices :: Ptr Word32
+                  , vkPResults :: Ptr VkResult
                   }
   deriving (Eq, Ord, Show)
 

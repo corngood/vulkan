@@ -794,8 +794,8 @@ type VkFlags = Word32
 
 
 data VkExtent2D =
-  VkExtent2D{ vkWidth :: Word32 
-            , vkHeight :: Word32 
+  VkExtent2D{ vkWidth :: Word32
+            , vkHeight :: Word32
             }
   deriving (Eq, Ord, Show)
 
@@ -1053,8 +1053,8 @@ newtype VkBool32 = VkBool32 Word32
 
 
 data VkOffset2D =
-  VkOffset2D{ vkX :: Int32 
-            , vkY :: Int32 
+  VkOffset2D{ vkX :: Int32
+            , vkY :: Int32
             }
   deriving (Eq, Ord, Show)
 
@@ -1069,9 +1069,9 @@ instance Storable VkOffset2D where
 
 
 data VkOffset3D =
-  VkOffset3D{ vkX :: Int32 
-            , vkY :: Int32 
-            , vkZ :: Int32 
+  VkOffset3D{ vkX :: Int32
+            , vkY :: Int32
+            , vkZ :: Int32
             }
   deriving (Eq, Ord, Show)
 
@@ -1088,9 +1088,9 @@ instance Storable VkOffset3D where
 
 
 data VkExtent3D =
-  VkExtent3D{ vkWidth :: Word32 
-            , vkHeight :: Word32 
-            , vkDepth :: Word32 
+  VkExtent3D{ vkWidth :: Word32
+            , vkHeight :: Word32
+            , vkDepth :: Word32
             }
   deriving (Eq, Ord, Show)
 
@@ -1107,8 +1107,8 @@ instance Storable VkExtent3D where
 
 
 data VkRect3D =
-  VkRect3D{ vkOffset :: VkOffset3D 
-          , vkExtent :: VkExtent3D 
+  VkRect3D{ vkOffset :: VkOffset3D
+          , vkExtent :: VkExtent3D
           }
   deriving (Eq, Ord, Show)
 
@@ -1209,12 +1209,12 @@ pattern VK_ERROR_FORMAT_NOT_SUPPORTED = VkResult (-11)
 
 
 data VkViewport =
-  VkViewport{ vkX :: CFloat 
-            , vkY :: CFloat 
-            , vkWidth :: CFloat 
-            , vkHeight :: CFloat 
-            , vkMinDepth :: CFloat 
-            , vkMaxDepth :: CFloat 
+  VkViewport{ vkX :: CFloat
+            , vkY :: CFloat
+            , vkWidth :: CFloat
+            , vkHeight :: CFloat
+            , vkMinDepth :: CFloat
+            , vkMaxDepth :: CFloat
             }
   deriving (Eq, Ord, Show)
 
@@ -1237,8 +1237,8 @@ instance Storable VkViewport where
 
 
 data VkRect2D =
-  VkRect2D{ vkOffset :: VkOffset2D 
-          , vkExtent :: VkExtent2D 
+  VkRect2D{ vkOffset :: VkOffset2D
+          , vkExtent :: VkExtent2D
           }
   deriving (Eq, Ord, Show)
 

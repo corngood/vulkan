@@ -49,13 +49,13 @@ newtype VkBufferView = VkBufferView Word64
 
 
 data VkBufferViewCreateInfo =
-  VkBufferViewCreateInfo{ vkSType :: VkStructureType 
-                        , vkPNext :: Ptr Void 
-                        , vkFlags :: VkBufferViewCreateFlags 
-                        , vkBuffer :: VkBuffer 
-                        , vkFormat :: VkFormat 
-                        , vkOffset :: VkDeviceSize 
-                        , vkRange :: VkDeviceSize 
+  VkBufferViewCreateInfo{ vkSType :: VkStructureType
+                        , vkPNext :: Ptr Void
+                        , vkFlags :: VkBufferViewCreateFlags
+                        , vkBuffer :: VkBuffer
+                        , vkFormat :: VkFormat
+                        , vkOffset :: VkDeviceSize
+                        , vkRange :: VkDeviceSize
                         }
   deriving (Eq, Ord, Show)
 

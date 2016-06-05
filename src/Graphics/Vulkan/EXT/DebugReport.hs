@@ -226,11 +226,11 @@ pattern VK_DEBUG_REPORT_ERROR_CALLBACK_REF_EXT = VkDebugReportErrorEXT 1
 
 
 data VkDebugReportCallbackCreateInfoEXT =
-  VkDebugReportCallbackCreateInfoEXT{ vkSType :: VkStructureType 
-                                    , vkPNext :: Ptr Void 
-                                    , vkFlags :: VkDebugReportFlagsEXT 
-                                    , vkPfnCallback :: PFN_vkDebugReportCallbackEXT 
-                                    , vkPUserData :: Ptr Void 
+  VkDebugReportCallbackCreateInfoEXT{ vkSType :: VkStructureType
+                                    , vkPNext :: Ptr Void
+                                    , vkFlags :: VkDebugReportFlagsEXT
+                                    , vkPfnCallback :: PFN_vkDebugReportCallbackEXT
+                                    , vkPUserData :: Ptr Void
                                     }
   deriving (Eq, Ord, Show)
 

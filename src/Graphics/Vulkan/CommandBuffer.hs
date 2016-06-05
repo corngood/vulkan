@@ -127,10 +127,10 @@ pattern VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT = VkCommandBufferUsageFlagB
 
 
 data VkCommandBufferBeginInfo =
-  VkCommandBufferBeginInfo{ vkSType :: VkStructureType 
-                          , vkPNext :: Ptr Void 
-                          , vkFlags :: VkCommandBufferUsageFlags 
-                          , vkPInheritanceInfo :: Ptr VkCommandBufferInheritanceInfo 
+  VkCommandBufferBeginInfo{ vkSType :: VkStructureType
+                          , vkPNext :: Ptr Void
+                          , vkFlags :: VkCommandBufferUsageFlags
+                          , vkPInheritanceInfo :: Ptr VkCommandBufferInheritanceInfo
                           }
   deriving (Eq, Ord, Show)
 
@@ -149,14 +149,14 @@ instance Storable VkCommandBufferBeginInfo where
 
 
 data VkCommandBufferInheritanceInfo =
-  VkCommandBufferInheritanceInfo{ vkSType :: VkStructureType 
-                                , vkPNext :: Ptr Void 
-                                , vkRenderPass :: VkRenderPass 
-                                , vkSubpass :: Word32 
-                                , vkFramebuffer :: VkFramebuffer 
-                                , vkOcclusionQueryEnable :: VkBool32 
-                                , vkQueryFlags :: VkQueryControlFlags 
-                                , vkPipelineStatistics :: VkQueryPipelineStatisticFlags 
+  VkCommandBufferInheritanceInfo{ vkSType :: VkStructureType
+                                , vkPNext :: Ptr Void
+                                , vkRenderPass :: VkRenderPass
+                                , vkSubpass :: Word32
+                                , vkFramebuffer :: VkFramebuffer
+                                , vkOcclusionQueryEnable :: VkBool32
+                                , vkQueryFlags :: VkQueryControlFlags
+                                , vkPipelineStatistics :: VkQueryPipelineStatisticFlags
                                 }
   deriving (Eq, Ord, Show)
 
@@ -221,11 +221,11 @@ foreign import ccall "vkBeginCommandBuffer" vkBeginCommandBuffer ::
 
 
 data VkCommandBufferAllocateInfo =
-  VkCommandBufferAllocateInfo{ vkSType :: VkStructureType 
-                             , vkPNext :: Ptr Void 
-                             , vkCommandPool :: VkCommandPool 
-                             , vkLevel :: VkCommandBufferLevel 
-                             , vkCommandBufferCount :: Word32 
+  VkCommandBufferAllocateInfo{ vkSType :: VkStructureType
+                             , vkPNext :: Ptr Void
+                             , vkCommandPool :: VkCommandPool
+                             , vkLevel :: VkCommandBufferLevel
+                             , vkCommandBufferCount :: Word32
                              }
   deriving (Eq, Ord, Show)
 

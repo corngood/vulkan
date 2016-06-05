@@ -48,9 +48,9 @@ newtype VkSemaphore = VkSemaphore Word64
 
 
 data VkSemaphoreCreateInfo =
-  VkSemaphoreCreateInfo{ vkSType :: VkStructureType 
-                       , vkPNext :: Ptr Void 
-                       , vkFlags :: VkSemaphoreCreateFlags 
+  VkSemaphoreCreateInfo{ vkSType :: VkStructureType
+                       , vkPNext :: Ptr Void
+                       , vkFlags :: VkSemaphoreCreateFlags
                        }
   deriving (Eq, Ord, Show)
 

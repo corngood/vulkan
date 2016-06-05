@@ -84,9 +84,9 @@ foreign import ccall "vkAllocateDescriptorSets" vkAllocateDescriptorSets ::
 
 
 data VkDescriptorBufferInfo =
-  VkDescriptorBufferInfo{ vkBuffer :: VkBuffer 
-                        , vkOffset :: VkDeviceSize 
-                        , vkRange :: VkDeviceSize 
+  VkDescriptorBufferInfo{ vkBuffer :: VkBuffer
+                        , vkOffset :: VkDeviceSize
+                        , vkRange :: VkDeviceSize
                         }
   deriving (Eq, Ord, Show)
 
@@ -103,9 +103,9 @@ instance Storable VkDescriptorBufferInfo where
 
 
 data VkDescriptorImageInfo =
-  VkDescriptorImageInfo{ vkSampler :: VkSampler 
-                       , vkImageView :: VkImageView 
-                       , vkImageLayout :: VkImageLayout 
+  VkDescriptorImageInfo{ vkSampler :: VkSampler
+                       , vkImageView :: VkImageView
+                       , vkImageLayout :: VkImageLayout
                        }
   deriving (Eq, Ord, Show)
 
@@ -122,15 +122,15 @@ instance Storable VkDescriptorImageInfo where
 
 
 data VkCopyDescriptorSet =
-  VkCopyDescriptorSet{ vkSType :: VkStructureType 
-                     , vkPNext :: Ptr Void 
-                     , vkSrcSet :: VkDescriptorSet 
-                     , vkSrcBinding :: Word32 
-                     , vkSrcArrayElement :: Word32 
-                     , vkDstSet :: VkDescriptorSet 
-                     , vkDstBinding :: Word32 
-                     , vkDstArrayElement :: Word32 
-                     , vkDescriptorCount :: Word32 
+  VkCopyDescriptorSet{ vkSType :: VkStructureType
+                     , vkPNext :: Ptr Void
+                     , vkSrcSet :: VkDescriptorSet
+                     , vkSrcBinding :: Word32
+                     , vkSrcArrayElement :: Word32
+                     , vkDstSet :: VkDescriptorSet
+                     , vkDstBinding :: Word32
+                     , vkDstArrayElement :: Word32
+                     , vkDescriptorCount :: Word32
                      }
   deriving (Eq, Ord, Show)
 
@@ -186,12 +186,12 @@ foreign import ccall "vkFreeDescriptorSets" vkFreeDescriptorSets ::
 
 
 data VkDescriptorPoolCreateInfo =
-  VkDescriptorPoolCreateInfo{ vkSType :: VkStructureType 
-                            , vkPNext :: Ptr Void 
-                            , vkFlags :: VkDescriptorPoolCreateFlags 
-                            , vkMaxSets :: Word32 
-                            , vkPoolSizeCount :: Word32 
-                            , vkPPoolSizes :: Ptr VkDescriptorPoolSize 
+  VkDescriptorPoolCreateInfo{ vkSType :: VkStructureType
+                            , vkPNext :: Ptr Void
+                            , vkFlags :: VkDescriptorPoolCreateFlags
+                            , vkMaxSets :: Word32
+                            , vkPoolSizeCount :: Word32
+                            , vkPPoolSizes :: Ptr VkDescriptorPoolSize
                             }
   deriving (Eq, Ord, Show)
 
@@ -219,11 +219,11 @@ newtype VkDescriptorSetLayoutCreateFlags = VkDescriptorSetLayoutCreateFlags VkFl
 
 
 data VkDescriptorSetLayoutCreateInfo =
-  VkDescriptorSetLayoutCreateInfo{ vkSType :: VkStructureType 
-                                 , vkPNext :: Ptr Void 
-                                 , vkFlags :: VkDescriptorSetLayoutCreateFlags 
-                                 , vkBindingCount :: Word32 
-                                 , vkPBindings :: Ptr VkDescriptorSetLayoutBinding 
+  VkDescriptorSetLayoutCreateInfo{ vkSType :: VkStructureType
+                                 , vkPNext :: Ptr Void
+                                 , vkFlags :: VkDescriptorSetLayoutCreateFlags
+                                 , vkBindingCount :: Word32
+                                 , vkPBindings :: Ptr VkDescriptorSetLayoutBinding
                                  }
   deriving (Eq, Ord, Show)
 
@@ -271,8 +271,8 @@ pattern VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT = VkDescriptorPoolCrea
 
 
 data VkDescriptorPoolSize =
-  VkDescriptorPoolSize{ vkType :: VkDescriptorType 
-                      , vkDescriptorCount :: Word32 
+  VkDescriptorPoolSize{ vkType :: VkDescriptorType
+                      , vkDescriptorCount :: Word32
                       }
   deriving (Eq, Ord, Show)
 
@@ -290,16 +290,16 @@ newtype VkDescriptorSet = VkDescriptorSet Word64
 
 
 data VkWriteDescriptorSet =
-  VkWriteDescriptorSet{ vkSType :: VkStructureType 
-                      , vkPNext :: Ptr Void 
-                      , vkDstSet :: VkDescriptorSet 
-                      , vkDstBinding :: Word32 
-                      , vkDstArrayElement :: Word32 
-                      , vkDescriptorCount :: Word32 
-                      , vkDescriptorType :: VkDescriptorType 
-                      , vkPImageInfo :: Ptr VkDescriptorImageInfo 
-                      , vkPBufferInfo :: Ptr VkDescriptorBufferInfo 
-                      , vkPTexelBufferView :: Ptr VkBufferView 
+  VkWriteDescriptorSet{ vkSType :: VkStructureType
+                      , vkPNext :: Ptr Void
+                      , vkDstSet :: VkDescriptorSet
+                      , vkDstBinding :: Word32
+                      , vkDstArrayElement :: Word32
+                      , vkDescriptorCount :: Word32
+                      , vkDescriptorType :: VkDescriptorType
+                      , vkPImageInfo :: Ptr VkDescriptorImageInfo
+                      , vkPBufferInfo :: Ptr VkDescriptorBufferInfo
+                      , vkPTexelBufferView :: Ptr VkBufferView
                       }
   deriving (Eq, Ord, Show)
 
@@ -341,11 +341,11 @@ foreign import ccall "vkDestroyDescriptorSetLayout" vkDestroyDescriptorSetLayout
 
 
 data VkDescriptorSetLayoutBinding =
-  VkDescriptorSetLayoutBinding{ vkBinding :: Word32 
-                              , vkDescriptorType :: VkDescriptorType 
-                              , vkDescriptorCount :: Word32 
-                              , vkStageFlags :: VkShaderStageFlags 
-                              , vkPImmutableSamplers :: Ptr VkSampler 
+  VkDescriptorSetLayoutBinding{ vkBinding :: Word32
+                              , vkDescriptorType :: VkDescriptorType
+                              , vkDescriptorCount :: Word32
+                              , vkStageFlags :: VkShaderStageFlags
+                              , vkPImmutableSamplers :: Ptr VkSampler
                               }
   deriving (Eq, Ord, Show)
 
@@ -428,11 +428,11 @@ pattern VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT = VkDescriptorType 10
 
 
 data VkDescriptorSetAllocateInfo =
-  VkDescriptorSetAllocateInfo{ vkSType :: VkStructureType 
-                             , vkPNext :: Ptr Void 
-                             , vkDescriptorPool :: VkDescriptorPool 
-                             , vkDescriptorSetCount :: Word32 
-                             , vkPSetLayouts :: Ptr VkDescriptorSetLayout 
+  VkDescriptorSetAllocateInfo{ vkSType :: VkStructureType
+                             , vkPNext :: Ptr Void
+                             , vkDescriptorPool :: VkDescriptorPool
+                             , vkDescriptorSetCount :: Word32
+                             , vkPSetLayouts :: Ptr VkDescriptorSetLayout
                              }
   deriving (Eq, Ord, Show)
 

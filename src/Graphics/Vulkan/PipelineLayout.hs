@@ -53,9 +53,9 @@ foreign import ccall "vkDestroyPipelineLayout" vkDestroyPipelineLayout ::
 
 
 data VkPushConstantRange =
-  VkPushConstantRange{ vkStageFlags :: VkShaderStageFlags 
-                     , vkOffset :: Word32 
-                     , vkSize :: Word32 
+  VkPushConstantRange{ vkStageFlags :: VkShaderStageFlags
+                     , vkOffset :: Word32
+                     , vkSize :: Word32
                      }
   deriving (Eq, Ord, Show)
 
@@ -72,13 +72,13 @@ instance Storable VkPushConstantRange where
 
 
 data VkPipelineLayoutCreateInfo =
-  VkPipelineLayoutCreateInfo{ vkSType :: VkStructureType 
-                            , vkPNext :: Ptr Void 
-                            , vkFlags :: VkPipelineLayoutCreateFlags 
-                            , vkSetLayoutCount :: Word32 
-                            , vkPSetLayouts :: Ptr VkDescriptorSetLayout 
-                            , vkPushConstantRangeCount :: Word32 
-                            , vkPPushConstantRanges :: Ptr VkPushConstantRange 
+  VkPipelineLayoutCreateInfo{ vkSType :: VkStructureType
+                            , vkPNext :: Ptr Void
+                            , vkFlags :: VkPipelineLayoutCreateFlags
+                            , vkSetLayoutCount :: Word32
+                            , vkPSetLayouts :: Ptr VkDescriptorSetLayout
+                            , vkPushConstantRangeCount :: Word32
+                            , vkPPushConstantRanges :: Ptr VkPushConstantRange
                             }
   deriving (Eq, Ord, Show)
 

@@ -50,11 +50,11 @@ newtype VkPipelineCache = VkPipelineCache Word64
 
 
 data VkPipelineCacheCreateInfo =
-  VkPipelineCacheCreateInfo{ vkSType :: VkStructureType 
-                           , vkPNext :: Ptr Void 
-                           , vkFlags :: VkPipelineCacheCreateFlags 
-                           , vkInitialDataSize :: CSize 
-                           , vkPInitialData :: Ptr Void 
+  VkPipelineCacheCreateInfo{ vkSType :: VkStructureType
+                           , vkPNext :: Ptr Void
+                           , vkFlags :: VkPipelineCacheCreateFlags
+                           , vkInitialDataSize :: CSize
+                           , vkPInitialData :: Ptr Void
                            }
   deriving (Eq, Ord, Show)
 

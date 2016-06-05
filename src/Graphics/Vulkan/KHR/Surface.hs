@@ -150,8 +150,8 @@ foreign import ccall "vkGetPhysicalDeviceSurfaceSupportKHR" vkGetPhysicalDeviceS
 
 
 data VkSurfaceFormatKHR =
-  VkSurfaceFormatKHR{ vkFormat :: VkFormat 
-                    , vkColorSpace :: VkColorSpaceKHR 
+  VkSurfaceFormatKHR{ vkFormat :: VkFormat
+                    , vkColorSpace :: VkColorSpaceKHR
                     }
   deriving (Eq, Ord, Show)
 
@@ -256,16 +256,16 @@ pattern VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR = VkSurfaceTransformFlagBitsKHR 0x1
 
 
 data VkSurfaceCapabilitiesKHR =
-  VkSurfaceCapabilitiesKHR{ vkMinImageCount :: Word32 
-                          , vkMaxImageCount :: Word32 
-                          , vkCurrentExtent :: VkExtent2D 
-                          , vkMinImageExtent :: VkExtent2D 
-                          , vkMaxImageExtent :: VkExtent2D 
-                          , vkMaxImageArrayLayers :: Word32 
-                          , vkSupportedTransforms :: VkSurfaceTransformFlagsKHR 
-                          , vkCurrentTransform :: VkSurfaceTransformFlagBitsKHR 
-                          , vkSupportedCompositeAlpha :: VkCompositeAlphaFlagsKHR 
-                          , vkSupportedUsageFlags :: VkImageUsageFlags 
+  VkSurfaceCapabilitiesKHR{ vkMinImageCount :: Word32
+                          , vkMaxImageCount :: Word32
+                          , vkCurrentExtent :: VkExtent2D
+                          , vkMinImageExtent :: VkExtent2D
+                          , vkMaxImageExtent :: VkExtent2D
+                          , vkMaxImageArrayLayers :: Word32
+                          , vkSupportedTransforms :: VkSurfaceTransformFlagsKHR
+                          , vkCurrentTransform :: VkSurfaceTransformFlagBitsKHR
+                          , vkSupportedCompositeAlpha :: VkCompositeAlphaFlagsKHR
+                          , vkSupportedUsageFlags :: VkImageUsageFlags
                           }
   deriving (Eq, Ord, Show)
 

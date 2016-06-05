@@ -64,16 +64,16 @@ import Foreign.C.Types( CFloat
 
 
 data VkDisplaySurfaceCreateInfoKHR =
-  VkDisplaySurfaceCreateInfoKHR{ vkSType :: VkStructureType 
-                               , vkPNext :: Ptr Void 
-                               , vkFlags :: VkDisplaySurfaceCreateFlagsKHR 
-                               , vkDisplayMode :: VkDisplayModeKHR 
-                               , vkPlaneIndex :: Word32 
-                               , vkPlaneStackIndex :: Word32 
-                               , vkTransform :: VkSurfaceTransformFlagBitsKHR 
-                               , vkGlobalAlpha :: CFloat 
-                               , vkAlphaMode :: VkDisplayPlaneAlphaFlagBitsKHR 
-                               , vkImageExtent :: VkExtent2D 
+  VkDisplaySurfaceCreateInfoKHR{ vkSType :: VkStructureType
+                               , vkPNext :: Ptr Void
+                               , vkFlags :: VkDisplaySurfaceCreateFlagsKHR
+                               , vkDisplayMode :: VkDisplayModeKHR
+                               , vkPlaneIndex :: Word32
+                               , vkPlaneStackIndex :: Word32
+                               , vkTransform :: VkSurfaceTransformFlagBitsKHR
+                               , vkGlobalAlpha :: CFloat
+                               , vkAlphaMode :: VkDisplayPlaneAlphaFlagBitsKHR
+                               , vkImageExtent :: VkExtent2D
                                }
   deriving (Eq, Ord, Show)
 
@@ -104,15 +104,15 @@ instance Storable VkDisplaySurfaceCreateInfoKHR where
 
 
 data VkDisplayPlaneCapabilitiesKHR =
-  VkDisplayPlaneCapabilitiesKHR{ vkSupportedAlpha :: VkDisplayPlaneAlphaFlagsKHR 
-                               , vkMinSrcPosition :: VkOffset2D 
-                               , vkMaxSrcPosition :: VkOffset2D 
-                               , vkMinSrcExtent :: VkExtent2D 
-                               , vkMaxSrcExtent :: VkExtent2D 
-                               , vkMinDstPosition :: VkOffset2D 
-                               , vkMaxDstPosition :: VkOffset2D 
-                               , vkMinDstExtent :: VkExtent2D 
-                               , vkMaxDstExtent :: VkExtent2D 
+  VkDisplayPlaneCapabilitiesKHR{ vkSupportedAlpha :: VkDisplayPlaneAlphaFlagsKHR
+                               , vkMinSrcPosition :: VkOffset2D
+                               , vkMaxSrcPosition :: VkOffset2D
+                               , vkMinSrcExtent :: VkExtent2D
+                               , vkMaxSrcExtent :: VkExtent2D
+                               , vkMinDstPosition :: VkOffset2D
+                               , vkMaxDstPosition :: VkOffset2D
+                               , vkMinDstExtent :: VkExtent2D
+                               , vkMaxDstExtent :: VkExtent2D
                                }
   deriving (Eq, Ord, Show)
 
@@ -147,13 +147,13 @@ foreign import ccall "vkGetDisplayModePropertiesKHR" vkGetDisplayModePropertiesK
 
 
 data VkDisplayPropertiesKHR =
-  VkDisplayPropertiesKHR{ vkDisplay :: VkDisplayKHR 
-                        , vkDisplayName :: Ptr CChar 
-                        , vkPhysicalDimensions :: VkExtent2D 
-                        , vkPhysicalResolution :: VkExtent2D 
-                        , vkSupportedTransforms :: VkSurfaceTransformFlagsKHR 
-                        , vkPlaneReorderPossible :: VkBool32 
-                        , vkPersistentContent :: VkBool32 
+  VkDisplayPropertiesKHR{ vkDisplay :: VkDisplayKHR
+                        , vkDisplayName :: Ptr CChar
+                        , vkPhysicalDimensions :: VkExtent2D
+                        , vkPhysicalResolution :: VkExtent2D
+                        , vkSupportedTransforms :: VkSurfaceTransformFlagsKHR
+                        , vkPlaneReorderPossible :: VkBool32
+                        , vkPersistentContent :: VkBool32
                         }
   deriving (Eq, Ord, Show)
 
@@ -190,8 +190,8 @@ foreign import ccall "vkCreateDisplayModeKHR" vkCreateDisplayModeKHR ::
 
 
 data VkDisplayPlanePropertiesKHR =
-  VkDisplayPlanePropertiesKHR{ vkCurrentDisplay :: VkDisplayKHR 
-                             , vkCurrentStackIndex :: Word32 
+  VkDisplayPlanePropertiesKHR{ vkCurrentDisplay :: VkDisplayKHR
+                             , vkCurrentStackIndex :: Word32
                              }
   deriving (Eq, Ord, Show)
 
@@ -212,8 +212,8 @@ foreign import ccall "vkGetDisplayPlaneCapabilitiesKHR" vkGetDisplayPlaneCapabil
 
 
 data VkDisplayModePropertiesKHR =
-  VkDisplayModePropertiesKHR{ vkDisplayMode :: VkDisplayModeKHR 
-                            , vkParameters :: VkDisplayModeParametersKHR 
+  VkDisplayModePropertiesKHR{ vkDisplayMode :: VkDisplayModeKHR
+                            , vkParameters :: VkDisplayModeParametersKHR
                             }
   deriving (Eq, Ord, Show)
 
@@ -272,10 +272,10 @@ newtype VkDisplayModeCreateFlagsKHR = VkDisplayModeCreateFlagsKHR VkFlags
 
 
 data VkDisplayModeCreateInfoKHR =
-  VkDisplayModeCreateInfoKHR{ vkSType :: VkStructureType 
-                            , vkPNext :: Ptr Void 
-                            , vkFlags :: VkDisplayModeCreateFlagsKHR 
-                            , vkParameters :: VkDisplayModeParametersKHR 
+  VkDisplayModeCreateInfoKHR{ vkSType :: VkStructureType
+                            , vkPNext :: Ptr Void
+                            , vkFlags :: VkDisplayModeCreateFlagsKHR
+                            , vkParameters :: VkDisplayModeParametersKHR
                             }
   deriving (Eq, Ord, Show)
 
@@ -302,8 +302,8 @@ newtype VkDisplayModeKHR = VkDisplayModeKHR Word64
 
 
 data VkDisplayModeParametersKHR =
-  VkDisplayModeParametersKHR{ vkVisibleRegion :: VkExtent2D 
-                            , vkRefreshRate :: Word32 
+  VkDisplayModeParametersKHR{ vkVisibleRegion :: VkExtent2D
+                            , vkRefreshRate :: Word32
                             }
   deriving (Eq, Ord, Show)
 

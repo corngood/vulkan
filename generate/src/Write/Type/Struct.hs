@@ -66,7 +66,7 @@ writeUnionMember um = do
       constructorComment = fromMaybe "" (smComment um)
   -- Monkey face :)
   constructorTypes <- (:[]) <$> cTypeToHsType (smCType um)
-  pure [qc|{prettyPrint $ ConDecl (Ident constructorName) constructorTypes} {postdocComment constructorComment}|]
+  pure [qc|{prettyPrint $ ConDecl (Ident constructorName) constructorTypes}{postdocComment constructorComment}|]
 
 writeUnionStorableInstance :: TypeEnv -> UnionType -> Doc
 writeUnionStorableInstance env ut
@@ -101,7 +101,7 @@ writeStructMember :: StructMember -> Write Doc
 writeStructMember sm = do
   let memberComment = postdocComment (fromMaybe "" (smComment sm))
   hsType <- cTypeToHsTypeString (smCType sm)
-  pure [qc|{sanitizedName sm} :: {hsType} {memberComment}|]
+  pure [qc|{sanitizedName sm} :: {hsType}{memberComment}|]
 
 -- | The namespace gets super polluted without these "vk" prefixes
 sanitizedName :: StructMember -> String

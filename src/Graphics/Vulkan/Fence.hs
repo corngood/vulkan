@@ -51,9 +51,9 @@ import Foreign.C.Types( CSize(..)
 
 
 data VkFenceCreateInfo =
-  VkFenceCreateInfo{ vkSType :: VkStructureType 
-                   , vkPNext :: Ptr Void 
-                   , vkFlags :: VkFenceCreateFlags 
+  VkFenceCreateInfo{ vkSType :: VkStructureType
+                   , vkPNext :: Ptr Void
+                   , vkFlags :: VkFenceCreateFlags
                    }
   deriving (Eq, Ord, Show)
 

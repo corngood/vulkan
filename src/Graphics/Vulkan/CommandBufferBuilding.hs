@@ -133,11 +133,11 @@ foreign import ccall "vkCmdDraw" vkCmdDraw ::
 
 
 data VkImageCopy =
-  VkImageCopy{ vkSrcSubresource :: VkImageSubresourceLayers 
-             , vkSrcOffset :: VkOffset3D 
-             , vkDstSubresource :: VkImageSubresourceLayers 
-             , vkDstOffset :: VkOffset3D 
-             , vkExtent :: VkExtent3D 
+  VkImageCopy{ vkSrcSubresource :: VkImageSubresourceLayers
+             , vkSrcOffset :: VkOffset3D
+             , vkDstSubresource :: VkImageSubresourceLayers
+             , vkDstOffset :: VkOffset3D
+             , vkExtent :: VkExtent3D
              }
   deriving (Eq, Ord, Show)
 
@@ -199,9 +199,9 @@ foreign import ccall "vkCmdFillBuffer" vkCmdFillBuffer ::
 
 
 data VkClearRect =
-  VkClearRect{ vkRect :: VkRect2D 
-             , vkBaseArrayLayer :: Word32 
-             , vkLayerCount :: Word32 
+  VkClearRect{ vkRect :: VkRect2D
+             , vkBaseArrayLayer :: Word32
+             , vkLayerCount :: Word32
              }
   deriving (Eq, Ord, Show)
 
@@ -265,12 +265,12 @@ pattern VK_INDEX_TYPE_UINT32 = VkIndexType 1
 
 
 data VkBufferImageCopy =
-  VkBufferImageCopy{ vkBufferOffset :: VkDeviceSize 
-                   , vkBufferRowLength :: Word32 
-                   , vkBufferImageHeight :: Word32 
-                   , vkImageSubresource :: VkImageSubresourceLayers 
-                   , vkImageOffset :: VkOffset3D 
-                   , vkImageExtent :: VkExtent3D 
+  VkBufferImageCopy{ vkBufferOffset :: VkDeviceSize
+                   , vkBufferRowLength :: Word32
+                   , vkBufferImageHeight :: Word32
+                   , vkImageSubresource :: VkImageSubresourceLayers
+                   , vkImageOffset :: VkOffset3D
+                   , vkImageExtent :: VkExtent3D
                    }
   deriving (Eq, Ord, Show)
 
@@ -326,10 +326,10 @@ foreign import ccall "vkCmdWriteTimestamp" vkCmdWriteTimestamp ::
 
 
 data VkImageSubresourceLayers =
-  VkImageSubresourceLayers{ vkAspectMask :: VkImageAspectFlags 
-                          , vkMipLevel :: Word32 
-                          , vkBaseArrayLayer :: Word32 
-                          , vkLayerCount :: Word32 
+  VkImageSubresourceLayers{ vkAspectMask :: VkImageAspectFlags
+                          , vkMipLevel :: Word32
+                          , vkBaseArrayLayer :: Word32
+                          , vkLayerCount :: Word32
                           }
   deriving (Eq, Ord, Show)
 
@@ -362,8 +362,8 @@ foreign import ccall "vkCmdDrawIndirect" vkCmdDrawIndirect ::
 
 
 data VkClearDepthStencilValue =
-  VkClearDepthStencilValue{ vkDepth :: CFloat 
-                          , vkStencil :: Word32 
+  VkClearDepthStencilValue{ vkDepth :: CFloat
+                          , vkStencil :: Word32
                           }
   deriving (Eq, Ord, Show)
 
@@ -378,9 +378,9 @@ instance Storable VkClearDepthStencilValue where
 
 
 data VkBufferCopy =
-  VkBufferCopy{ vkSrcOffset :: VkDeviceSize 
-              , vkDstOffset :: VkDeviceSize 
-              , vkSize :: VkDeviceSize 
+  VkBufferCopy{ vkSrcOffset :: VkDeviceSize
+              , vkDstOffset :: VkDeviceSize
+              , vkSize :: VkDeviceSize
               }
   deriving (Eq, Ord, Show)
 
@@ -428,13 +428,13 @@ foreign import ccall "vkCmdExecuteCommands" vkCmdExecuteCommands ::
 
 
 data VkRenderPassBeginInfo =
-  VkRenderPassBeginInfo{ vkSType :: VkStructureType 
-                       , vkPNext :: Ptr Void 
-                       , vkRenderPass :: VkRenderPass 
-                       , vkFramebuffer :: VkFramebuffer 
-                       , vkRenderArea :: VkRect2D 
-                       , vkClearValueCount :: Word32 
-                       , vkPClearValues :: Ptr VkClearValue 
+  VkRenderPassBeginInfo{ vkSType :: VkStructureType
+                       , vkPNext :: Ptr Void
+                       , vkRenderPass :: VkRenderPass
+                       , vkFramebuffer :: VkFramebuffer
+                       , vkRenderArea :: VkRect2D
+                       , vkClearValueCount :: Word32
+                       , vkPClearValues :: Ptr VkClearValue
                        }
   deriving (Eq, Ord, Show)
 
@@ -463,10 +463,10 @@ foreign import ccall "vkCmdSetStencilCompareMask" vkCmdSetStencilCompareMask ::
 
 
 data VkImageBlit =
-  VkImageBlit{ vkSrcSubresource :: VkImageSubresourceLayers 
-             , vkSrcOffsets :: Vector 2 VkOffset3D 
-             , vkDstSubresource :: VkImageSubresourceLayers 
-             , vkDstOffsets :: Vector 2 VkOffset3D 
+  VkImageBlit{ vkSrcSubresource :: VkImageSubresourceLayers
+             , vkSrcOffsets :: Vector 2 VkOffset3D
+             , vkDstSubresource :: VkImageSubresourceLayers
+             , vkDstOffsets :: Vector 2 VkOffset3D
              }
   deriving (Eq, Ord, Show)
 
@@ -485,9 +485,9 @@ instance Storable VkImageBlit where
 
 
 data VkClearAttachment =
-  VkClearAttachment{ vkAspectMask :: VkImageAspectFlags 
-                   , vkColorAttachment :: Word32 
-                   , vkClearValue :: VkClearValue 
+  VkClearAttachment{ vkAspectMask :: VkImageAspectFlags
+                   , vkColorAttachment :: Word32
+                   , vkClearValue :: VkClearValue
                    }
   deriving (Eq, Ord, Show)
 
@@ -503,8 +503,8 @@ instance Storable VkClearAttachment where
 
 
 -- | // Union allowing specification of color or depth and stencil values. Actual value selected is based on attachment being cleared.
-data VkClearValue = VkColor VkClearColorValue 
-                  | VkDepthStencil VkClearDepthStencilValue 
+data VkClearValue = VkColor VkClearColorValue
+                  | VkDepthStencil VkClearDepthStencilValue
   deriving (Eq, Ord, Show)
 
 -- | _Note_: peek is undefined as we wouldn't know which constructor to use
@@ -551,9 +551,9 @@ pattern VK_STENCIL_FACE_BACK_BIT = VkStencilFaceFlagBits 0x2
 pattern VK_STENCIL_FRONT_AND_BACK = VkStencilFaceFlagBits 0x3
 
 -- | // Union allowing specification of floating point, integer, or unsigned integer color data. Actual value selected is based on image/attachment being cleared.
-data VkClearColorValue = VkFloat32 (Vector 4 CFloat) 
-                       | VkInt32 (Vector 4 Int32) 
-                       | VkUint32 (Vector 4 Word32) 
+data VkClearColorValue = VkFloat32 (Vector 4 CFloat)
+                       | VkInt32 (Vector 4 Int32)
+                       | VkUint32 (Vector 4 Word32)
   deriving (Eq, Ord, Show)
 
 -- | _Note_: peek is undefined as we wouldn't know which constructor to use
@@ -624,11 +624,11 @@ foreign import ccall "vkCmdClearDepthStencilImage" vkCmdClearDepthStencilImage :
 
 
 data VkImageResolve =
-  VkImageResolve{ vkSrcSubresource :: VkImageSubresourceLayers 
-                , vkSrcOffset :: VkOffset3D 
-                , vkDstSubresource :: VkImageSubresourceLayers 
-                , vkDstOffset :: VkOffset3D 
-                , vkExtent :: VkExtent3D 
+  VkImageResolve{ vkSrcSubresource :: VkImageSubresourceLayers
+                , vkSrcOffset :: VkOffset3D
+                , vkDstSubresource :: VkImageSubresourceLayers
+                , vkDstOffset :: VkOffset3D
+                , vkExtent :: VkExtent3D
                 }
   deriving (Eq, Ord, Show)
 

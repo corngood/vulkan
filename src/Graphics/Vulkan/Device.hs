@@ -43,61 +43,61 @@ foreign import ccall "vkCreateDevice" vkCreateDevice ::
 
 
 data VkPhysicalDeviceFeatures =
-  VkPhysicalDeviceFeatures{ vkRobustBufferAccess :: VkBool32 
-                          , vkFullDrawIndexUint32 :: VkBool32 
-                          , vkImageCubeArray :: VkBool32 
-                          , vkIndependentBlend :: VkBool32 
-                          , vkGeometryShader :: VkBool32 
-                          , vkTessellationShader :: VkBool32 
-                          , vkSampleRateShading :: VkBool32 
-                          , vkDualSrcBlend :: VkBool32 
-                          , vkLogicOp :: VkBool32 
-                          , vkMultiDrawIndirect :: VkBool32 
-                          , vkDrawIndirectFirstInstance :: VkBool32 
-                          , vkDepthClamp :: VkBool32 
-                          , vkDepthBiasClamp :: VkBool32 
-                          , vkFillModeNonSolid :: VkBool32 
-                          , vkDepthBounds :: VkBool32 
-                          , vkWideLines :: VkBool32 
-                          , vkLargePoints :: VkBool32 
-                          , vkAlphaToOne :: VkBool32 
-                          , vkMultiViewport :: VkBool32 
-                          , vkSamplerAnisotropy :: VkBool32 
-                          , vkTextureCompressionETC2 :: VkBool32 
-                          , vkTextureCompressionASTC_LDR :: VkBool32 
-                          , vkTextureCompressionBC :: VkBool32 
-                          , vkOcclusionQueryPrecise :: VkBool32 
-                          , vkPipelineStatisticsQuery :: VkBool32 
-                          , vkVertexPipelineStoresAndAtomics :: VkBool32 
-                          , vkFragmentStoresAndAtomics :: VkBool32 
-                          , vkShaderTessellationAndGeometryPointSize :: VkBool32 
-                          , vkShaderImageGatherExtended :: VkBool32 
-                          , vkShaderStorageImageExtendedFormats :: VkBool32 
-                          , vkShaderStorageImageMultisample :: VkBool32 
-                          , vkShaderStorageImageReadWithoutFormat :: VkBool32 
-                          , vkShaderStorageImageWriteWithoutFormat :: VkBool32 
-                          , vkShaderUniformBufferArrayDynamicIndexing :: VkBool32 
-                          , vkShaderSampledImageArrayDynamicIndexing :: VkBool32 
-                          , vkShaderStorageBufferArrayDynamicIndexing :: VkBool32 
-                          , vkShaderStorageImageArrayDynamicIndexing :: VkBool32 
-                          , vkShaderClipDistance :: VkBool32 
-                          , vkShaderCullDistance :: VkBool32 
-                          , vkShaderFloat64 :: VkBool32 
-                          , vkShaderInt64 :: VkBool32 
-                          , vkShaderInt16 :: VkBool32 
-                          , vkShaderResourceResidency :: VkBool32 
-                          , vkShaderResourceMinLod :: VkBool32 
-                          , vkSparseBinding :: VkBool32 
-                          , vkSparseResidencyBuffer :: VkBool32 
-                          , vkSparseResidencyImage2D :: VkBool32 
-                          , vkSparseResidencyImage3D :: VkBool32 
-                          , vkSparseResidency2Samples :: VkBool32 
-                          , vkSparseResidency4Samples :: VkBool32 
-                          , vkSparseResidency8Samples :: VkBool32 
-                          , vkSparseResidency16Samples :: VkBool32 
-                          , vkSparseResidencyAliased :: VkBool32 
-                          , vkVariableMultisampleRate :: VkBool32 
-                          , vkInheritedQueries :: VkBool32 
+  VkPhysicalDeviceFeatures{ vkRobustBufferAccess :: VkBool32
+                          , vkFullDrawIndexUint32 :: VkBool32
+                          , vkImageCubeArray :: VkBool32
+                          , vkIndependentBlend :: VkBool32
+                          , vkGeometryShader :: VkBool32
+                          , vkTessellationShader :: VkBool32
+                          , vkSampleRateShading :: VkBool32
+                          , vkDualSrcBlend :: VkBool32
+                          , vkLogicOp :: VkBool32
+                          , vkMultiDrawIndirect :: VkBool32
+                          , vkDrawIndirectFirstInstance :: VkBool32
+                          , vkDepthClamp :: VkBool32
+                          , vkDepthBiasClamp :: VkBool32
+                          , vkFillModeNonSolid :: VkBool32
+                          , vkDepthBounds :: VkBool32
+                          , vkWideLines :: VkBool32
+                          , vkLargePoints :: VkBool32
+                          , vkAlphaToOne :: VkBool32
+                          , vkMultiViewport :: VkBool32
+                          , vkSamplerAnisotropy :: VkBool32
+                          , vkTextureCompressionETC2 :: VkBool32
+                          , vkTextureCompressionASTC_LDR :: VkBool32
+                          , vkTextureCompressionBC :: VkBool32
+                          , vkOcclusionQueryPrecise :: VkBool32
+                          , vkPipelineStatisticsQuery :: VkBool32
+                          , vkVertexPipelineStoresAndAtomics :: VkBool32
+                          , vkFragmentStoresAndAtomics :: VkBool32
+                          , vkShaderTessellationAndGeometryPointSize :: VkBool32
+                          , vkShaderImageGatherExtended :: VkBool32
+                          , vkShaderStorageImageExtendedFormats :: VkBool32
+                          , vkShaderStorageImageMultisample :: VkBool32
+                          , vkShaderStorageImageReadWithoutFormat :: VkBool32
+                          , vkShaderStorageImageWriteWithoutFormat :: VkBool32
+                          , vkShaderUniformBufferArrayDynamicIndexing :: VkBool32
+                          , vkShaderSampledImageArrayDynamicIndexing :: VkBool32
+                          , vkShaderStorageBufferArrayDynamicIndexing :: VkBool32
+                          , vkShaderStorageImageArrayDynamicIndexing :: VkBool32
+                          , vkShaderClipDistance :: VkBool32
+                          , vkShaderCullDistance :: VkBool32
+                          , vkShaderFloat64 :: VkBool32
+                          , vkShaderInt64 :: VkBool32
+                          , vkShaderInt16 :: VkBool32
+                          , vkShaderResourceResidency :: VkBool32
+                          , vkShaderResourceMinLod :: VkBool32
+                          , vkSparseBinding :: VkBool32
+                          , vkSparseResidencyBuffer :: VkBool32
+                          , vkSparseResidencyImage2D :: VkBool32
+                          , vkSparseResidencyImage3D :: VkBool32
+                          , vkSparseResidency2Samples :: VkBool32
+                          , vkSparseResidency4Samples :: VkBool32
+                          , vkSparseResidency8Samples :: VkBool32
+                          , vkSparseResidency16Samples :: VkBool32
+                          , vkSparseResidencyAliased :: VkBool32
+                          , vkVariableMultisampleRate :: VkBool32
+                          , vkInheritedQueries :: VkBool32
                           }
   deriving (Eq, Ord, Show)
 
@@ -223,12 +223,12 @@ newtype VkDeviceCreateFlags = VkDeviceCreateFlags VkFlags
 
 
 data VkDeviceQueueCreateInfo =
-  VkDeviceQueueCreateInfo{ vkSType :: VkStructureType 
-                         , vkPNext :: Ptr Void 
-                         , vkFlags :: VkDeviceQueueCreateFlags 
-                         , vkQueueFamilyIndex :: Word32 
-                         , vkQueueCount :: Word32 
-                         , vkPQueuePriorities :: Ptr CFloat 
+  VkDeviceQueueCreateInfo{ vkSType :: VkStructureType
+                         , vkPNext :: Ptr Void
+                         , vkFlags :: VkDeviceQueueCreateFlags
+                         , vkQueueFamilyIndex :: Word32
+                         , vkQueueCount :: Word32
+                         , vkPQueuePriorities :: Ptr CFloat
                          }
   deriving (Eq, Ord, Show)
 
@@ -266,16 +266,16 @@ type VkDevice = Ptr VkDevice_T
 
 
 data VkDeviceCreateInfo =
-  VkDeviceCreateInfo{ vkSType :: VkStructureType 
-                    , vkPNext :: Ptr Void 
-                    , vkFlags :: VkDeviceCreateFlags 
-                    , vkQueueCreateInfoCount :: Word32 
-                    , vkPQueueCreateInfos :: Ptr VkDeviceQueueCreateInfo 
-                    , vkEnabledLayerCount :: Word32 
-                    , vkPpEnabledLayerNames :: Ptr (Ptr CChar) 
-                    , vkEnabledExtensionCount :: Word32 
-                    , vkPpEnabledExtensionNames :: Ptr (Ptr CChar) 
-                    , vkPEnabledFeatures :: Ptr VkPhysicalDeviceFeatures 
+  VkDeviceCreateInfo{ vkSType :: VkStructureType
+                    , vkPNext :: Ptr Void
+                    , vkFlags :: VkDeviceCreateFlags
+                    , vkQueueCreateInfoCount :: Word32
+                    , vkPQueueCreateInfos :: Ptr VkDeviceQueueCreateInfo
+                    , vkEnabledLayerCount :: Word32
+                    , vkPpEnabledLayerNames :: Ptr (Ptr CChar)
+                    , vkEnabledExtensionCount :: Word32
+                    , vkPpEnabledExtensionNames :: Ptr (Ptr CChar)
+                    , vkPEnabledFeatures :: Ptr VkPhysicalDeviceFeatures
                     }
   deriving (Eq, Ord, Show)
 

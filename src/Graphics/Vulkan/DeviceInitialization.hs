@@ -120,14 +120,14 @@ pattern VK_PHYSICAL_DEVICE_TYPE_CPU = VkPhysicalDeviceType 4
 
 
 data VkInstanceCreateInfo =
-  VkInstanceCreateInfo{ vkSType :: VkStructureType 
-                      , vkPNext :: Ptr Void 
-                      , vkFlags :: VkInstanceCreateFlags 
-                      , vkPApplicationInfo :: Ptr VkApplicationInfo 
-                      , vkEnabledLayerCount :: Word32 
-                      , vkPpEnabledLayerNames :: Ptr (Ptr CChar) 
-                      , vkEnabledExtensionCount :: Word32 
-                      , vkPpEnabledExtensionNames :: Ptr (Ptr CChar) 
+  VkInstanceCreateInfo{ vkSType :: VkStructureType
+                      , vkPNext :: Ptr Void
+                      , vkFlags :: VkInstanceCreateFlags
+                      , vkPApplicationInfo :: Ptr VkApplicationInfo
+                      , vkEnabledLayerCount :: Word32
+                      , vkPpEnabledLayerNames :: Ptr (Ptr CChar)
+                      , vkEnabledExtensionCount :: Word32
+                      , vkPpEnabledExtensionNames :: Ptr (Ptr CChar)
                       }
   deriving (Eq, Ord, Show)
 
@@ -165,13 +165,13 @@ type PFN_vkVoidFunction = FunPtr (IO ())
 
 
 data VkApplicationInfo =
-  VkApplicationInfo{ vkSType :: VkStructureType 
-                   , vkPNext :: Ptr Void 
-                   , vkPApplicationName :: Ptr CChar 
-                   , vkApplicationVersion :: Word32 
-                   , vkPEngineName :: Ptr CChar 
-                   , vkEngineVersion :: Word32 
-                   , vkApiVersion :: Word32 
+  VkApplicationInfo{ vkSType :: VkStructureType
+                   , vkPNext :: Ptr Void
+                   , vkPApplicationName :: Ptr CChar
+                   , vkApplicationVersion :: Word32
+                   , vkPEngineName :: Ptr CChar
+                   , vkEngineVersion :: Word32
+                   , vkApiVersion :: Word32
                    }
   deriving (Eq, Ord, Show)
 
@@ -196,112 +196,112 @@ instance Storable VkApplicationInfo where
 
 
 data VkPhysicalDeviceLimits =
-  VkPhysicalDeviceLimits{ vkMaxImageDimension1D :: Word32 
-                        , vkMaxImageDimension2D :: Word32 
-                        , vkMaxImageDimension3D :: Word32 
-                        , vkMaxImageDimensionCube :: Word32 
-                        , vkMaxImageArrayLayers :: Word32 
-                        , vkMaxTexelBufferElements :: Word32 
-                        , vkMaxUniformBufferRange :: Word32 
-                        , vkMaxStorageBufferRange :: Word32 
-                        , vkMaxPushConstantsSize :: Word32 
-                        , vkMaxMemoryAllocationCount :: Word32 
-                        , vkMaxSamplerAllocationCount :: Word32 
-                        , vkBufferImageGranularity :: VkDeviceSize 
-                        , vkSparseAddressSpaceSize :: VkDeviceSize 
-                        , vkMaxBoundDescriptorSets :: Word32 
-                        , vkMaxPerStageDescriptorSamplers :: Word32 
-                        , vkMaxPerStageDescriptorUniformBuffers :: Word32 
-                        , vkMaxPerStageDescriptorStorageBuffers :: Word32 
-                        , vkMaxPerStageDescriptorSampledImages :: Word32 
-                        , vkMaxPerStageDescriptorStorageImages :: Word32 
-                        , vkMaxPerStageDescriptorInputAttachments :: Word32 
-                        , vkMaxPerStageResources :: Word32 
-                        , vkMaxDescriptorSetSamplers :: Word32 
-                        , vkMaxDescriptorSetUniformBuffers :: Word32 
-                        , vkMaxDescriptorSetUniformBuffersDynamic :: Word32 
-                        , vkMaxDescriptorSetStorageBuffers :: Word32 
-                        , vkMaxDescriptorSetStorageBuffersDynamic :: Word32 
-                        , vkMaxDescriptorSetSampledImages :: Word32 
-                        , vkMaxDescriptorSetStorageImages :: Word32 
-                        , vkMaxDescriptorSetInputAttachments :: Word32 
-                        , vkMaxVertexInputAttributes :: Word32 
-                        , vkMaxVertexInputBindings :: Word32 
-                        , vkMaxVertexInputAttributeOffset :: Word32 
-                        , vkMaxVertexInputBindingStride :: Word32 
-                        , vkMaxVertexOutputComponents :: Word32 
-                        , vkMaxTessellationGenerationLevel :: Word32 
-                        , vkMaxTessellationPatchSize :: Word32 
-                        , vkMaxTessellationControlPerVertexInputComponents :: Word32 
-                        , vkMaxTessellationControlPerVertexOutputComponents :: Word32 
-                        , vkMaxTessellationControlPerPatchOutputComponents :: Word32 
-                        , vkMaxTessellationControlTotalOutputComponents :: Word32 
-                        , vkMaxTessellationEvaluationInputComponents :: Word32 
-                        , vkMaxTessellationEvaluationOutputComponents :: Word32 
-                        , vkMaxGeometryShaderInvocations :: Word32 
-                        , vkMaxGeometryInputComponents :: Word32 
-                        , vkMaxGeometryOutputComponents :: Word32 
-                        , vkMaxGeometryOutputVertices :: Word32 
-                        , vkMaxGeometryTotalOutputComponents :: Word32 
-                        , vkMaxFragmentInputComponents :: Word32 
-                        , vkMaxFragmentOutputAttachments :: Word32 
-                        , vkMaxFragmentDualSrcAttachments :: Word32 
-                        , vkMaxFragmentCombinedOutputResources :: Word32 
-                        , vkMaxComputeSharedMemorySize :: Word32 
-                        , vkMaxComputeWorkGroupCount :: Vector 3 Word32 
-                        , vkMaxComputeWorkGroupInvocations :: Word32 
-                        , vkMaxComputeWorkGroupSize :: Vector 3 Word32 
-                        , vkSubPixelPrecisionBits :: Word32 
-                        , vkSubTexelPrecisionBits :: Word32 
-                        , vkMipmapPrecisionBits :: Word32 
-                        , vkMaxDrawIndexedIndexValue :: Word32 
-                        , vkMaxDrawIndirectCount :: Word32 
-                        , vkMaxSamplerLodBias :: CFloat 
-                        , vkMaxSamplerAnisotropy :: CFloat 
-                        , vkMaxViewports :: Word32 
-                        , vkMaxViewportDimensions :: Vector 2 Word32 
-                        , vkViewportBoundsRange :: Vector 2 CFloat 
-                        , vkViewportSubPixelBits :: Word32 
-                        , vkMinMemoryMapAlignment :: CSize 
-                        , vkMinTexelBufferOffsetAlignment :: VkDeviceSize 
-                        , vkMinUniformBufferOffsetAlignment :: VkDeviceSize 
-                        , vkMinStorageBufferOffsetAlignment :: VkDeviceSize 
-                        , vkMinTexelOffset :: Int32 
-                        , vkMaxTexelOffset :: Word32 
-                        , vkMinTexelGatherOffset :: Int32 
-                        , vkMaxTexelGatherOffset :: Word32 
-                        , vkMinInterpolationOffset :: CFloat 
-                        , vkMaxInterpolationOffset :: CFloat 
-                        , vkSubPixelInterpolationOffsetBits :: Word32 
-                        , vkMaxFramebufferWidth :: Word32 
-                        , vkMaxFramebufferHeight :: Word32 
-                        , vkMaxFramebufferLayers :: Word32 
-                        , vkFramebufferColorSampleCounts :: VkSampleCountFlags 
-                        , vkFramebufferDepthSampleCounts :: VkSampleCountFlags 
-                        , vkFramebufferStencilSampleCounts :: VkSampleCountFlags 
-                        , vkFramebufferNoAttachmentsSampleCounts :: VkSampleCountFlags 
-                        , vkMaxColorAttachments :: Word32 
-                        , vkSampledImageColorSampleCounts :: VkSampleCountFlags 
-                        , vkSampledImageIntegerSampleCounts :: VkSampleCountFlags 
-                        , vkSampledImageDepthSampleCounts :: VkSampleCountFlags 
-                        , vkSampledImageStencilSampleCounts :: VkSampleCountFlags 
-                        , vkStorageImageSampleCounts :: VkSampleCountFlags 
-                        , vkMaxSampleMaskWords :: Word32 
-                        , vkTimestampComputeAndGraphics :: VkBool32 
-                        , vkTimestampPeriod :: CFloat 
-                        , vkMaxClipDistances :: Word32 
-                        , vkMaxCullDistances :: Word32 
-                        , vkMaxCombinedClipAndCullDistances :: Word32 
-                        , vkDiscreteQueuePriorities :: Word32 
-                        , vkPointSizeRange :: Vector 2 CFloat 
-                        , vkLineWidthRange :: Vector 2 CFloat 
-                        , vkPointSizeGranularity :: CFloat 
-                        , vkLineWidthGranularity :: CFloat 
-                        , vkStrictLines :: VkBool32 
-                        , vkStandardSampleLocations :: VkBool32 
-                        , vkOptimalBufferCopyOffsetAlignment :: VkDeviceSize 
-                        , vkOptimalBufferCopyRowPitchAlignment :: VkDeviceSize 
-                        , vkNonCoherentAtomSize :: VkDeviceSize 
+  VkPhysicalDeviceLimits{ vkMaxImageDimension1D :: Word32
+                        , vkMaxImageDimension2D :: Word32
+                        , vkMaxImageDimension3D :: Word32
+                        , vkMaxImageDimensionCube :: Word32
+                        , vkMaxImageArrayLayers :: Word32
+                        , vkMaxTexelBufferElements :: Word32
+                        , vkMaxUniformBufferRange :: Word32
+                        , vkMaxStorageBufferRange :: Word32
+                        , vkMaxPushConstantsSize :: Word32
+                        , vkMaxMemoryAllocationCount :: Word32
+                        , vkMaxSamplerAllocationCount :: Word32
+                        , vkBufferImageGranularity :: VkDeviceSize
+                        , vkSparseAddressSpaceSize :: VkDeviceSize
+                        , vkMaxBoundDescriptorSets :: Word32
+                        , vkMaxPerStageDescriptorSamplers :: Word32
+                        , vkMaxPerStageDescriptorUniformBuffers :: Word32
+                        , vkMaxPerStageDescriptorStorageBuffers :: Word32
+                        , vkMaxPerStageDescriptorSampledImages :: Word32
+                        , vkMaxPerStageDescriptorStorageImages :: Word32
+                        , vkMaxPerStageDescriptorInputAttachments :: Word32
+                        , vkMaxPerStageResources :: Word32
+                        , vkMaxDescriptorSetSamplers :: Word32
+                        , vkMaxDescriptorSetUniformBuffers :: Word32
+                        , vkMaxDescriptorSetUniformBuffersDynamic :: Word32
+                        , vkMaxDescriptorSetStorageBuffers :: Word32
+                        , vkMaxDescriptorSetStorageBuffersDynamic :: Word32
+                        , vkMaxDescriptorSetSampledImages :: Word32
+                        , vkMaxDescriptorSetStorageImages :: Word32
+                        , vkMaxDescriptorSetInputAttachments :: Word32
+                        , vkMaxVertexInputAttributes :: Word32
+                        , vkMaxVertexInputBindings :: Word32
+                        , vkMaxVertexInputAttributeOffset :: Word32
+                        , vkMaxVertexInputBindingStride :: Word32
+                        , vkMaxVertexOutputComponents :: Word32
+                        , vkMaxTessellationGenerationLevel :: Word32
+                        , vkMaxTessellationPatchSize :: Word32
+                        , vkMaxTessellationControlPerVertexInputComponents :: Word32
+                        , vkMaxTessellationControlPerVertexOutputComponents :: Word32
+                        , vkMaxTessellationControlPerPatchOutputComponents :: Word32
+                        , vkMaxTessellationControlTotalOutputComponents :: Word32
+                        , vkMaxTessellationEvaluationInputComponents :: Word32
+                        , vkMaxTessellationEvaluationOutputComponents :: Word32
+                        , vkMaxGeometryShaderInvocations :: Word32
+                        , vkMaxGeometryInputComponents :: Word32
+                        , vkMaxGeometryOutputComponents :: Word32
+                        , vkMaxGeometryOutputVertices :: Word32
+                        , vkMaxGeometryTotalOutputComponents :: Word32
+                        , vkMaxFragmentInputComponents :: Word32
+                        , vkMaxFragmentOutputAttachments :: Word32
+                        , vkMaxFragmentDualSrcAttachments :: Word32
+                        , vkMaxFragmentCombinedOutputResources :: Word32
+                        , vkMaxComputeSharedMemorySize :: Word32
+                        , vkMaxComputeWorkGroupCount :: Vector 3 Word32
+                        , vkMaxComputeWorkGroupInvocations :: Word32
+                        , vkMaxComputeWorkGroupSize :: Vector 3 Word32
+                        , vkSubPixelPrecisionBits :: Word32
+                        , vkSubTexelPrecisionBits :: Word32
+                        , vkMipmapPrecisionBits :: Word32
+                        , vkMaxDrawIndexedIndexValue :: Word32
+                        , vkMaxDrawIndirectCount :: Word32
+                        , vkMaxSamplerLodBias :: CFloat
+                        , vkMaxSamplerAnisotropy :: CFloat
+                        , vkMaxViewports :: Word32
+                        , vkMaxViewportDimensions :: Vector 2 Word32
+                        , vkViewportBoundsRange :: Vector 2 CFloat
+                        , vkViewportSubPixelBits :: Word32
+                        , vkMinMemoryMapAlignment :: CSize
+                        , vkMinTexelBufferOffsetAlignment :: VkDeviceSize
+                        , vkMinUniformBufferOffsetAlignment :: VkDeviceSize
+                        , vkMinStorageBufferOffsetAlignment :: VkDeviceSize
+                        , vkMinTexelOffset :: Int32
+                        , vkMaxTexelOffset :: Word32
+                        , vkMinTexelGatherOffset :: Int32
+                        , vkMaxTexelGatherOffset :: Word32
+                        , vkMinInterpolationOffset :: CFloat
+                        , vkMaxInterpolationOffset :: CFloat
+                        , vkSubPixelInterpolationOffsetBits :: Word32
+                        , vkMaxFramebufferWidth :: Word32
+                        , vkMaxFramebufferHeight :: Word32
+                        , vkMaxFramebufferLayers :: Word32
+                        , vkFramebufferColorSampleCounts :: VkSampleCountFlags
+                        , vkFramebufferDepthSampleCounts :: VkSampleCountFlags
+                        , vkFramebufferStencilSampleCounts :: VkSampleCountFlags
+                        , vkFramebufferNoAttachmentsSampleCounts :: VkSampleCountFlags
+                        , vkMaxColorAttachments :: Word32
+                        , vkSampledImageColorSampleCounts :: VkSampleCountFlags
+                        , vkSampledImageIntegerSampleCounts :: VkSampleCountFlags
+                        , vkSampledImageDepthSampleCounts :: VkSampleCountFlags
+                        , vkSampledImageStencilSampleCounts :: VkSampleCountFlags
+                        , vkStorageImageSampleCounts :: VkSampleCountFlags
+                        , vkMaxSampleMaskWords :: Word32
+                        , vkTimestampComputeAndGraphics :: VkBool32
+                        , vkTimestampPeriod :: CFloat
+                        , vkMaxClipDistances :: Word32
+                        , vkMaxCullDistances :: Word32
+                        , vkMaxCombinedClipAndCullDistances :: Word32
+                        , vkDiscreteQueuePriorities :: Word32
+                        , vkPointSizeRange :: Vector 2 CFloat
+                        , vkLineWidthRange :: Vector 2 CFloat
+                        , vkPointSizeGranularity :: CFloat
+                        , vkLineWidthGranularity :: CFloat
+                        , vkStrictLines :: VkBool32
+                        , vkStandardSampleLocations :: VkBool32
+                        , vkOptimalBufferCopyOffsetAlignment :: VkDeviceSize
+                        , vkOptimalBufferCopyRowPitchAlignment :: VkDeviceSize
+                        , vkNonCoherentAtomSize :: VkDeviceSize
                         }
   deriving (Eq, Ord, Show)
 
@@ -524,8 +524,8 @@ instance Storable VkPhysicalDeviceLimits where
 
 
 data VkMemoryHeap =
-  VkMemoryHeap{ vkSize :: VkDeviceSize 
-              , vkFlags :: VkMemoryHeapFlags 
+  VkMemoryHeap{ vkSize :: VkDeviceSize
+              , vkFlags :: VkMemoryHeapFlags
               }
   deriving (Eq, Ord, Show)
 
@@ -628,10 +628,10 @@ pattern VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT = VkFormatFeatureFlagB
 
 
 data VkPhysicalDeviceMemoryProperties =
-  VkPhysicalDeviceMemoryProperties{ vkMemoryTypeCount :: Word32 
-                                  , vkMemoryTypes :: Vector VK_MAX_MEMORY_TYPES VkMemoryType 
-                                  , vkMemoryHeapCount :: Word32 
-                                  , vkMemoryHeaps :: Vector VK_MAX_MEMORY_HEAPS VkMemoryHeap 
+  VkPhysicalDeviceMemoryProperties{ vkMemoryTypeCount :: Word32
+                                  , vkMemoryTypes :: Vector VK_MAX_MEMORY_TYPES VkMemoryType
+                                  , vkMemoryHeapCount :: Word32
+                                  , vkMemoryHeaps :: Vector VK_MAX_MEMORY_HEAPS VkMemoryHeap
                                   }
   deriving (Eq, Ord, Show)
 
@@ -680,10 +680,10 @@ pattern VK_MEMORY_HEAP_DEVICE_LOCAL_BIT = VkMemoryHeapFlagBits 0x1
 
 
 data VkQueueFamilyProperties =
-  VkQueueFamilyProperties{ vkQueueFlags :: VkQueueFlags 
-                         , vkQueueCount :: Word32 
-                         , vkTimestampValidBits :: Word32 
-                         , vkMinImageTransferGranularity :: VkExtent3D 
+  VkQueueFamilyProperties{ vkQueueFlags :: VkQueueFlags
+                         , vkQueueCount :: Word32
+                         , vkTimestampValidBits :: Word32
+                         , vkMinImageTransferGranularity :: VkExtent3D
                          }
   deriving (Eq, Ord, Show)
 
@@ -702,11 +702,11 @@ instance Storable VkQueueFamilyProperties where
 
 
 data VkImageFormatProperties =
-  VkImageFormatProperties{ vkMaxExtent :: VkExtent3D 
-                         , vkMaxMipLevels :: Word32 
-                         , vkMaxArrayLayers :: Word32 
-                         , vkSampleCounts :: VkSampleCountFlags 
-                         , vkMaxResourceSize :: VkDeviceSize 
+  VkImageFormatProperties{ vkMaxExtent :: VkExtent3D
+                         , vkMaxMipLevels :: Word32
+                         , vkMaxArrayLayers :: Word32
+                         , vkSampleCounts :: VkSampleCountFlags
+                         , vkMaxResourceSize :: VkDeviceSize
                          }
   deriving (Eq, Ord, Show)
 
@@ -727,11 +727,11 @@ instance Storable VkImageFormatProperties where
 
 
 data VkPhysicalDeviceSparseProperties =
-  VkPhysicalDeviceSparseProperties{ vkResidencyStandard2DBlockShape :: VkBool32 
-                                  , vkResidencyStandard2DMultisampleBlockShape :: VkBool32 
-                                  , vkResidencyStandard3DBlockShape :: VkBool32 
-                                  , vkResidencyAlignedMipSize :: VkBool32 
-                                  , vkResidencyNonResidentStrict :: VkBool32 
+  VkPhysicalDeviceSparseProperties{ vkResidencyStandard2DBlockShape :: VkBool32
+                                  , vkResidencyStandard2DMultisampleBlockShape :: VkBool32
+                                  , vkResidencyStandard3DBlockShape :: VkBool32
+                                  , vkResidencyAlignedMipSize :: VkBool32
+                                  , vkResidencyNonResidentStrict :: VkBool32
                                   }
   deriving (Eq, Ord, Show)
 
@@ -760,15 +760,15 @@ foreign import ccall "vkGetPhysicalDeviceMemoryProperties" vkGetPhysicalDeviceMe
 
 
 data VkPhysicalDeviceProperties =
-  VkPhysicalDeviceProperties{ vkApiVersion :: Word32 
-                            , vkDriverVersion :: Word32 
-                            , vkVendorID :: Word32 
-                            , vkDeviceID :: Word32 
-                            , vkDeviceType :: VkPhysicalDeviceType 
-                            , vkDeviceName :: Vector VK_MAX_PHYSICAL_DEVICE_NAME_SIZE CChar 
-                            , vkPipelineCacheUUID :: Vector VK_UUID_SIZE Word8 
-                            , vkLimits :: VkPhysicalDeviceLimits 
-                            , vkSparseProperties :: VkPhysicalDeviceSparseProperties 
+  VkPhysicalDeviceProperties{ vkApiVersion :: Word32
+                            , vkDriverVersion :: Word32
+                            , vkVendorID :: Word32
+                            , vkDeviceID :: Word32
+                            , vkDeviceType :: VkPhysicalDeviceType
+                            , vkDeviceName :: Vector VK_MAX_PHYSICAL_DEVICE_NAME_SIZE CChar
+                            , vkPipelineCacheUUID :: Vector VK_UUID_SIZE Word8
+                            , vkLimits :: VkPhysicalDeviceLimits
+                            , vkSparseProperties :: VkPhysicalDeviceSparseProperties
                             }
   deriving (Eq, Ord, Show)
 
@@ -802,8 +802,8 @@ foreign import ccall "vkGetPhysicalDeviceQueueFamilyProperties" vkGetPhysicalDev
 
 
 data VkMemoryType =
-  VkMemoryType{ vkPropertyFlags :: VkMemoryPropertyFlags 
-              , vkHeapIndex :: Word32 
+  VkMemoryType{ vkPropertyFlags :: VkMemoryPropertyFlags
+              , vkHeapIndex :: Word32
               }
   deriving (Eq, Ord, Show)
 
@@ -921,9 +921,9 @@ foreign import ccall "vkGetPhysicalDeviceFormatProperties" vkGetPhysicalDeviceFo
 
 
 data VkFormatProperties =
-  VkFormatProperties{ vkLinearTilingFeatures :: VkFormatFeatureFlags 
-                    , vkOptimalTilingFeatures :: VkFormatFeatureFlags 
-                    , vkBufferFeatures :: VkFormatFeatureFlags 
+  VkFormatProperties{ vkLinearTilingFeatures :: VkFormatFeatureFlags
+                    , vkOptimalTilingFeatures :: VkFormatFeatureFlags
+                    , vkBufferFeatures :: VkFormatFeatureFlags
                     }
   deriving (Eq, Ord, Show)
 

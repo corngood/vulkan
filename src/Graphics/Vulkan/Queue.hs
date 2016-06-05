@@ -49,15 +49,15 @@ foreign import ccall "vkGetDeviceQueue" vkGetDeviceQueue ::
 
 
 data VkSubmitInfo =
-  VkSubmitInfo{ vkSType :: VkStructureType 
-              , vkPNext :: Ptr Void 
-              , vkWaitSemaphoreCount :: Word32 
-              , vkPWaitSemaphores :: Ptr VkSemaphore 
-              , vkPWaitDstStageMask :: Ptr VkPipelineStageFlags 
-              , vkCommandBufferCount :: Word32 
-              , vkPCommandBuffers :: Ptr VkCommandBuffer 
-              , vkSignalSemaphoreCount :: Word32 
-              , vkPSignalSemaphores :: Ptr VkSemaphore 
+  VkSubmitInfo{ vkSType :: VkStructureType
+              , vkPNext :: Ptr Void
+              , vkWaitSemaphoreCount :: Word32
+              , vkPWaitSemaphores :: Ptr VkSemaphore
+              , vkPWaitDstStageMask :: Ptr VkPipelineStageFlags
+              , vkCommandBufferCount :: Word32
+              , vkPCommandBuffers :: Ptr VkCommandBuffer
+              , vkSignalSemaphoreCount :: Word32
+              , vkPSignalSemaphores :: Ptr VkSemaphore
               }
   deriving (Eq, Ord, Show)
 

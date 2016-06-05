@@ -51,11 +51,11 @@ import Foreign.C.Types( CSize
 
 
 data VkShaderModuleCreateInfo =
-  VkShaderModuleCreateInfo{ vkSType :: VkStructureType 
-                          , vkPNext :: Ptr Void 
-                          , vkFlags :: VkShaderModuleCreateFlags 
-                          , vkCodeSize :: CSize 
-                          , vkPCode :: Ptr Word32 
+  VkShaderModuleCreateInfo{ vkSType :: VkStructureType
+                          , vkPNext :: Ptr Void
+                          , vkFlags :: VkShaderModuleCreateFlags
+                          , vkCodeSize :: CSize
+                          , vkPCode :: Ptr Word32
                           }
   deriving (Eq, Ord, Show)
 

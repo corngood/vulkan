@@ -32,15 +32,15 @@ import Graphics.Vulkan.Core( VkDeviceSize(..)
 
 
 data VkBufferMemoryBarrier =
-  VkBufferMemoryBarrier{ vkSType :: VkStructureType 
-                       , vkPNext :: Ptr Void 
-                       , vkSrcAccessMask :: VkAccessFlags 
-                       , vkDstAccessMask :: VkAccessFlags 
-                       , vkSrcQueueFamilyIndex :: Word32 
-                       , vkDstQueueFamilyIndex :: Word32 
-                       , vkBuffer :: VkBuffer 
-                       , vkOffset :: VkDeviceSize 
-                       , vkSize :: VkDeviceSize 
+  VkBufferMemoryBarrier{ vkSType :: VkStructureType
+                       , vkPNext :: Ptr Void
+                       , vkSrcAccessMask :: VkAccessFlags
+                       , vkDstAccessMask :: VkAccessFlags
+                       , vkSrcQueueFamilyIndex :: Word32
+                       , vkDstQueueFamilyIndex :: Word32
+                       , vkBuffer :: VkBuffer
+                       , vkOffset :: VkDeviceSize
+                       , vkSize :: VkDeviceSize
                        }
   deriving (Eq, Ord, Show)
 
@@ -69,11 +69,11 @@ instance Storable VkBufferMemoryBarrier where
 
 
 data VkDrawIndexedIndirectCommand =
-  VkDrawIndexedIndirectCommand{ vkIndexCount :: Word32 
-                              , vkInstanceCount :: Word32 
-                              , vkFirstIndex :: Word32 
-                              , vkVertexOffset :: Int32 
-                              , vkFirstInstance :: Word32 
+  VkDrawIndexedIndirectCommand{ vkIndexCount :: Word32
+                              , vkInstanceCount :: Word32
+                              , vkFirstIndex :: Word32
+                              , vkVertexOffset :: Int32
+                              , vkFirstInstance :: Word32
                               }
   deriving (Eq, Ord, Show)
 
@@ -94,16 +94,16 @@ instance Storable VkDrawIndexedIndirectCommand where
 
 
 data VkImageMemoryBarrier =
-  VkImageMemoryBarrier{ vkSType :: VkStructureType 
-                      , vkPNext :: Ptr Void 
-                      , vkSrcAccessMask :: VkAccessFlags 
-                      , vkDstAccessMask :: VkAccessFlags 
-                      , vkOldLayout :: VkImageLayout 
-                      , vkNewLayout :: VkImageLayout 
-                      , vkSrcQueueFamilyIndex :: Word32 
-                      , vkDstQueueFamilyIndex :: Word32 
-                      , vkImage :: VkImage 
-                      , vkSubresourceRange :: VkImageSubresourceRange 
+  VkImageMemoryBarrier{ vkSType :: VkStructureType
+                      , vkPNext :: Ptr Void
+                      , vkSrcAccessMask :: VkAccessFlags
+                      , vkDstAccessMask :: VkAccessFlags
+                      , vkOldLayout :: VkImageLayout
+                      , vkNewLayout :: VkImageLayout
+                      , vkSrcQueueFamilyIndex :: Word32
+                      , vkDstQueueFamilyIndex :: Word32
+                      , vkImage :: VkImage
+                      , vkSubresourceRange :: VkImageSubresourceRange
                       }
   deriving (Eq, Ord, Show)
 
@@ -134,10 +134,10 @@ instance Storable VkImageMemoryBarrier where
 
 
 data VkMemoryBarrier =
-  VkMemoryBarrier{ vkSType :: VkStructureType 
-                 , vkPNext :: Ptr Void 
-                 , vkSrcAccessMask :: VkAccessFlags 
-                 , vkDstAccessMask :: VkAccessFlags 
+  VkMemoryBarrier{ vkSType :: VkStructureType
+                 , vkPNext :: Ptr Void
+                 , vkSrcAccessMask :: VkAccessFlags
+                 , vkDstAccessMask :: VkAccessFlags
                  }
   deriving (Eq, Ord, Show)
 
@@ -156,10 +156,10 @@ instance Storable VkMemoryBarrier where
 
 
 data VkDrawIndirectCommand =
-  VkDrawIndirectCommand{ vkVertexCount :: Word32 
-                       , vkInstanceCount :: Word32 
-                       , vkFirstVertex :: Word32 
-                       , vkFirstInstance :: Word32 
+  VkDrawIndirectCommand{ vkVertexCount :: Word32
+                       , vkInstanceCount :: Word32
+                       , vkFirstVertex :: Word32
+                       , vkFirstInstance :: Word32
                        }
   deriving (Eq, Ord, Show)
 
@@ -178,9 +178,9 @@ instance Storable VkDrawIndirectCommand where
 
 
 data VkDispatchIndirectCommand =
-  VkDispatchIndirectCommand{ vkX :: Word32 
-                           , vkY :: Word32 
-                           , vkZ :: Word32 
+  VkDispatchIndirectCommand{ vkX :: Word32
+                           , vkY :: Word32
+                           , vkZ :: Word32
                            }
   deriving (Eq, Ord, Show)
 

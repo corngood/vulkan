@@ -60,12 +60,12 @@ type PFN_vkInternalFreeNotification = FunPtr
 
 
 data VkAllocationCallbacks =
-  VkAllocationCallbacks{ vkPUserData :: Ptr Void 
-                       , vkPfnAllocation :: PFN_vkAllocationFunction 
-                       , vkPfnReallocation :: PFN_vkReallocationFunction 
-                       , vkPfnFree :: PFN_vkFreeFunction 
-                       , vkPfnInternalAllocation :: PFN_vkInternalAllocationNotification 
-                       , vkPfnInternalFree :: PFN_vkInternalFreeNotification 
+  VkAllocationCallbacks{ vkPUserData :: Ptr Void
+                       , vkPfnAllocation :: PFN_vkAllocationFunction
+                       , vkPfnReallocation :: PFN_vkReallocationFunction
+                       , vkPfnFree :: PFN_vkFreeFunction
+                       , vkPfnInternalAllocation :: PFN_vkInternalAllocationNotification
+                       , vkPfnInternalFree :: PFN_vkInternalFreeNotification
                        }
   deriving (Eq, Ord, Show)
 
@@ -195,11 +195,11 @@ foreign import ccall "vkAllocateMemory" vkAllocateMemory ::
 
 
 data VkMappedMemoryRange =
-  VkMappedMemoryRange{ vkSType :: VkStructureType 
-                     , vkPNext :: Ptr Void 
-                     , vkMemory :: VkDeviceMemory 
-                     , vkOffset :: VkDeviceSize 
-                     , vkSize :: VkDeviceSize 
+  VkMappedMemoryRange{ vkSType :: VkStructureType
+                     , vkPNext :: Ptr Void
+                     , vkMemory :: VkDeviceMemory
+                     , vkOffset :: VkDeviceSize
+                     , vkSize :: VkDeviceSize
                      }
   deriving (Eq, Ord, Show)
 
@@ -220,10 +220,10 @@ instance Storable VkMappedMemoryRange where
 
 
 data VkMemoryAllocateInfo =
-  VkMemoryAllocateInfo{ vkSType :: VkStructureType 
-                      , vkPNext :: Ptr Void 
-                      , vkAllocationSize :: VkDeviceSize 
-                      , vkMemoryTypeIndex :: Word32 
+  VkMemoryAllocateInfo{ vkSType :: VkStructureType
+                      , vkPNext :: Ptr Void
+                      , vkAllocationSize :: VkDeviceSize
+                      , vkMemoryTypeIndex :: Word32
                       }
   deriving (Eq, Ord, Show)
 

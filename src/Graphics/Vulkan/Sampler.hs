@@ -214,24 +214,24 @@ newtype VkSampler = VkSampler Word64
 
 
 data VkSamplerCreateInfo =
-  VkSamplerCreateInfo{ vkSType :: VkStructureType 
-                     , vkPNext :: Ptr Void 
-                     , vkFlags :: VkSamplerCreateFlags 
-                     , vkMagFilter :: VkFilter 
-                     , vkMinFilter :: VkFilter 
-                     , vkMipmapMode :: VkSamplerMipmapMode 
-                     , vkAddressModeU :: VkSamplerAddressMode 
-                     , vkAddressModeV :: VkSamplerAddressMode 
-                     , vkAddressModeW :: VkSamplerAddressMode 
-                     , vkMipLodBias :: CFloat 
-                     , vkAnisotropyEnable :: VkBool32 
-                     , vkMaxAnisotropy :: CFloat 
-                     , vkCompareEnable :: VkBool32 
-                     , vkCompareOp :: VkCompareOp 
-                     , vkMinLod :: CFloat 
-                     , vkMaxLod :: CFloat 
-                     , vkBorderColor :: VkBorderColor 
-                     , vkUnnormalizedCoordinates :: VkBool32 
+  VkSamplerCreateInfo{ vkSType :: VkStructureType
+                     , vkPNext :: Ptr Void
+                     , vkFlags :: VkSamplerCreateFlags
+                     , vkMagFilter :: VkFilter
+                     , vkMinFilter :: VkFilter
+                     , vkMipmapMode :: VkSamplerMipmapMode
+                     , vkAddressModeU :: VkSamplerAddressMode
+                     , vkAddressModeV :: VkSamplerAddressMode
+                     , vkAddressModeW :: VkSamplerAddressMode
+                     , vkMipLodBias :: CFloat
+                     , vkAnisotropyEnable :: VkBool32
+                     , vkMaxAnisotropy :: CFloat
+                     , vkCompareEnable :: VkBool32
+                     , vkCompareOp :: VkCompareOp
+                     , vkMinLod :: CFloat
+                     , vkMaxLod :: CFloat
+                     , vkBorderColor :: VkBorderColor
+                     , vkUnnormalizedCoordinates :: VkBool32
                      }
   deriving (Eq, Ord, Show)
 

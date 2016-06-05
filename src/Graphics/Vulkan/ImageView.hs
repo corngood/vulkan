@@ -57,14 +57,14 @@ import Foreign.C.Types( CSize(..)
 
 
 data VkImageViewCreateInfo =
-  VkImageViewCreateInfo{ vkSType :: VkStructureType 
-                       , vkPNext :: Ptr Void 
-                       , vkFlags :: VkImageViewCreateFlags 
-                       , vkImage :: VkImage 
-                       , vkViewType :: VkImageViewType 
-                       , vkFormat :: VkFormat 
-                       , vkComponents :: VkComponentMapping 
-                       , vkSubresourceRange :: VkImageSubresourceRange 
+  VkImageViewCreateInfo{ vkSType :: VkStructureType
+                       , vkPNext :: Ptr Void
+                       , vkFlags :: VkImageViewCreateFlags
+                       , vkImage :: VkImage
+                       , vkViewType :: VkImageViewType
+                       , vkFormat :: VkFormat
+                       , vkComponents :: VkComponentMapping
+                       , vkSubresourceRange :: VkImageSubresourceRange
                        }
   deriving (Eq, Ord, Show)
 
@@ -151,10 +151,10 @@ newtype VkImageViewCreateFlags = VkImageViewCreateFlags VkFlags
 
 
 data VkComponentMapping =
-  VkComponentMapping{ vkR :: VkComponentSwizzle 
-                    , vkG :: VkComponentSwizzle 
-                    , vkB :: VkComponentSwizzle 
-                    , vkA :: VkComponentSwizzle 
+  VkComponentMapping{ vkR :: VkComponentSwizzle
+                    , vkG :: VkComponentSwizzle
+                    , vkB :: VkComponentSwizzle
+                    , vkA :: VkComponentSwizzle
                     }
   deriving (Eq, Ord, Show)
 

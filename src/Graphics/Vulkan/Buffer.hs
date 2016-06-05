@@ -159,14 +159,14 @@ newtype VkBuffer = VkBuffer Word64
 
 
 data VkBufferCreateInfo =
-  VkBufferCreateInfo{ vkSType :: VkStructureType 
-                    , vkPNext :: Ptr Void 
-                    , vkFlags :: VkBufferCreateFlags 
-                    , vkSize :: VkDeviceSize 
-                    , vkUsage :: VkBufferUsageFlags 
-                    , vkSharingMode :: VkSharingMode 
-                    , vkQueueFamilyIndexCount :: Word32 
-                    , vkPQueueFamilyIndices :: Ptr Word32 
+  VkBufferCreateInfo{ vkSType :: VkStructureType
+                    , vkPNext :: Ptr Void
+                    , vkFlags :: VkBufferCreateFlags
+                    , vkSize :: VkDeviceSize
+                    , vkUsage :: VkBufferUsageFlags
+                    , vkSharingMode :: VkSharingMode
+                    , vkQueueFamilyIndexCount :: Word32
+                    , vkPQueueFamilyIndices :: Ptr Word32
                     }
   deriving (Eq, Ord, Show)
 

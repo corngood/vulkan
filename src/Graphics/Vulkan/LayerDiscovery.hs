@@ -24,10 +24,10 @@ import Foreign.C.Types( CChar
 
 
 data VkLayerProperties =
-  VkLayerProperties{ vkLayerName :: Vector VK_MAX_EXTENSION_NAME_SIZE CChar 
-                   , vkSpecVersion :: Word32 
-                   , vkImplementationVersion :: Word32 
-                   , vkDescription :: Vector VK_MAX_DESCRIPTION_SIZE CChar 
+  VkLayerProperties{ vkLayerName :: Vector VK_MAX_EXTENSION_NAME_SIZE CChar
+                   , vkSpecVersion :: Word32
+                   , vkImplementationVersion :: Word32
+                   , vkDescription :: Vector VK_MAX_DESCRIPTION_SIZE CChar
                    }
   deriving (Eq, Ord, Show)
 

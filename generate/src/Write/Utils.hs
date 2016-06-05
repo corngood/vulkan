@@ -34,7 +34,9 @@ docComment docSymbol c = case comment c of
                  _ -> error "'comment' didn't return a comment"
 
 postdocComment :: String -> String
-postdocComment = docComment '^'
+postdocComment c = case docComment '^' c of
+  "" -> ""
+  s -> " " ++ s
 
 predocComment :: String -> String
 predocComment = docComment '|'

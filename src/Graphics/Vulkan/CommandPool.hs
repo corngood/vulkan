@@ -50,10 +50,10 @@ import Foreign.C.Types( CSize(..)
 
 
 data VkCommandPoolCreateInfo =
-  VkCommandPoolCreateInfo{ vkSType :: VkStructureType 
-                         , vkPNext :: Ptr Void 
-                         , vkFlags :: VkCommandPoolCreateFlags 
-                         , vkQueueFamilyIndex :: Word32 
+  VkCommandPoolCreateInfo{ vkSType :: VkStructureType
+                         , vkPNext :: Ptr Void
+                         , vkFlags :: VkCommandPoolCreateFlags
+                         , vkQueueFamilyIndex :: Word32
                          }
   deriving (Eq, Ord, Show)
 

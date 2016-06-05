@@ -30,9 +30,9 @@ foreign import ccall "vkGetImageMemoryRequirements" vkGetImageMemoryRequirements
 
 
 data VkMemoryRequirements =
-  VkMemoryRequirements{ vkSize :: VkDeviceSize 
-                      , vkAlignment :: VkDeviceSize 
-                      , vkMemoryTypeBits :: Word32 
+  VkMemoryRequirements{ vkSize :: VkDeviceSize
+                      , vkAlignment :: VkDeviceSize
+                      , vkMemoryTypeBits :: Word32
                       }
   deriving (Eq, Ord, Show)
 

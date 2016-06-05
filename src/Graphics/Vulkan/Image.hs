@@ -204,11 +204,11 @@ pattern VK_IMAGE_ASPECT_METADATA_BIT = VkImageAspectFlagBits 0x8
 
 
 data VkSubresourceLayout =
-  VkSubresourceLayout{ vkOffset :: VkDeviceSize 
-                     , vkSize :: VkDeviceSize 
-                     , vkRowPitch :: VkDeviceSize 
-                     , vkArrayPitch :: VkDeviceSize 
-                     , vkDepthPitch :: VkDeviceSize 
+  VkSubresourceLayout{ vkOffset :: VkDeviceSize
+                     , vkSize :: VkDeviceSize
+                     , vkRowPitch :: VkDeviceSize
+                     , vkArrayPitch :: VkDeviceSize
+                     , vkDepthPitch :: VkDeviceSize
                      }
   deriving (Eq, Ord, Show)
 
@@ -343,9 +343,9 @@ foreign import ccall "vkDestroyImage" vkDestroyImage ::
 
 
 data VkImageSubresource =
-  VkImageSubresource{ vkAspectMask :: VkImageAspectFlags 
-                    , vkMipLevel :: Word32 
-                    , vkArrayLayer :: Word32 
+  VkImageSubresource{ vkAspectMask :: VkImageAspectFlags
+                    , vkMipLevel :: Word32
+                    , vkArrayLayer :: Word32
                     }
   deriving (Eq, Ord, Show)
 
@@ -362,11 +362,11 @@ instance Storable VkImageSubresource where
 
 
 data VkImageSubresourceRange =
-  VkImageSubresourceRange{ vkAspectMask :: VkImageAspectFlags 
-                         , vkBaseMipLevel :: Word32 
-                         , vkLevelCount :: Word32 
-                         , vkBaseArrayLayer :: Word32 
-                         , vkLayerCount :: Word32 
+  VkImageSubresourceRange{ vkAspectMask :: VkImageAspectFlags
+                         , vkBaseMipLevel :: Word32
+                         , vkLevelCount :: Word32
+                         , vkBaseArrayLayer :: Word32
+                         , vkLayerCount :: Word32
                          }
   deriving (Eq, Ord, Show)
 
@@ -393,21 +393,21 @@ foreign import ccall "vkGetImageSubresourceLayout" vkGetImageSubresourceLayout :
 
 
 data VkImageCreateInfo =
-  VkImageCreateInfo{ vkSType :: VkStructureType 
-                   , vkPNext :: Ptr Void 
-                   , vkFlags :: VkImageCreateFlags 
-                   , vkImageType :: VkImageType 
-                   , vkFormat :: VkFormat 
-                   , vkExtent :: VkExtent3D 
-                   , vkMipLevels :: Word32 
-                   , vkArrayLayers :: Word32 
-                   , vkSamples :: VkSampleCountFlagBits 
-                   , vkTiling :: VkImageTiling 
-                   , vkUsage :: VkImageUsageFlags 
-                   , vkSharingMode :: VkSharingMode 
-                   , vkQueueFamilyIndexCount :: Word32 
-                   , vkPQueueFamilyIndices :: Ptr Word32 
-                   , vkInitialLayout :: VkImageLayout 
+  VkImageCreateInfo{ vkSType :: VkStructureType
+                   , vkPNext :: Ptr Void
+                   , vkFlags :: VkImageCreateFlags
+                   , vkImageType :: VkImageType
+                   , vkFormat :: VkFormat
+                   , vkExtent :: VkExtent3D
+                   , vkMipLevels :: Word32
+                   , vkArrayLayers :: Word32
+                   , vkSamples :: VkSampleCountFlagBits
+                   , vkTiling :: VkImageTiling
+                   , vkUsage :: VkImageUsageFlags
+                   , vkSharingMode :: VkSharingMode
+                   , vkQueueFamilyIndexCount :: Word32
+                   , vkPQueueFamilyIndices :: Ptr Word32
+                   , vkInitialLayout :: VkImageLayout
                    }
   deriving (Eq, Ord, Show)
 

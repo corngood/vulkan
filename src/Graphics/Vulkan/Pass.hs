@@ -64,13 +64,13 @@ import Foreign.C.Types( CSize(..)
 
 
 data VkSubpassDependency =
-  VkSubpassDependency{ vkSrcSubpass :: Word32 
-                     , vkDstSubpass :: Word32 
-                     , vkSrcStageMask :: VkPipelineStageFlags 
-                     , vkDstStageMask :: VkPipelineStageFlags 
-                     , vkSrcAccessMask :: VkAccessFlags 
-                     , vkDstAccessMask :: VkAccessFlags 
-                     , vkDependencyFlags :: VkDependencyFlags 
+  VkSubpassDependency{ vkSrcSubpass :: Word32
+                     , vkDstSubpass :: Word32
+                     , vkSrcStageMask :: VkPipelineStageFlags
+                     , vkDstStageMask :: VkPipelineStageFlags
+                     , vkSrcAccessMask :: VkAccessFlags
+                     , vkDstAccessMask :: VkAccessFlags
+                     , vkDependencyFlags :: VkDependencyFlags
                      }
   deriving (Eq, Ord, Show)
 
@@ -167,15 +167,15 @@ foreign import ccall "vkCreateFramebuffer" vkCreateFramebuffer ::
 
 
 data VkFramebufferCreateInfo =
-  VkFramebufferCreateInfo{ vkSType :: VkStructureType 
-                         , vkPNext :: Ptr Void 
-                         , vkFlags :: VkFramebufferCreateFlags 
-                         , vkRenderPass :: VkRenderPass 
-                         , vkAttachmentCount :: Word32 
-                         , vkPAttachments :: Ptr VkImageView 
-                         , vkWidth :: Word32 
-                         , vkHeight :: Word32 
-                         , vkLayers :: Word32 
+  VkFramebufferCreateInfo{ vkSType :: VkStructureType
+                         , vkPNext :: Ptr Void
+                         , vkFlags :: VkFramebufferCreateFlags
+                         , vkRenderPass :: VkRenderPass
+                         , vkAttachmentCount :: Word32
+                         , vkPAttachments :: Ptr VkImageView
+                         , vkWidth :: Word32
+                         , vkHeight :: Word32
+                         , vkLayers :: Word32
                          }
   deriving (Eq, Ord, Show)
 
@@ -362,8 +362,8 @@ foreign import ccall "vkDestroyFramebuffer" vkDestroyFramebuffer ::
 
 
 data VkAttachmentReference =
-  VkAttachmentReference{ vkAttachment :: Word32 
-                       , vkLayout :: VkImageLayout 
+  VkAttachmentReference{ vkAttachment :: Word32
+                       , vkLayout :: VkImageLayout
                        }
   deriving (Eq, Ord, Show)
 
@@ -383,15 +383,15 @@ newtype VkRenderPassCreateFlags = VkRenderPassCreateFlags VkFlags
 
 
 data VkAttachmentDescription =
-  VkAttachmentDescription{ vkFlags :: VkAttachmentDescriptionFlags 
-                         , vkFormat :: VkFormat 
-                         , vkSamples :: VkSampleCountFlagBits 
-                         , vkLoadOp :: VkAttachmentLoadOp 
-                         , vkStoreOp :: VkAttachmentStoreOp 
-                         , vkStencilLoadOp :: VkAttachmentLoadOp 
-                         , vkStencilStoreOp :: VkAttachmentStoreOp 
-                         , vkInitialLayout :: VkImageLayout 
-                         , vkFinalLayout :: VkImageLayout 
+  VkAttachmentDescription{ vkFlags :: VkAttachmentDescriptionFlags
+                         , vkFormat :: VkFormat
+                         , vkSamples :: VkSampleCountFlagBits
+                         , vkLoadOp :: VkAttachmentLoadOp
+                         , vkStoreOp :: VkAttachmentStoreOp
+                         , vkStencilLoadOp :: VkAttachmentLoadOp
+                         , vkStencilStoreOp :: VkAttachmentStoreOp
+                         , vkInitialLayout :: VkImageLayout
+                         , vkFinalLayout :: VkImageLayout
                          }
   deriving (Eq, Ord, Show)
 
@@ -420,16 +420,16 @@ instance Storable VkAttachmentDescription where
 
 
 data VkSubpassDescription =
-  VkSubpassDescription{ vkFlags :: VkSubpassDescriptionFlags 
-                      , vkPipelineBindPoint :: VkPipelineBindPoint 
-                      , vkInputAttachmentCount :: Word32 
-                      , vkPInputAttachments :: Ptr VkAttachmentReference 
-                      , vkColorAttachmentCount :: Word32 
-                      , vkPColorAttachments :: Ptr VkAttachmentReference 
-                      , vkPResolveAttachments :: Ptr VkAttachmentReference 
-                      , vkPDepthStencilAttachment :: Ptr VkAttachmentReference 
-                      , vkPreserveAttachmentCount :: Word32 
-                      , vkPPreserveAttachments :: Ptr Word32 
+  VkSubpassDescription{ vkFlags :: VkSubpassDescriptionFlags
+                      , vkPipelineBindPoint :: VkPipelineBindPoint
+                      , vkInputAttachmentCount :: Word32
+                      , vkPInputAttachments :: Ptr VkAttachmentReference
+                      , vkColorAttachmentCount :: Word32
+                      , vkPColorAttachments :: Ptr VkAttachmentReference
+                      , vkPResolveAttachments :: Ptr VkAttachmentReference
+                      , vkPDepthStencilAttachment :: Ptr VkAttachmentReference
+                      , vkPreserveAttachmentCount :: Word32
+                      , vkPPreserveAttachments :: Ptr Word32
                       }
   deriving (Eq, Ord, Show)
 
@@ -466,15 +466,15 @@ foreign import ccall "vkCreateRenderPass" vkCreateRenderPass ::
 
 
 data VkRenderPassCreateInfo =
-  VkRenderPassCreateInfo{ vkSType :: VkStructureType 
-                        , vkPNext :: Ptr Void 
-                        , vkFlags :: VkRenderPassCreateFlags 
-                        , vkAttachmentCount :: Word32 
-                        , vkPAttachments :: Ptr VkAttachmentDescription 
-                        , vkSubpassCount :: Word32 
-                        , vkPSubpasses :: Ptr VkSubpassDescription 
-                        , vkDependencyCount :: Word32 
-                        , vkPDependencies :: Ptr VkSubpassDependency 
+  VkRenderPassCreateInfo{ vkSType :: VkStructureType
+                        , vkPNext :: Ptr Void
+                        , vkFlags :: VkRenderPassCreateFlags
+                        , vkAttachmentCount :: Word32
+                        , vkPAttachments :: Ptr VkAttachmentDescription
+                        , vkSubpassCount :: Word32
+                        , vkPSubpasses :: Ptr VkSubpassDescription
+                        , vkDependencyCount :: Word32
+                        , vkPDependencies :: Ptr VkSubpassDependency
                         }
   deriving (Eq, Ord, Show)
 

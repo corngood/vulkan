@@ -77,10 +77,10 @@ import Foreign.C.Types( CSize
 
 
 data VkPipelineTessellationStateCreateInfo =
-  VkPipelineTessellationStateCreateInfo{ vkSType :: VkStructureType 
-                                       , vkPNext :: Ptr Void 
-                                       , vkFlags :: VkPipelineTessellationStateCreateFlags 
-                                       , vkPatchControlPoints :: Word32 
+  VkPipelineTessellationStateCreateInfo{ vkSType :: VkStructureType
+                                       , vkPNext :: Ptr Void
+                                       , vkFlags :: VkPipelineTessellationStateCreateFlags
+                                       , vkPatchControlPoints :: Word32
                                        }
   deriving (Eq, Ord, Show)
 
@@ -99,10 +99,10 @@ instance Storable VkPipelineTessellationStateCreateInfo where
 
 
 data VkVertexInputAttributeDescription =
-  VkVertexInputAttributeDescription{ vkLocation :: Word32 
-                                   , vkBinding :: Word32 
-                                   , vkFormat :: VkFormat 
-                                   , vkOffset :: Word32 
+  VkVertexInputAttributeDescription{ vkLocation :: Word32
+                                   , vkBinding :: Word32
+                                   , vkFormat :: VkFormat
+                                   , vkOffset :: Word32
                                    }
   deriving (Eq, Ord, Show)
 
@@ -121,25 +121,25 @@ instance Storable VkVertexInputAttributeDescription where
 
 
 data VkGraphicsPipelineCreateInfo =
-  VkGraphicsPipelineCreateInfo{ vkSType :: VkStructureType 
-                              , vkPNext :: Ptr Void 
-                              , vkFlags :: VkPipelineCreateFlags 
-                              , vkStageCount :: Word32 
-                              , vkPStages :: Ptr VkPipelineShaderStageCreateInfo 
-                              , vkPVertexInputState :: Ptr VkPipelineVertexInputStateCreateInfo 
-                              , vkPInputAssemblyState :: Ptr VkPipelineInputAssemblyStateCreateInfo 
-                              , vkPTessellationState :: Ptr VkPipelineTessellationStateCreateInfo 
-                              , vkPViewportState :: Ptr VkPipelineViewportStateCreateInfo 
-                              , vkPRasterizationState :: Ptr VkPipelineRasterizationStateCreateInfo 
-                              , vkPMultisampleState :: Ptr VkPipelineMultisampleStateCreateInfo 
-                              , vkPDepthStencilState :: Ptr VkPipelineDepthStencilStateCreateInfo 
-                              , vkPColorBlendState :: Ptr VkPipelineColorBlendStateCreateInfo 
-                              , vkPDynamicState :: Ptr VkPipelineDynamicStateCreateInfo 
-                              , vkLayout :: VkPipelineLayout 
-                              , vkRenderPass :: VkRenderPass 
-                              , vkSubpass :: Word32 
-                              , vkBasePipelineHandle :: VkPipeline 
-                              , vkBasePipelineIndex :: Int32 
+  VkGraphicsPipelineCreateInfo{ vkSType :: VkStructureType
+                              , vkPNext :: Ptr Void
+                              , vkFlags :: VkPipelineCreateFlags
+                              , vkStageCount :: Word32
+                              , vkPStages :: Ptr VkPipelineShaderStageCreateInfo
+                              , vkPVertexInputState :: Ptr VkPipelineVertexInputStateCreateInfo
+                              , vkPInputAssemblyState :: Ptr VkPipelineInputAssemblyStateCreateInfo
+                              , vkPTessellationState :: Ptr VkPipelineTessellationStateCreateInfo
+                              , vkPViewportState :: Ptr VkPipelineViewportStateCreateInfo
+                              , vkPRasterizationState :: Ptr VkPipelineRasterizationStateCreateInfo
+                              , vkPMultisampleState :: Ptr VkPipelineMultisampleStateCreateInfo
+                              , vkPDepthStencilState :: Ptr VkPipelineDepthStencilStateCreateInfo
+                              , vkPColorBlendState :: Ptr VkPipelineColorBlendStateCreateInfo
+                              , vkPDynamicState :: Ptr VkPipelineDynamicStateCreateInfo
+                              , vkLayout :: VkPipelineLayout
+                              , vkRenderPass :: VkRenderPass
+                              , vkSubpass :: Word32
+                              , vkBasePipelineHandle :: VkPipeline
+                              , vkBasePipelineIndex :: Int32
                               }
   deriving (Eq, Ord, Show)
 
@@ -230,13 +230,13 @@ newtype VkPipelineDepthStencilStateCreateFlags = VkPipelineDepthStencilStateCrea
 
 
 data VkPipelineShaderStageCreateInfo =
-  VkPipelineShaderStageCreateInfo{ vkSType :: VkStructureType 
-                                 , vkPNext :: Ptr Void 
-                                 , vkFlags :: VkPipelineShaderStageCreateFlags 
-                                 , vkStage :: VkShaderStageFlagBits 
-                                 , vkModule :: VkShaderModule 
-                                 , vkPName :: Ptr CChar 
-                                 , vkPSpecializationInfo :: Ptr VkSpecializationInfo 
+  VkPipelineShaderStageCreateInfo{ vkSType :: VkStructureType
+                                 , vkPNext :: Ptr Void
+                                 , vkFlags :: VkPipelineShaderStageCreateFlags
+                                 , vkStage :: VkShaderStageFlagBits
+                                 , vkModule :: VkShaderModule
+                                 , vkPName :: Ptr CChar
+                                 , vkPSpecializationInfo :: Ptr VkSpecializationInfo
                                  }
   deriving (Eq, Ord, Show)
 
@@ -300,13 +300,13 @@ pattern VK_COLOR_COMPONENT_A_BIT = VkColorComponentFlagBits 0x8
 
 
 data VkComputePipelineCreateInfo =
-  VkComputePipelineCreateInfo{ vkSType :: VkStructureType 
-                             , vkPNext :: Ptr Void 
-                             , vkFlags :: VkPipelineCreateFlags 
-                             , vkStage :: VkPipelineShaderStageCreateInfo 
-                             , vkLayout :: VkPipelineLayout 
-                             , vkBasePipelineHandle :: VkPipeline 
-                             , vkBasePipelineIndex :: Int32 
+  VkComputePipelineCreateInfo{ vkSType :: VkStructureType
+                             , vkPNext :: Ptr Void
+                             , vkFlags :: VkPipelineCreateFlags
+                             , vkStage :: VkPipelineShaderStageCreateInfo
+                             , vkLayout :: VkPipelineLayout
+                             , vkBasePipelineHandle :: VkPipeline
+                             , vkBasePipelineIndex :: Int32
                              }
   deriving (Eq, Ord, Show)
 
@@ -381,10 +381,10 @@ pattern VK_STENCIL_OP_DECREMENT_AND_WRAP = VkStencilOp 7
 
 
 data VkSpecializationInfo =
-  VkSpecializationInfo{ vkMapEntryCount :: Word32 
-                      , vkPMapEntries :: Ptr VkSpecializationMapEntry 
-                      , vkDataSize :: CSize 
-                      , vkPData :: Ptr Void 
+  VkSpecializationInfo{ vkMapEntryCount :: Word32
+                      , vkPMapEntries :: Ptr VkSpecializationMapEntry
+                      , vkDataSize :: CSize
+                      , vkPData :: Ptr Void
                       }
   deriving (Eq, Ord, Show)
 
@@ -692,19 +692,19 @@ newtype VkPipelineDynamicStateCreateFlags = VkPipelineDynamicStateCreateFlags Vk
 
 
 data VkPipelineRasterizationStateCreateInfo =
-  VkPipelineRasterizationStateCreateInfo{ vkSType :: VkStructureType 
-                                        , vkPNext :: Ptr Void 
-                                        , vkFlags :: VkPipelineRasterizationStateCreateFlags 
-                                        , vkDepthClampEnable :: VkBool32 
-                                        , vkRasterizerDiscardEnable :: VkBool32 
-                                        , vkPolygonMode :: VkPolygonMode 
-                                        , vkCullMode :: VkCullModeFlags 
-                                        , vkFrontFace :: VkFrontFace 
-                                        , vkDepthBiasEnable :: VkBool32 
-                                        , vkDepthBiasConstantFactor :: CFloat 
-                                        , vkDepthBiasClamp :: CFloat 
-                                        , vkDepthBiasSlopeFactor :: CFloat 
-                                        , vkLineWidth :: CFloat 
+  VkPipelineRasterizationStateCreateInfo{ vkSType :: VkStructureType
+                                        , vkPNext :: Ptr Void
+                                        , vkFlags :: VkPipelineRasterizationStateCreateFlags
+                                        , vkDepthClampEnable :: VkBool32
+                                        , vkRasterizerDiscardEnable :: VkBool32
+                                        , vkPolygonMode :: VkPolygonMode
+                                        , vkCullMode :: VkCullModeFlags
+                                        , vkFrontFace :: VkFrontFace
+                                        , vkDepthBiasEnable :: VkBool32
+                                        , vkDepthBiasConstantFactor :: CFloat
+                                        , vkDepthBiasClamp :: CFloat
+                                        , vkDepthBiasSlopeFactor :: CFloat
+                                        , vkLineWidth :: CFloat
                                         }
   deriving (Eq, Ord, Show)
 
@@ -788,13 +788,13 @@ newtype VkPipelineShaderStageCreateFlags = VkPipelineShaderStageCreateFlags VkFl
 
 
 data VkPipelineViewportStateCreateInfo =
-  VkPipelineViewportStateCreateInfo{ vkSType :: VkStructureType 
-                                   , vkPNext :: Ptr Void 
-                                   , vkFlags :: VkPipelineViewportStateCreateFlags 
-                                   , vkViewportCount :: Word32 
-                                   , vkPViewports :: Ptr VkViewport 
-                                   , vkScissorCount :: Word32 
-                                   , vkPScissors :: Ptr VkRect2D 
+  VkPipelineViewportStateCreateInfo{ vkSType :: VkStructureType
+                                   , vkPNext :: Ptr Void
+                                   , vkFlags :: VkPipelineViewportStateCreateFlags
+                                   , vkViewportCount :: Word32
+                                   , vkPViewports :: Ptr VkViewport
+                                   , vkScissorCount :: Word32
+                                   , vkPScissors :: Ptr VkRect2D
                                    }
   deriving (Eq, Ord, Show)
 
@@ -824,13 +824,13 @@ newtype VkPipelineTessellationStateCreateFlags = VkPipelineTessellationStateCrea
 
 
 data VkPipelineVertexInputStateCreateInfo =
-  VkPipelineVertexInputStateCreateInfo{ vkSType :: VkStructureType 
-                                      , vkPNext :: Ptr Void 
-                                      , vkFlags :: VkPipelineVertexInputStateCreateFlags 
-                                      , vkVertexBindingDescriptionCount :: Word32 
-                                      , vkPVertexBindingDescriptions :: Ptr VkVertexInputBindingDescription 
-                                      , vkVertexAttributeDescriptionCount :: Word32 
-                                      , vkPVertexAttributeDescriptions :: Ptr VkVertexInputAttributeDescription 
+  VkPipelineVertexInputStateCreateInfo{ vkSType :: VkStructureType
+                                      , vkPNext :: Ptr Void
+                                      , vkFlags :: VkPipelineVertexInputStateCreateFlags
+                                      , vkVertexBindingDescriptionCount :: Word32
+                                      , vkPVertexBindingDescriptions :: Ptr VkVertexInputBindingDescription
+                                      , vkVertexAttributeDescriptionCount :: Word32
+                                      , vkPVertexAttributeDescriptions :: Ptr VkVertexInputAttributeDescription
                                       }
   deriving (Eq, Ord, Show)
 
@@ -917,11 +917,11 @@ pattern VK_PRIMITIVE_TOPOLOGY_PATCH_LIST = VkPrimitiveTopology 10
 
 
 data VkPipelineInputAssemblyStateCreateInfo =
-  VkPipelineInputAssemblyStateCreateInfo{ vkSType :: VkStructureType 
-                                        , vkPNext :: Ptr Void 
-                                        , vkFlags :: VkPipelineInputAssemblyStateCreateFlags 
-                                        , vkTopology :: VkPrimitiveTopology 
-                                        , vkPrimitiveRestartEnable :: VkBool32 
+  VkPipelineInputAssemblyStateCreateInfo{ vkSType :: VkStructureType
+                                        , vkPNext :: Ptr Void
+                                        , vkFlags :: VkPipelineInputAssemblyStateCreateFlags
+                                        , vkTopology :: VkPrimitiveTopology
+                                        , vkPrimitiveRestartEnable :: VkBool32
                                         }
   deriving (Eq, Ord, Show)
 
@@ -942,14 +942,14 @@ instance Storable VkPipelineInputAssemblyStateCreateInfo where
 
 
 data VkPipelineColorBlendStateCreateInfo =
-  VkPipelineColorBlendStateCreateInfo{ vkSType :: VkStructureType 
-                                     , vkPNext :: Ptr Void 
-                                     , vkFlags :: VkPipelineColorBlendStateCreateFlags 
-                                     , vkLogicOpEnable :: VkBool32 
-                                     , vkLogicOp :: VkLogicOp 
-                                     , vkAttachmentCount :: Word32 
-                                     , vkPAttachments :: Ptr VkPipelineColorBlendAttachmentState 
-                                     , vkBlendConstants :: Vector 4 CFloat 
+  VkPipelineColorBlendStateCreateInfo{ vkSType :: VkStructureType
+                                     , vkPNext :: Ptr Void
+                                     , vkFlags :: VkPipelineColorBlendStateCreateFlags
+                                     , vkLogicOpEnable :: VkBool32
+                                     , vkLogicOp :: VkLogicOp
+                                     , vkAttachmentCount :: Word32
+                                     , vkPAttachments :: Ptr VkPipelineColorBlendAttachmentState
+                                     , vkBlendConstants :: Vector 4 CFloat
                                      }
   deriving (Eq, Ord, Show)
 
@@ -976,11 +976,11 @@ instance Storable VkPipelineColorBlendStateCreateInfo where
 
 
 data VkPipelineDynamicStateCreateInfo =
-  VkPipelineDynamicStateCreateInfo{ vkSType :: VkStructureType 
-                                  , vkPNext :: Ptr Void 
-                                  , vkFlags :: VkPipelineDynamicStateCreateFlags 
-                                  , vkDynamicStateCount :: Word32 
-                                  , vkPDynamicStates :: Ptr VkDynamicState 
+  VkPipelineDynamicStateCreateInfo{ vkSType :: VkStructureType
+                                  , vkPNext :: Ptr Void
+                                  , vkFlags :: VkPipelineDynamicStateCreateFlags
+                                  , vkDynamicStateCount :: Word32
+                                  , vkPDynamicStates :: Ptr VkDynamicState
                                   }
   deriving (Eq, Ord, Show)
 
@@ -1001,9 +1001,9 @@ instance Storable VkPipelineDynamicStateCreateInfo where
 
 
 data VkSpecializationMapEntry =
-  VkSpecializationMapEntry{ vkConstantID :: Word32 
-                          , vkOffset :: Word32 
-                          , vkSize :: CSize 
+  VkSpecializationMapEntry{ vkConstantID :: Word32
+                          , vkOffset :: Word32
+                          , vkSize :: CSize
                           }
   deriving (Eq, Ord, Show)
 
@@ -1142,14 +1142,14 @@ pattern VK_PIPELINE_STAGE_ALL_COMMANDS_BIT = VkPipelineStageFlagBits 0x10000
 
 
 data VkPipelineColorBlendAttachmentState =
-  VkPipelineColorBlendAttachmentState{ vkBlendEnable :: VkBool32 
-                                     , vkSrcColorBlendFactor :: VkBlendFactor 
-                                     , vkDstColorBlendFactor :: VkBlendFactor 
-                                     , vkColorBlendOp :: VkBlendOp 
-                                     , vkSrcAlphaBlendFactor :: VkBlendFactor 
-                                     , vkDstAlphaBlendFactor :: VkBlendFactor 
-                                     , vkAlphaBlendOp :: VkBlendOp 
-                                     , vkColorWriteMask :: VkColorComponentFlags 
+  VkPipelineColorBlendAttachmentState{ vkBlendEnable :: VkBool32
+                                     , vkSrcColorBlendFactor :: VkBlendFactor
+                                     , vkDstColorBlendFactor :: VkBlendFactor
+                                     , vkColorBlendOp :: VkBlendOp
+                                     , vkSrcAlphaBlendFactor :: VkBlendFactor
+                                     , vkDstAlphaBlendFactor :: VkBlendFactor
+                                     , vkAlphaBlendOp :: VkBlendOp
+                                     , vkColorWriteMask :: VkColorComponentFlags
                                      }
   deriving (Eq, Ord, Show)
 
@@ -1278,15 +1278,15 @@ newtype VkPipelineMultisampleStateCreateFlags = VkPipelineMultisampleStateCreate
 
 
 data VkPipelineMultisampleStateCreateInfo =
-  VkPipelineMultisampleStateCreateInfo{ vkSType :: VkStructureType 
-                                      , vkPNext :: Ptr Void 
-                                      , vkFlags :: VkPipelineMultisampleStateCreateFlags 
-                                      , vkRasterizationSamples :: VkSampleCountFlagBits 
-                                      , vkSampleShadingEnable :: VkBool32 
-                                      , vkMinSampleShading :: CFloat 
-                                      , vkPSampleMask :: Ptr VkSampleMask 
-                                      , vkAlphaToCoverageEnable :: VkBool32 
-                                      , vkAlphaToOneEnable :: VkBool32 
+  VkPipelineMultisampleStateCreateInfo{ vkSType :: VkStructureType
+                                      , vkPNext :: Ptr Void
+                                      , vkFlags :: VkPipelineMultisampleStateCreateFlags
+                                      , vkRasterizationSamples :: VkSampleCountFlagBits
+                                      , vkSampleShadingEnable :: VkBool32
+                                      , vkMinSampleShading :: CFloat
+                                      , vkPSampleMask :: Ptr VkSampleMask
+                                      , vkAlphaToCoverageEnable :: VkBool32
+                                      , vkAlphaToOneEnable :: VkBool32
                                       }
   deriving (Eq, Ord, Show)
 
@@ -1315,9 +1315,9 @@ instance Storable VkPipelineMultisampleStateCreateInfo where
 
 
 data VkVertexInputBindingDescription =
-  VkVertexInputBindingDescription{ vkBinding :: Word32 
-                                 , vkStride :: Word32 
-                                 , vkInputRate :: VkVertexInputRate 
+  VkVertexInputBindingDescription{ vkBinding :: Word32
+                                 , vkStride :: Word32
+                                 , vkInputRate :: VkVertexInputRate
                                  }
   deriving (Eq, Ord, Show)
 
@@ -1334,18 +1334,18 @@ instance Storable VkVertexInputBindingDescription where
 
 
 data VkPipelineDepthStencilStateCreateInfo =
-  VkPipelineDepthStencilStateCreateInfo{ vkSType :: VkStructureType 
-                                       , vkPNext :: Ptr Void 
-                                       , vkFlags :: VkPipelineDepthStencilStateCreateFlags 
-                                       , vkDepthTestEnable :: VkBool32 
-                                       , vkDepthWriteEnable :: VkBool32 
-                                       , vkDepthCompareOp :: VkCompareOp 
-                                       , vkDepthBoundsTestEnable :: VkBool32 
-                                       , vkStencilTestEnable :: VkBool32 
-                                       , vkFront :: VkStencilOpState 
-                                       , vkBack :: VkStencilOpState 
-                                       , vkMinDepthBounds :: CFloat 
-                                       , vkMaxDepthBounds :: CFloat 
+  VkPipelineDepthStencilStateCreateInfo{ vkSType :: VkStructureType
+                                       , vkPNext :: Ptr Void
+                                       , vkFlags :: VkPipelineDepthStencilStateCreateFlags
+                                       , vkDepthTestEnable :: VkBool32
+                                       , vkDepthWriteEnable :: VkBool32
+                                       , vkDepthCompareOp :: VkCompareOp
+                                       , vkDepthBoundsTestEnable :: VkBool32
+                                       , vkStencilTestEnable :: VkBool32
+                                       , vkFront :: VkStencilOpState
+                                       , vkBack :: VkStencilOpState
+                                       , vkMinDepthBounds :: CFloat
+                                       , vkMaxDepthBounds :: CFloat
                                        }
   deriving (Eq, Ord, Show)
 
@@ -1388,13 +1388,13 @@ foreign import ccall "vkCreateComputePipelines" vkCreateComputePipelines ::
 
 
 data VkStencilOpState =
-  VkStencilOpState{ vkFailOp :: VkStencilOp 
-                  , vkPassOp :: VkStencilOp 
-                  , vkDepthFailOp :: VkStencilOp 
-                  , vkCompareOp :: VkCompareOp 
-                  , vkCompareMask :: Word32 
-                  , vkWriteMask :: Word32 
-                  , vkReference :: Word32 
+  VkStencilOpState{ vkFailOp :: VkStencilOp
+                  , vkPassOp :: VkStencilOp
+                  , vkDepthFailOp :: VkStencilOp
+                  , vkCompareOp :: VkCompareOp
+                  , vkCompareMask :: Word32
+                  , vkWriteMask :: Word32
+                  , vkReference :: Word32
                   }
   deriving (Eq, Ord, Show)
 

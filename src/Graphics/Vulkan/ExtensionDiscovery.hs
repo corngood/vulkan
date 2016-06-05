@@ -23,8 +23,8 @@ import Foreign.C.Types( CChar
 
 
 data VkExtensionProperties =
-  VkExtensionProperties{ vkExtensionName :: Vector VK_MAX_EXTENSION_NAME_SIZE CChar 
-                       , vkSpecVersion :: Word32 
+  VkExtensionProperties{ vkExtensionName :: Vector VK_MAX_EXTENSION_NAME_SIZE CChar
+                       , vkSpecVersion :: Word32
                        }
   deriving (Eq, Ord, Show)
 

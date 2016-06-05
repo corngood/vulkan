@@ -67,12 +67,12 @@ foreign import ccall "vkDestroyQueryPool" vkDestroyQueryPool ::
 
 
 data VkQueryPoolCreateInfo =
-  VkQueryPoolCreateInfo{ vkSType :: VkStructureType 
-                       , vkPNext :: Ptr Void 
-                       , vkFlags :: VkQueryPoolCreateFlags 
-                       , vkQueryType :: VkQueryType 
-                       , vkQueryCount :: Word32 
-                       , vkPipelineStatistics :: VkQueryPipelineStatisticFlags 
+  VkQueryPoolCreateInfo{ vkSType :: VkStructureType
+                       , vkPNext :: Ptr Void
+                       , vkFlags :: VkQueryPoolCreateFlags
+                       , vkQueryType :: VkQueryType
+                       , vkQueryCount :: Word32
+                       , vkPipelineStatistics :: VkQueryPipelineStatisticFlags
                        }
   deriving (Eq, Ord, Show)
 
