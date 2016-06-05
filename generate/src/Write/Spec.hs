@@ -38,7 +38,7 @@ writeSpecModules root spec = do
   writeModuleFile root (ModuleName "Graphics.Vulkan.Raw")
                        (writeParentModule $ fst <$> modules)
   writeModuleFile root (ModuleName "Graphics.Vulkan")
-    (writeModule' graph locations Normal (ModuleName "Graphics.Vulkan") $ writeWrapperModule graph)
+    (writeModule' graph locations Normal (ModuleName "Graphics.Vulkan") $ writeWrapperModule locations graph)
 
 writeModuleFile :: FilePath -> ModuleName -> String -> IO ()
 writeModuleFile root moduleName =
