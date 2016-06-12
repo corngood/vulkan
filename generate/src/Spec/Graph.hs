@@ -6,13 +6,16 @@ module Spec.Graph where
 import           Control.Arrow     ((&&&))
 import           Data.HashMap.Lazy as M
 import           Data.HashSet      as S
+import           Data.List
 import           Data.Maybe        (catMaybes, fromMaybe, maybeToList)
 import           Language.C.Types
 import           Prelude           hiding (Enum)
 import           Spec.Bitmask
 import           Spec.Command      as Command
 import           Spec.Constant     as Constant
-import           Spec.Enum
+import           Spec.Enum         as Enum
+import           Spec.Extension    as Extension
+import           Spec.Section
 import           Spec.Spec
 import           Spec.Type         hiding (ABaseType, ABitmaskType, ADefine,
                                     AFuncPointerType, AHandleType,
@@ -40,7 +43,7 @@ data SourceEntity = AnInclude Include
                   | AFuncPointerType FuncPointerType
                   | AStructType StructType
                   | AUnionType UnionType
-                  | ACommand Command
+                  | ACommand Command Bool
                   | AnEnum Enum
                   | ABitmask Bitmask
                   | AConstant Constant
@@ -64,17 +67,26 @@ allReachable vs = go (S.fromList (vName <$> vs)) (concatMap vDependencies vs)
                         then go s xs
                         else go (S.insert (vName x) s) (xs ++ vDependencies x)
 
+builtinCommandNames :: Spec -> HashSet String
+builtinCommandNames spec =
+  let sectionCommands = concatMap sCommandNames $ sSections spec
+      khrExtensions = Prelude.filter (("VK_KHR_" `isPrefixOf`) . Extension.eName) $ sExtensions spec
+      khrCommands = concatMap eCommandNames khrExtensions
+      builtinCommands = sectionCommands ++ khrCommands
+  in S.fromList builtinCommands
+
 --------------------------------------------------------------------------------
 -- Converting a spec
 --------------------------------------------------------------------------------
 
 getSpecGraph :: Spec -> SpecGraph
 getSpecGraph spec = graph
-  where gVertices = (typeDeclToVertex graph <$> sTypes spec) ++
+  where builtinCommands = builtinCommandNames spec
+        gVertices = (typeDeclToVertex graph <$> sTypes spec) ++
                     (constantToVertex graph <$> sConstants spec) ++
                     (enumToVertex <$> sEnums spec) ++
                     (bitmaskToVertex graph <$> sBitmasks spec) ++
-                    (commandToVertex graph <$> sCommands spec)
+                    (commandToVertex graph builtinCommands <$> sCommands spec)
         gNameVertexMap = M.fromList ((vName &&& id) <$> gVertices)
         graph = SpecGraph{..}
 
@@ -146,22 +158,23 @@ typeDeclToVertex graph td =
                , vSourceEntity = AUnionType ut
                }
 
-commandToVertex :: SpecGraph -> Command -> Vertex
-commandToVertex graph command =
+commandToVertex :: SpecGraph -> HashSet String -> Command -> Vertex
+commandToVertex graph builtin command =
   let lookupName name = fromMaybe
                           (error ("Depended upon name not in spec: " ++ name))
                           (M.lookup name (gNameVertexMap graph))
-  in Vertex{ vName = Command.cName command
+      n = Command.cName command
+  in Vertex{ vName = n
            , vDependencies = let parameterTypes = pType <$> cParameters command
                                  allTypes = cReturnType command : parameterTypes
                              in lookupName <$>
                                 concatMap cTypeDependencyNames allTypes
-           , vSourceEntity = ACommand command
+           , vSourceEntity = ACommand command $ S.member n builtin
            }
 
 enumToVertex :: Enum -> Vertex
 enumToVertex enum =
-  Vertex{ vName = eName enum
+  Vertex{ vName = Enum.eName enum
         , vDependencies = []
         , vSourceEntity = AnEnum enum
         }
@@ -256,7 +269,7 @@ isTypeConstructor v =
     AFuncPointerType _ -> False
     AStructType _ -> True
     AUnionType _ -> True
-    ACommand _ -> False
+    ACommand _ _ -> False
     AnEnum _ -> True
     ABitmask _ -> True
     AConstant _ -> False
