@@ -47,6 +47,9 @@ data SourceEntity = AnInclude Include
                   | AnEnum Enum
                   | ABitmask Bitmask
                   | AConstant Constant
+                  | AnExtensionEnum ExtensionEnum Int
+                  | AnExtensionConstant ExtensionConstant
+                  | AnExtensionBitmask ExtensionBitmask
   deriving (Show)
 
 -- | Look up the name in the graph, error if it's not there
@@ -86,7 +89,8 @@ getSpecGraph spec = graph
                     (constantToVertex graph <$> sConstants spec) ++
                     (enumToVertex <$> sEnums spec) ++
                     (bitmaskToVertex graph <$> sBitmasks spec) ++
-                    (commandToVertex graph builtinCommands <$> sCommands spec)
+                    (commandToVertex graph builtinCommands <$> sCommands spec) ++
+                    concatMap (extensionToVertices graph) (sExtensions spec)
         gNameVertexMap = M.fromList ((vName &&& id) <$> gVertices)
         graph = SpecGraph{..}
 
@@ -171,6 +175,27 @@ commandToVertex graph builtin command =
                                 concatMap cTypeDependencyNames allTypes
            , vSourceEntity = ACommand command $ S.member n builtin
            }
+
+extensionToVertices :: SpecGraph -> Extension -> [Vertex]
+extensionToVertices graph extension =
+  let lookupName name = fromMaybe
+                          (error ("Depended upon name not in spec: " ++ name))
+                          (M.lookup name (gNameVertexMap graph))
+      eeVertex ee = Vertex { vName = Extension.eeName ee
+                           , vDependencies = [lookupName $ eeExtends ee]
+                           , vSourceEntity = AnExtensionEnum ee (eNumber extension)
+                           }
+      ecVertex ec = Vertex { vName = ecName ec
+                           , vDependencies = maybeToList $ lookupName <$> ecExtends ec
+                           , vSourceEntity = AnExtensionConstant ec
+                           }
+      ebmVertex ebm = Vertex { vName = ebmName ebm
+                             , vDependencies = maybeToList $ lookupName <$> ebmExtends ebm
+                             , vSourceEntity = AnExtensionBitmask ebm
+                             }
+  in (eeVertex <$> eEnums extension) ++
+     (ecVertex <$> eConstants extension) ++
+     (ebmVertex <$> eBitmasks extension)
 
 enumToVertex :: Enum -> Vertex
 enumToVertex enum =
@@ -259,20 +284,15 @@ isIncludeVertex vertex
 isTypeConstructor :: Vertex -> Bool
 isTypeConstructor v =
   case vSourceEntity v of
-    AnInclude _ -> False
-    ADefine _ -> False
     ABaseType _ -> True
-    APlatformType _ -> False
     ABitmaskType _ _ -> True
     AHandleType _ -> True
     AnEnumType _ -> True
-    AFuncPointerType _ -> False
     AStructType _ -> True
     AUnionType _ -> True
-    ACommand _ _ -> False
     AnEnum _ -> True
     ABitmask _ -> True
-    AConstant _ -> False
+    _ -> False
 
 ------------------------------------------------------------------------------
 -- Dependency utils

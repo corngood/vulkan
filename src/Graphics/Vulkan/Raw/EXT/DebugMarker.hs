@@ -1,6 +1,7 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE Strict #-}
+{-# LANGUAGE PatternSynonyms #-}
 module Graphics.Vulkan.Raw.EXT.DebugMarker where
 
 import Data.Vector.Storable.Sized( Vector
@@ -64,6 +65,7 @@ instance Storable VkDebugMarkerObjectNameInfoEXT where
                 *> poke (ptr `plusPtr` 32) (vkPObjectName (poked :: VkDebugMarkerObjectNameInfoEXT))
 
 
+pattern VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT = VkStructureType 1000022000
 
 data VkDebugMarkerMarkerInfoEXT =
   VkDebugMarkerMarkerInfoEXT{ vkSType :: VkStructureType
@@ -93,6 +95,7 @@ vkCmdDebugMarkerInsertEXT :: VkDevice ->
 vkCmdDebugMarkerInsertEXT d = (mkvkCmdDebugMarkerInsertEXT $ castFunPtr $ procAddr) 
   where procAddr = unsafePerformIO $ withCString "vkCmdDebugMarkerInsertEXT" $ vkGetDeviceProcAddr d
 
+pattern VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT = VkStructureType 1000022001
 -- ** vkCmdDebugMarkerBeginEXT
 foreign import ccall "dynamic" mkvkCmdDebugMarkerBeginEXT :: FunPtr (VkCommandBuffer -> Ptr VkDebugMarkerMarkerInfoEXT -> IO ()) -> (VkCommandBuffer -> Ptr VkDebugMarkerMarkerInfoEXT -> IO ())
 vkCmdDebugMarkerBeginEXT :: VkDevice ->
@@ -149,3 +152,4 @@ vkDebugMarkerSetObjectNameEXT :: VkDevice -> Ptr VkDebugMarkerObjectNameInfoEXT 
 vkDebugMarkerSetObjectNameEXT d = (mkvkDebugMarkerSetObjectNameEXT $ castFunPtr $ procAddr) d
   where procAddr = unsafePerformIO $ withCString "vkDebugMarkerSetObjectNameEXT" $ vkGetDeviceProcAddr d
 
+pattern VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT = VkStructureType 1000022002
