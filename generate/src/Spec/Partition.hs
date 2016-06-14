@@ -142,6 +142,10 @@ bespokeModuleExports = M.fromList
                  , "VK_UUID_SIZE"
                  ]
     )
+  , ( ModuleName (rawModuleBase ++ ".DeviceInitialization")
+    , S.fromList [ "VkFormatFeatureFlags"
+                 ]
+    )
   , ( ModuleName (rawModuleBase ++ ".Memory")
     , S.fromList [ "VkDeviceMemory"
                  , "VkSystemAllocationScope"
@@ -183,6 +187,7 @@ bespokeModuleExports = M.fromList
     , S.fromList [ "VkFilter"
                  , "VkCompareOp"
                  , "VkSampleCountFlagBits"
+                 , "VkSamplerAddressMode"
                  ]
     )
   , ( ModuleName (rawModuleBase ++ ".Image")

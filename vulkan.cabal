@@ -17,6 +17,10 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Graphics.Vulkan.Raw
+                     , Graphics.Vulkan.Raw.AMD.GcnShader
+                     , Graphics.Vulkan.Raw.AMD.RasterizationOrder
+                     , Graphics.Vulkan.Raw.AMD.ShaderExplicitVertexParameter
+                     , Graphics.Vulkan.Raw.AMD.ShaderTrinaryMinmax
                      , Graphics.Vulkan.Raw.Buffer
                      , Graphics.Vulkan.Raw.BufferView
                      , Graphics.Vulkan.Raw.CommandBuffer
@@ -27,19 +31,23 @@ library
                      , Graphics.Vulkan.Raw.DescriptorSet
                      , Graphics.Vulkan.Raw.Device
                      , Graphics.Vulkan.Raw.DeviceInitialization
+                     , Graphics.Vulkan.Raw.EXT.DebugMarker
                      , Graphics.Vulkan.Raw.EXT.DebugReport
                      , Graphics.Vulkan.Raw.Event
                      , Graphics.Vulkan.Raw.ExtensionDiscovery
                      , Graphics.Vulkan.Raw.Fence
+                     , Graphics.Vulkan.Raw.IMG.FilterCubic
                      , Graphics.Vulkan.Raw.Image
                      , Graphics.Vulkan.Raw.ImageView
                      , Graphics.Vulkan.Raw.KHR.Display
                      , Graphics.Vulkan.Raw.KHR.DisplaySwapchain
+                     , Graphics.Vulkan.Raw.KHR.SamplerMirrorClampToEdge
                      , Graphics.Vulkan.Raw.KHR.Surface
                      , Graphics.Vulkan.Raw.KHR.Swapchain
                      , Graphics.Vulkan.Raw.LayerDiscovery
                      , Graphics.Vulkan.Raw.Memory
                      , Graphics.Vulkan.Raw.MemoryManagement
+                     , Graphics.Vulkan.Raw.NV.GlslShader
                      , Graphics.Vulkan.Raw.OtherTypes
                      , Graphics.Vulkan.Raw.Pass
                      , Graphics.Vulkan.Raw.Pipeline

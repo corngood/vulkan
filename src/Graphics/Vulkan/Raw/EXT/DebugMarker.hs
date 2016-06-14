@@ -95,6 +95,7 @@ vkCmdDebugMarkerInsertEXT :: VkDevice ->
 vkCmdDebugMarkerInsertEXT d = (mkvkCmdDebugMarkerInsertEXT $ castFunPtr $ procAddr) 
   where procAddr = unsafePerformIO $ withCString "vkCmdDebugMarkerInsertEXT" $ vkGetDeviceProcAddr d
 
+pattern VK_EXT_DEBUG_MARKER_EXTENSION_NAME =  "VK_EXT_debug_marker"
 pattern VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT = VkStructureType 1000022001
 -- ** vkCmdDebugMarkerBeginEXT
 foreign import ccall "dynamic" mkvkCmdDebugMarkerBeginEXT :: FunPtr (VkCommandBuffer -> Ptr VkDebugMarkerMarkerInfoEXT -> IO ()) -> (VkCommandBuffer -> Ptr VkDebugMarkerMarkerInfoEXT -> IO ())
@@ -103,6 +104,7 @@ vkCmdDebugMarkerBeginEXT :: VkDevice ->
 vkCmdDebugMarkerBeginEXT d = (mkvkCmdDebugMarkerBeginEXT $ castFunPtr $ procAddr) 
   where procAddr = unsafePerformIO $ withCString "vkCmdDebugMarkerBeginEXT" $ vkGetDeviceProcAddr d
 
+pattern VK_EXT_DEBUG_MARKER_SPEC_VERSION =  0x3
 -- ** vkDebugMarkerSetObjectTagEXT
 foreign import ccall "dynamic" mkvkDebugMarkerSetObjectTagEXT :: FunPtr (VkDevice -> Ptr VkDebugMarkerObjectTagInfoEXT -> IO VkResult) -> (VkDevice -> Ptr VkDebugMarkerObjectTagInfoEXT -> IO VkResult)
 vkDebugMarkerSetObjectTagEXT :: VkDevice -> Ptr VkDebugMarkerObjectTagInfoEXT -> IO VkResult
